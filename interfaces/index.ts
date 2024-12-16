@@ -19,3 +19,27 @@ export interface IUser extends Document {
     job: string;
     accountStatus: boolean
 }
+
+export interface IAsset extends Document {
+    index: number;
+    url: string;
+    name: string;
+    description: Text;
+    luck: string;
+}
+
+export interface IStory extends Document {
+    round: number;
+    user_id: string;
+    stories: ISection[];
+    total_story: Text;
+    total_point: number;
+}
+
+export interface ISection extends Document {
+    month: number;
+    story: Text;
+    point: number;
+    asset: number[],
+    tip: Text;
+}
