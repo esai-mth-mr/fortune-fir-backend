@@ -1,0 +1,1 @@
+export { addStory } from './addStory';

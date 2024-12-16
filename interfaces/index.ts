@@ -1,4 +1,4 @@
-export interface ILog {
+export interface ILog extends Document {
     userId: string;
     time: Date;
     activity: string;
