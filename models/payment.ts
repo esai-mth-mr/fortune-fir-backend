@@ -10,7 +10,7 @@ const paymentSchema: Schema<IPayment> = new Schema({
         default: 'stripe',
         required: true
     },
-    action: {type:String, enum: [], required: true},
+    action: {type:String, enum: ['regeneration', 'preview'], required: true},
     amount: {type: Number, required: true},
     unit: {type: String, required: true},   
     round: {type: Number, required: true},
@@ -18,6 +18,6 @@ const paymentSchema: Schema<IPayment> = new Schema({
     updated_at: {type: Date},
 }, { timestamps: true });
 
-const User = mongoose.model < IPayment > ('User', paymentSchema);
+const Payment = mongoose.model < IPayment > ('User', paymentSchema);
 
-export default User;
+export default Payment;
