@@ -8,8 +8,8 @@ export const init = async (req: Request, res: Response) => {
 
         const assets = await Asset.find()
             .skip(random)
-            .limit(12);
-        console.log(assets)
+            .limit(6);
+        console.log(assets);
         return res.status(200).json(assets);
     } catch (error) {
         console.error('Error fetching assets:', error);
