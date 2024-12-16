@@ -43,3 +43,15 @@ export interface ISection extends Document {
     asset: number[],
     tip: Text;
 }
+
+export interface IPayment extends Document {
+    
+    user_id: string;
+    provider: string;
+    action: string;
+    amount: number;
+    unit: string;
+    round: number;
+    created_at: Date;
+    updated_at: Date;
+}
