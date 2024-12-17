@@ -22,12 +22,6 @@ let metadata: {
     unit: string,
     round: number,
     } 
-// Create your price_ids object using environment variables  
-// const price_ids: PriceIds = {  
-//     action1: process.env. || '', // Retrieve from .env, with fallback  
-//     action2: process.env.PRICE_ID_ACTION2 || '',  
-//     // Add more actions as required  
-//   }; 
 
 export const sessionInitiate = async (req: Request<{}, {}, PaymentSessionRequestBody>, res: Response) => {
     console.log(req.body);
@@ -128,4 +122,3 @@ export const sessionComplete = async (req: Request, res: Response) => {
       }
       return res.status(200).send({ received: true });
 }
-    
