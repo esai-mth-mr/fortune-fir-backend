@@ -43,3 +43,7 @@ export interface ISection extends Document {
     asset: number[],
     tip: Text;
 }
+
+export interface IAvailable extends Document {
+    available_dates: Date[];
+}

@@ -3,7 +3,8 @@ import { sendMessage } from "./send_message"
 export const storyText = async (prompt: string) => {
     try {
 
-        const systemPrompt = `You just need detect AI description. 
+        const systemPrompt = `You just need detect AI description.
+        
            Analyze the given text for unnatural patterns, inconsistencies in tone, and lack of personal experience. 
            Look for overuse of formal language, repetitive structures, or unnatural phrasing typical of AI-generated content. 
            Evaluate the depth of insight in complex topics, checking for superficial understanding or vague responses. 
