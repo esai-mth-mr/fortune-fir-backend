@@ -7,6 +7,9 @@ const openai = new OpenAI({
 
 export const sendMessage = async (systemPrompt: string, userPrompt: string) => {
     try {
+
+        console.log("--------key from env --------- ", process.env.OPENAI_API_KEY)
+
         const completion = await openai.chat.completions.create({
             model: "gpt-4", // Correct model name
             messages: [
@@ -16,6 +19,8 @@ export const sendMessage = async (systemPrompt: string, userPrompt: string) => {
         });
         return completion.choices[0].message; // Accessing the message content
     } catch (error: any) {
+
+        console.log("-------error----------", error)
         if (error.status) {
             // OpenAI API-specific error
             console.error("OpenAI API Error:", error.status, error.body);
