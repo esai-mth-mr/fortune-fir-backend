@@ -11,7 +11,7 @@ export const sendMessage = async (systemPrompt: string, userPrompt: string) => {
         console.log("--------key from env --------- ", process.env.OPENAI_API_KEY)
 
         const completion = await openai.chat.completions.create({
-            model: "gpt-4o", // Correct model name
+            model: "gpt-4o-turbo", // Correct model name
             messages: [
                 { role: "system", content: systemPrompt },
                 { role: "user", content: userPrompt },

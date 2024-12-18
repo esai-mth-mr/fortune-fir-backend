@@ -18,15 +18,15 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
 
         console.log(indicesArray)
         // Fetch assets using random indices (with skip and limit)
-        const assets = await Asset.aggregate([
-            {
-                $facet: {
-                    randomAssets: indicesArray.map(index => ({
-                        $skip: index,
-                    })),
-                },
-            },
-        ]);
+        const assets = [];
+
+        for (const index of indicesArray) {
+
+            const asset = await Asset.findOne().skip(index).limit(1);
+
+            if (asset) assets.push(asset);
+
+        }
 
         console.log(assets)
 
