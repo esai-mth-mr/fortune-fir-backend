@@ -56,7 +56,11 @@ export const getTotalStory = async (req: Request, res: Response) => {
             })
         });
 
-        const userPrompt = "I am from 30 to 50 years old. I am a worker.";
+        //Set User Prompt
+        const age = new Date().getFullYear() - new Date(user.dob).getFullYear();
+        const gender = user.gender === "male" ? "man" : "woman";
+        const job = user.job;
+        const userPrompt = `I am ${age} years old. I am ${gender} and am a ${job}.`;
 
         const result_txt = await yearStory(input, userPrompt);
         let story_txt = "";

@@ -1,6 +1,8 @@
 export const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
 const VERIFY_SECRET = process.env.VERIFY_SECRET;
+import User from "../../models/User";
+import { AUTH_ERRORS } from "../../constants";
 
 export const signToken = (payload = {}, expiresIn = "6h") => {
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn });
@@ -29,6 +31,11 @@ export const authorizeBearerToken = async (request: any, response: any, next: an
                     status: 401,
                     message: 'Unauthorized - invalid token',
                 })
+            }
+
+            const user = await User.findById(auth.userId);
+            if (!user) {
+                return response.json({ status: 404, message: AUTH_ERRORS.accountNotFound });
             }
 
             request.auth = auth

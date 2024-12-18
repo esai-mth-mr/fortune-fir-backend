@@ -6,3 +6,5 @@ const router = express.Router();
 
 router.post("/add-story", authorizeBearerToken, storyController.addStory);
 router.get("/get-totalStory", authorizeBearerToken, storyController.getTotalStory);
+
+module.exports = router;
