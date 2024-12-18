@@ -12,25 +12,24 @@ let metadata: {
     [key:string]: string;
 }
 
-  interface PaymentSessionRequestBody {  
-    action: string; // Ensures action must be one of the keys from PriceIds    
-    successUrl: string;  
-    cancelUrl: string;  
-    user_id: string,
-    provider: string,  
-    amount: number,
-    unit: string,
-    round: number,
-    } 
+interface PaymentSessionRequestBody {  
+  action: string; // Ensures action must be one of the keys from PriceIds    
+  successUrl: string;  
+  cancelUrl: string;  
+  user_id: string,
+  provider: string,  
+  amount: number,
+  unit: string,
+  round: number,
+  } 
 
 export const sessionInitiate = async (req: Request<{}, {}, PaymentSessionRequestBody>, res: Response) => {
-    console.log(req.body);
     const {
         //clientReferenceId,
         user_id,
         provider,  
         amount,
-        unit,
+        //unit,
         action, 
         round,
         successUrl,
@@ -60,7 +59,7 @@ export const sessionInitiate = async (req: Request<{}, {}, PaymentSessionRequest
                 user_id: user_id,
                 provider: provider,
                 amount: amount,
-                unit: unit,
+                unit: "USD",
                 round: round,
             }, 
             line_items: [{  
@@ -75,7 +74,7 @@ export const sessionInitiate = async (req: Request<{}, {}, PaymentSessionRequest
       }
   
       return res.status(200).send(session);
-    }
+}
 
 export const sessionComplete = async (req: Request, res: Response) => {
 

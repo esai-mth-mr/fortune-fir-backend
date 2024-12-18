@@ -2,77 +2,86 @@ import { Request, Response } from "express";
 import paypal from "paypal-rest-sdk";
 import {Document} from 'mongoose';
 import Payment from "../../../models/payment";
+import User from '../../../models/User';
+import { IPayment, IUser } from "../../../interfaces";
+
+const clientId = process.env.PAYPAL_CLIENT_ID;  
+const clientSecret = process.env.PAYPAL_CLIENT_SECRET;  
+
+if (!clientId || !clientSecret) {  
+    throw new Error("Missing PayPal credentials in environment variables.");  
+}  
 
 paypal.configure({
     mode: 'sandbox', //Use 'live' for production
-    client_id: process.env.PAYPAL_CLIENT_ID,
-    client_secret: process.env.PAYPAL_CLIENT_SECRET
-})
+    client_id: clientId,
+    client_secret: clientSecret
+});
 
 interface paymentRequestBody{   
     user_id: string;
-    provider: string;
     amount: number;
     action: string;
-    round: number;
-}
-
-interface paymentDocument extends Document {
-    user_id: string;
-    provider: string;
-    action: string;
-    amount: number;
-    unit: string;
-    round: number;
-    created_at: Date;
-    updated_at: Date;
 }
 
 export const pay = async (req: Request<{}, {}, paymentRequestBody>, res:Response) => {
-    const {user_id, action, amount, round, provider} = req.body;
-
+    
+    //Check out user is vaild or not
+    const {user_id, action, amount} = req.body;
     try{
-        //create and save payment
-        const payment: paymentDocument = new Payment({
-            user_id,
-            provider,
-            action,
-            amount,
-            round,
-        });
-        await payment.save();
-
+        const user = await User.findById(user_id);
+        if(!user) {
+            return res.status(404).json({message: "User not found"});
+        }
+        const round = user.current_status.current_round;
+        // //create and save payment
+        // const payment = new Payment({
+        //     user_id,
+        //     provider: "paypal",
+        //     action,
+        //     amount,
+        //     round: round,  //to-do list
+        //     created_at: new Date()
+        // });
+        const payment = {user_id, provider: "paypal", action, amount, round};
+        //await payment.save();
+        const paymentData = encodeURIComponent(JSON.stringify(payment));
         //create payPal payment JSON
         const create_payment_json: paypal.Payment = {
-            intent: 'game',
+            intent: 'sale',
             payer: {
                 payment_method: 'paypal'
             },
             redirect_urls: {
-                return_url: 'http://localhost:3000/payment/paypal/success',
+                return_url: 'http://localhost:3000/payment/paypal/success?state={paymentData}',
                 cancel_url: 'http://localhost:3000/payment/paypal/cancel'
             },
-            transactions: [ {item_list: {items: [
-                    {
-                        name: action,
-                        //sku: 'item',
-                        price: amount.toString(),
-                        currency: 'USD',
-                        quantity: 1
+            transactions: [
+                {
+                    item_list: {
+                        items: [
+                            {
+                                name: action || 'default action', // Ensure `action` is defined
+                                sku: 'item', // Uncomment and provide a valid SKU if required
+                                price: amount ? amount.toFixed(2) : '0.00', // Ensure `amount` is valid
+                                currency: 'USD',
+                                quantity: 1
+                            }
+                        ]
                     },
-                ]
-                },
-                amount: {
-                    currency: 'USD',
-                    total: amount.toString()
-                },
-                description: `payment for ${action} round ${round}`
-            }]
+                    amount: {
+                        currency: 'USD',
+                        total: amount ? amount.toFixed(2) : '0.00' // Ensure `amount` is valid
+                    },
+                    description: action && round 
+                        ? `payment for ${action} round ${round}` 
+                        : 'action or round is not defined.' // Ensure `action` and `round` are defined
+                }
+            ]
         }
 
-
         //create paypal payment
-        paypal.payment.create(create_payment_json, (error:any, payment:any) => {
+        paypal.payment.create(create_payment_json, (error, payment) => {
             if(error) {
                 console.error(error);
                 return res.status(500).send("error creating payment");
@@ -92,13 +101,13 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res:Response
 
 
 export const success = async (req: Request, res: Response) => {
-    const payerId = req.query.PayerID;
-    const paymentId = req.query.paymentId;
+    const payerId = req.query.PayerID as string;
+    const paymentId = req.query.paymentId as string;
 
     if(!payerId || !paymentId) {
         return res.status(400).send('Missing PayerID or PaymentID');
     }
-
+    
     // Fetch the payment details
   paypal.payment.get(paymentId, (error:any, payment:any) => {
     if (error) {
@@ -125,10 +134,29 @@ export const success = async (req: Request, res: Response) => {
     // Execute the payment
     paypal.payment.execute(paymentId, execute_payment_json, (error:any, payment:any) => {
       if (error) {
-        console.error(error.response);
-        return res.status(500).send('Payment execution failed');
+        switch (error.response.name) {
+            case 'INSUFFICIENT_FUNDS':
+                return res.status(400).send('Payment failed: Insufficient funds in PayPal account');
+            case 'PAYMENT_DECLINED':
+                return res.status(400).send('Payment failed: Payment was declined');
+            case 'INVALID_PAYMENT_METHOD':
+                return res.status(400).send('Payment failed: Invalid payment method');
+            case 'PAYMENT_TIMEOUT':
+                return res.status(408).send('Payment failed: Payment timeout');
+            case 'CURRENCY_NOT_SUPPORTED':
+                return res.status(400).send('Payment failed: Currency not supported');
+            case 'TRANSACTION_NOT_FOUND':
+                return res.status(404).send('Payment failed: Transaction not found');
+            default:
+                return res.status(500).send('Payment execution failed: Unknown error');
+        }
       }
-
+      const stateString = req.query.state as string;
+    if(!stateString) {
+        const state = JSON.parse(stateString);
+        const payment = new Payment({...state, created_at: new Date()});
+        payment.save();
+    }
       res.send('Payment successful');
     });
   });

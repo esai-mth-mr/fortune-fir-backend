@@ -3,7 +3,8 @@ import { IPayment } from "../interfaces";
 
 const paymentSchema: Schema<IPayment> = new Schema({
  
-    user_id: {type: String, required: true},
+    //user_id: {type: String, required: true},
+    user_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     provider: {
         type: String,
         enum: ['stripe', 'paypal', 'crypt'],
@@ -18,6 +19,6 @@ const paymentSchema: Schema<IPayment> = new Schema({
     updated_at: {type: Date},
 }, { timestamps: true });
 
-const Payment = mongoose.model < IPayment > ('User', paymentSchema);
+const Payment = mongoose.model < IPayment > ('Payment', paymentSchema);
 
 export default Payment;

@@ -1,3 +1,4 @@
+import mongoose, { Document, Schema } from 'mongoose';  
 export interface ILog {
     userId: string;
     time: Date;
@@ -6,7 +7,7 @@ export interface ILog {
     reason?: string;
 }
 
-export interface IUser extends Document {
+export interface IUser  {
     name: string;
     email: string;
     password: string;
@@ -20,7 +21,7 @@ export interface IUser extends Document {
     accountStatus: boolean
 }
 
-export interface IAsset extends Document {
+export interface IAsset  {
     index: number;
     url: string;
     name: string;
@@ -28,7 +29,7 @@ export interface IAsset extends Document {
     luck: string;
 }
 
-export interface IStory extends Document {
+export interface IStory  {
     round: number;
     user_id: string;
     stories: ISection[];
@@ -36,7 +37,7 @@ export interface IStory extends Document {
     total_point: number;
 }
 
-export interface ISection extends Document {
+export interface ISection {
     month: number;
     story: Text;
     point: number;
@@ -44,9 +45,9 @@ export interface ISection extends Document {
     tip: Text;
 }
 
-export interface IPayment extends Document {
-    
-    user_id: string;
+export interface IPayment {
+ //   user_id:string;
+    user_id: mongoose.Types.ObjectId;
     provider: string;
     action: string;
     amount: number;
