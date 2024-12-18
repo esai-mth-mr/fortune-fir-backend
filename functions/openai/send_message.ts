@@ -9,7 +9,7 @@ export const sendMessage = async (systemPrompt: string, userPrompt: string) => {
                 { role: "system", content: systemPrompt },
                 { role: "user", content: userPrompt },
             ],
-            model: "gpt-4-turbo",
+            model: "gpt-4o",
         });
 
         return completion.choices[0];
