@@ -11,9 +11,7 @@ import { ITransferStoryInput } from '../../../interfaces';
 
 export const addStory = async (req: Request, res: Response) => {
     const { point, total_point, assets, month, userId } = req.body;
-    console.log(req.body);
     const user = await User.findById(userId);
-    console.log(userId);
 
     if (!user) {
         return res.status(404).json({ message: AUTH_ERRORS.accountNotFound });
@@ -40,7 +38,6 @@ export const addStory = async (req: Request, res: Response) => {
             });
         }
 
-        console.log(storyInput);
 
         //Set User Prompt
         const age = new Date().getFullYear() - new Date(user.dob).getFullYear();
@@ -48,7 +45,6 @@ export const addStory = async (req: Request, res: Response) => {
         const job = user.job;
 
         const userPrompt = `I am ${age} years old. I am ${gender} and am a ${job}.`;
-        console.log(userPrompt);
 
         const result_txt = await monthStory(storyInput, userPrompt);
         let story_txt = "";

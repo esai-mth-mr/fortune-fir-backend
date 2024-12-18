@@ -17,6 +17,7 @@ export const sendMessage = async (systemPrompt: string, userPrompt: string) => {
                 { role: "user", content: userPrompt },
             ],
         });
+        console.log(completion.choices[0])
         return completion.choices[0].message; // Accessing the message content
     } catch (error: any) {
 
