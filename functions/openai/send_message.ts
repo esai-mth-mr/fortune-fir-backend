@@ -18,10 +18,7 @@ export const sendMessage = async (systemPrompt: string, userPrompt: string) => {
             console.log(error.message);
         }
         // For other types of errors
-        return {
-            error: true,
-            message:
-                error instanceof Error ? error.message : "An unknown error occurred",
-        };
+        return error instanceof Error ? error.message : "An unknown error occurred";
+
     }
 };

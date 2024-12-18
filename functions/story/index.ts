@@ -1,15 +1,29 @@
+import ValidDates from "../../models/ValidDates";
 
-const isChrismas = (): boolean => {
+const isChrismas = async (): Promise<boolean> => {
     const today = new Date();
     const year = today.getFullYear();
-    const month = today.getMonth() + 1;
+    const month = today.getMonth() + 1; // Months are 0-based in JavaScript
     const day = today.getDate();
 
-    return year == 2024 && month === 12 && day === 25;
-}
+    const validDates = await ValidDates.findOne();
 
-export const available = (): boolean => {
-    if (isChrismas()) return true;
-    else return false
-}
+    if (!validDates || !validDates.available_dates) {
+        return false; // If no valid dates are found, return false
+    }
 
+    // Check if today's date matches any of the available dates
+    return validDates.available_dates.some((date) => {
+        const validDate = new Date(date);
+        return (
+            validDate.getFullYear() === year &&
+            validDate.getMonth() + 1 === month &&
+            validDate.getDate() === day
+        );
+    });
+};
+
+// Make the `available` function asynchronous
+export const available = async (): Promise<boolean> => {
+    return await isChrismas();
+};

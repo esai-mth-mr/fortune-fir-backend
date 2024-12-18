@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import Asset from '../../../models/Asset';
 
 export const init = async (req: Request, res: Response): Promise<Response> => {
+    const { userId } = req.body;
+
     try {
         //Get the current counts of Asset
         const count: number = await Asset.countDocuments();
