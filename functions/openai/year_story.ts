@@ -1,42 +1,58 @@
 import { sendMessage } from "./send_message"
 
-interface dataType {
+interface DataType {
     month: number,
     story: string
 }
 
-export const yearStory = async (data: dataType[], user: string) => {
+export const yearStory = async (data: DataType[], user: string) => {
     try {
 
-        const systemPrompt = `I am developing a simple luck prediction game. Here there are monthly luck for every month.
+        const systemPrompt = `I am developing a simple luck prediction game. Here, there are monthly luck for every month.
 ${data.map(each => `
 -----------------------------------
 month: ${each.month}
 monthly Luck: ${each.story}
 -----------------------------------
 `).join('')}
-So, you should predict user's luck for a 1-year period with it. It should be something like funny, humorous, ideally, miserable, dead, or nervous according to the lucky value. Finally, you should give him tips. Here below is one example.
-prediction : Congratulations, you’re riding on a golden wave for the year! This winner medal doesn’t mess around—it’s like having a cheat code for life. Over the next 12 months, opportunities will pop up like ads on a free app, but way more useful. You’ll ace challenges, impress bosses, charm strangers, and probably win that random raffle you forgot you entered. Expect small wins, big smiles, and the occasional “How did I get this lucky?” moment. Just don’t spend all year waiting for miracles—luck loves action!.
-///////////////
-tips :
-- Set bold goals: Now’s the time to dream big; fortune favors the brave.
-- Invest wisely: Whether it’s money, time, or effort, every seed you plant could bloom into a jackpot.
-- Make connections: Your charisma is at an all-time high—networking could open unexpected doors.
-- Say yes to opportunities: New projects, trips, or even hobbies might lead to surprising rewards.
-- Stay humble: With luck on your side, it’s easy to get cocky—but staying grounded will win you fans for life.
+So, you should predict user's luck for a 1-year period with it. 
+It should be something like funny, humorous, ideally, miserable, dead, or nervous according to the lucky value. 
+Finally, you should give him tips. 
+Here below is one example.
+
+Prediction : 
+This year, luck will be your quirky sidekick, bringing a mix of dazzling highs and laughable mishaps. 
+The first half kicks off with extreme good fortune—expect surprise wins, academic triumphs, and maybe even a little romance. 
+Midyear, your luck mellows into steady blessings, perfect for planning your future and making meaningful connections. 
+But as autumn rolls in, chaos takes the wheel, throwing in comically inconvenient moments like missed buses and spilled coffee. 
+Don’t worry—these hiccups are the kind that build character, not catastrophe. Ride the highs, roll with the lows, and keep a sense of humor; this is your year to shine and laugh along the way!
+//////////
+Tips :
+1. First Half (Extreme Luck): Take bold risks and start new ventures—you’re on a winning streak!
+2. Midyear (Stable Luck): Focus on building your goals and nurturing relationships; it’s your time for growth.
+3. Autumn (Chaotic Luck): Stay adaptable and keep backup plans for the small misfortunes; laugh off the rest.
+4. Throughout: Journal your wins and mishaps—you’ll want to revisit this rollercoaster year with a grin!
 ...`;;
 
-        const userPrompt = user;
+        // Call the OpenAI API with the system prompt and user input
+        const response = await sendMessage(systemPrompt, user);
 
-        const response = await sendMessage(systemPrompt, userPrompt);
+        // Handle the response
+        if (response.error) {
+            return { error: true, message: response.message };
+        }
+
         return {
             error: false,
-            message: response
-        }
-    } catch (error) {
+            message: response.message,
+        };
+    } catch (error: any) {
+        console.error("Error in monthStory:", error);
+
+        // Handle unexpected errors
         return {
             error: true,
             message: error instanceof Error ? error.message : "An unknown error occurred",
-        }
+        };
     }
-}
+};

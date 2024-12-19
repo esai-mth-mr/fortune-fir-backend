@@ -52,3 +52,15 @@ export interface ITransferStoryInput {
     luck: string,
     description: string
 }
+
+export interface IPayment {
+    //   user_id:string;
+    user_id: string;
+    provider: string;
+    action: string;
+    amount: number;
+    unit: string;
+    round: number;
+    created_at: Date;
+    updated_at: Date;
+}

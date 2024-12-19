@@ -12,6 +12,7 @@ export const upgradeRound = async (req: Request, res: Response) => {
         user.current_status.current_round += 1;
         user.current_status.round_status = "progress";
         await user.save();
+
         return res.status(200).json({ message: 'Round upgraded' });
     } catch (error) {
         return res.status(500).json({ message: 'Internal server error' });

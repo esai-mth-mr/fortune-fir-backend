@@ -2,34 +2,40 @@ import OpenAI from "openai";
 
 // Initialize OpenAI API client
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY, // Replace with your actual API key
+    apiKey: process.env.OPENAI_API_KEY, // Ensure the API key is set in the environment variables
 });
 
 export const sendMessage = async (systemPrompt: string, userPrompt: string) => {
     try {
-
-        console.log("--------key from env --------- ", process.env.OPENAI_API_KEY)
-
-        const completion = await openai.chat.completions.create({
+        // Send a request to OpenAI API for chat completion
+        const response = await openai.chat.completions.create({
             model: "gpt-4-turbo", // Correct model name
             messages: [
                 { role: "system", content: systemPrompt },
                 { role: "user", content: userPrompt },
             ],
         });
-        console.log(completion.choices[0])
-        return completion.choices[0].message; // Accessing the message content
-    } catch (error: any) {
 
-        console.log("-------error----------", error)
-        if (error.status) {
-            // OpenAI API-specific error
-            console.error("OpenAI API Error:", error.status, error.body);
-            return `OpenAI API Error: ${error.body.error.message}`;
-        } else {
-            // Generic error
-            console.error("Error:", error.message);
-            return error.message || "An unknown error occurred";
+        // Extract and return the response message
+        return {
+            error: false,
+            message: response.choices[0]?.message?.content || "No response content",
+        };
+    } catch (error: any) {
+        console.error("Error communicating with OpenAI API:", error);
+
+        // Handle OpenAI API-specific errors
+        if (error.status && error.error?.message) {
+            return {
+                error: true,
+                message: `OpenAI API Error: ${error.error.message}`,
+            };
         }
+
+        // Handle generic errors
+        return {
+            error: true,
+            message: error.message || "An unknown error occurred",
+        };
     }
 };

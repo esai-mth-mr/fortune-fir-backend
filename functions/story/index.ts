@@ -1,4 +1,6 @@
 import ValidDates from "../../models/ValidDates";
+import Payment from "../../models/Payment";
+
 
 const isChrismas = async (): Promise<boolean> => {
     const today = new Date();
@@ -23,9 +25,20 @@ const isChrismas = async (): Promise<boolean> => {
     });
 };
 
+const isPaymentVerified = async (userId: string, current_round: number, action: string): Promise<boolean> => {
+    const payment = await Payment.findOne({ user_id: userId, round: current_round, action: action });
+    if (!payment) {
+        return false; // If no payment is found, return false
+    }
+
+    return true;
+};
+
 // Make the `available` function asynchronous
-export const available = async (): Promise<boolean> => {
-    return await isChrismas();
+export const available = async (userId: string, current_round: number, action: string): Promise<boolean> => {
+    if (await isChrismas() && await isPaymentVerified(userId, current_round, action)) return true;
+
+    return false;
 };
 
 export const generateUniqueRandomIntArray = (length: number, min: number, max: number): number[] => {
@@ -46,4 +59,15 @@ export const generateUniqueRandomIntArray = (length: number, min: number, max: n
 
     // Step 3: Return the first `length` numbers (already shuffled)
     return numbers.slice(0, length);
+};
+
+
+export const getAssetRange = (point: number): { start: number; end: number } => {
+    if (point > 1400 && point <= 2100) return { start: 0, end: 55 };
+    if (point > 700 && point <= 1400) return { start: 0, end: 100 };
+    if (point > 0 && point <= 700) return { start: 25, end: 145 };
+    if (point > -700 && point <= 0) return { start: 56, end: 185 };
+    if (point > -1400 && point <= -700) return { start: 101, end: 200 };
+    if (point <= -1400 && point >= -2100) return { start: 146, end: 200 };
+    throw new Error('Invalid point value'); // Handle unexpected point ranges
 };
