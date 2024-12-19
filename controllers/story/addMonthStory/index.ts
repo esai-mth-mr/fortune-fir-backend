@@ -61,6 +61,7 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
 
     // Validate user existence
     const user = await User.findById(userId);
+
     if (!user) {
         return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
     }
@@ -69,6 +70,14 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
         return res.status(403).json({ error: true, message: AUTH_ERRORS.activateAccountRequired });
     }
 
+    const current_round = user.current_status.current_round;
+    const month_label = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    const preStory = await Story.findOne({ round: current_round, user_id: userId });
+    if (!preStory) {
+        if (month !== 1) return res.status(400).json({ error: true, message: "You must try January" });
+    }
+    else if (preStory.stories.length !== month - 1) return res.status(400).json({ error: true, message: `You must try ${month_label[preStory.stories.length]}` });
     // if (!point || !total_point || !assets || !month || !userId) {
     //     return res.status(400).json({ error: true, message: AUTH_ERRORS.missingParams });
     // }
@@ -78,7 +87,6 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
     //     return res.status(400).json({ error: true, message: "Assets must be exactly 7" });
     // }
 
-    const current_round = user.current_status.current_round;
     const session = await mongoose.startSession();
 
     try {
