@@ -14,11 +14,11 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
 
         const user = await User.findById(userId);
         if (!user) {
-            return res.json({ status: 404, message: AUTH_ERRORS.accountNotFound });
+            return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
         }
 
         if (!user.accountStatus) {
-            return res.status(403).json({ message: AUTH_ERRORS.activateAccountRequired });
+            return res.status(403).json({ error: true, action: "verify", message: AUTH_ERRORS.activateAccountRequired });
         }
 
         const current_round = user.current_status.current_round;
@@ -53,13 +53,13 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             await log.save();
 
             //const assets = await Asset.find().skip(indicesArray[0]).limit(indicesArray.length); // Skip the first index and limit to 12 assets
-            return res.status(200).json({ month: month, data: assets });
+            return res.status(200).json({ error: false, month: month, data: assets });
         }
 
         // Fetch the previous story to determine the user's point
         const preStory = await Story.findOne({ round: current_round - 1, user_id: userId });
         if (!preStory) {
-            return res.status(404).json({ message: STORY_MSGG.storyNotFound });
+            return res.status(404).json({ error: true, message: STORY_MSGG.storyNotFound });
         }
 
         const point = preStory.stories[preStory.stories.length - 1].point;
@@ -82,11 +82,11 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
 
         await log.save();
 
-        return res.status(200).json({ month, data: assets });
+        return res.status(200).json({ error: false, month, data: assets });
 
 
     } catch (err) {
         console.error('Error fetching assets:', err);
-        return res.status(500).json({ message: 'Internal Server Error' });
+        return res.status(500).json({ error: true, message: 'Internal Server Error' });
     }
 };

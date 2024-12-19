@@ -45,7 +45,7 @@ export const addYearStory = async (req: Request<IReq>, res: Response) => {
 
 
     if (!user.accountStatus) {
-        return res.status(403).json({ error: true, message: AUTH_ERRORS.activateAccountRequired });
+        return res.status(403).json({ error: true, action: "verify", message: AUTH_ERRORS.activateAccountRequired });
     }
 
 
