@@ -3,7 +3,7 @@ import { IValidDates } from "../interfaces";
 
 const ValidDatesSchema: Schema<IValidDates> = new Schema(
     {
-        available_dates: { type: [Date], required: true },
+        available_dates: { type: [String], required: true },
     },
     { timestamps: true }
 );

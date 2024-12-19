@@ -3,7 +3,7 @@ import User from "../../../models/User";
 import Story from "../../../models/Story";
 import { AUTH_ERRORS, STORY_MSGG, PAYMENT_MSGS } from "../../../constants";
 import { available } from "../../../functions/story";
-
+import Log from "../../../models/Log";
 
 export const showStory = async (req: Request, res: Response) => {
     const { userId } = req.body;
@@ -34,11 +34,29 @@ export const showStory = async (req: Request, res: Response) => {
         })
     })
 
-    console.log(sendData);
 
     const action = PAYMENT_MSGS.action.preview;
 
-    if (!await available(userId, current_round, action)) return res.status(200).json({ display: false, message: "Unavailable" });
+    if (!await available(userId, current_round, action)) {
+        const log = new Log({
+            userId: user._id,
+            activity: "showStory",
+            success: false,
+            reason: "payment is not verified"
+        });
 
+        await log.save();
+
+        return res.status(200).json({ display: false, message: "Unavailable" });
+
+    }
+
+    const log = new Log({
+        userId: user._id,
+        activity: "showStory",
+        success: true,
+    });
+
+    await log.save();
     return res.status(200).json({ display: true, message: sendData });
 };

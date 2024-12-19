@@ -80,6 +80,13 @@ export const addYearStory = async (req: Request, res: Response) => {
         storyData.total_point = total_point;
         await storyData.save({ session });
 
+        const log = new Log({
+            userId: user._id,
+            activity: "addTotalStory",
+            success: true,
+        });
+        await log.save({ session });
+
         // Commit the transaction
         await session.commitTransaction();
         res.status(200).json({ message: "Successfully generated total story" });

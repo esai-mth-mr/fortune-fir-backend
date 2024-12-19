@@ -4,6 +4,7 @@ import User from "../../../models/User";
 import Story from '../../../models/Story';
 import { AUTH_ERRORS, STORY_MSGG } from '../../../constants';
 import { generateUniqueRandomIntArray, getAssetRange } from '../../../functions/story';
+import Log from '../../../models/Log';
 
 export const init = async (req: Request, res: Response): Promise<Response> => {
 
@@ -40,6 +41,14 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             const allAssets = await Asset.find();
             const assets = indicesArray.map(index => allAssets[index]);
 
+            const log = new Log({
+                userId: userId,
+                activity: "getInitAsset",
+                success: true
+            })
+
+            await log.save();
+
             //const assets = await Asset.find().skip(indicesArray[0]).limit(indicesArray.length); // Skip the first index and limit to 12 assets
             return res.status(200).json({ month: month, data: assets });
         }
@@ -61,6 +70,14 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
         // Fetch assets using the random indices
         const allAssets = await Asset.find();
         const assets = indicesArray.map(index => allAssets[index]);
+
+        const log = new Log({
+            userId: userId,
+            activity: "getInitAsset-upgradeRound",
+            success: true
+        })
+
+        await log.save();
 
         return res.status(200).json({ month, data: assets });
 
