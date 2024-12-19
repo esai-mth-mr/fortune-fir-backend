@@ -10,14 +10,20 @@ export const showStory = async (req: Request, res: Response) => {
 
     const user = await User.findById(userId);
     if (!user) {
-        return res.status(404).json({ message: AUTH_ERRORS.accountNotFound });
+        return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
     }
+
+
+    if (!user.accountStatus) {
+        return res.status(403).json({ error: true, message: AUTH_ERRORS.activateAccountRequired });
+    }
+
 
     const current_round = user.current_status.current_round;
 
     const story = await Story.findOne({ round: current_round, user_id: userId });
     if (!story) {
-        return res.status(404).json({ message: STORY_MSGG.storyNotFound });
+        return res.status(404).json({ error: true, message: STORY_MSGG.storyNotFound });
     }
 
 
@@ -47,7 +53,7 @@ export const showStory = async (req: Request, res: Response) => {
 
         await log.save();
 
-        return res.status(200).json({ display: false, message: "Unavailable" });
+        return res.status(200).json({ error: false, display: false, message: "Unavailable" });
 
     }
 
@@ -58,5 +64,5 @@ export const showStory = async (req: Request, res: Response) => {
     });
 
     await log.save();
-    return res.status(200).json({ display: true, message: sendData });
+    return res.status(200).json({ error: false, display: true, message: sendData });
 };

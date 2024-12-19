@@ -7,24 +7,76 @@ import { monthStory } from '../../../functions/openai/month_story';
 import mongoose from 'mongoose';
 import { AUTH_ERRORS } from '../../../constants';
 import { ITransferStoryInput } from '../../../interfaces';
+import Joi from 'joi';
 
-export const addMonthStory = async (req: Request, res: Response) => {
-    const { point, total_point, assets, month, userId } = req.body;
+interface IReq {
+    point: number;
+    total_point: number;
+    assets: number[];
+    month: number;
+    userId: string;
+}
+
+
+// Define a Joi schema for input validation
+const addMonthStorySchema = Joi.object({
+    point: Joi.number().required().messages({
+        "number.base": "Point must be a number",
+        "any.required": "Point is required",
+    }),
+    total_point: Joi.number().required().messages({
+        "number.base": "Total point must be a number",
+        "any.required": "Total point is required",
+    }),
+    assets: Joi.array().items(Joi.number()).length(7).required().messages({
+        "array.base": "Assets must be an array of numbers",
+        "array.length": "Assets must contain exactly 7 items",
+        "any.required": "Assets are required",
+    }),
+    month: Joi.number().integer().min(1).max(12).required().messages({
+        "number.base": "Month must be a number",
+        "number.min": "Month must be between 1 and 12",
+        "number.max": "Month must be between 1 and 12",
+        "any.required": "Month is required",
+    }),
+    userId: Joi.string().required().messages({
+        "string.base": "User ID must be a string",
+        "any.required": "User ID is required",
+    }),
+});
+
+
+export const addMonthStory = async (req: Request<IReq>, res: Response) => {
+
+    const { error, value } = addMonthStorySchema.validate(req.body, { abortEarly: false });
+    if (error) {
+        // Return validation errors to the client
+        return res.status(400).json({
+            error: true,
+            message: error.details.map(err => err.message),
+        });
+    }
+
+    const { point, total_point, assets, month, userId } = value;
 
     // Validate user existence
     const user = await User.findById(userId);
     if (!user) {
-        return res.status(404).json({ message: AUTH_ERRORS.accountNotFound });
+        return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
     }
 
     if (!user.accountStatus) {
-        return res.status(403).json({ message: AUTH_ERRORS.activateAccountRequired });
+        return res.status(403).json({ error: true, message: AUTH_ERRORS.activateAccountRequired });
     }
 
-    // Validate assets length
-    if (!assets || assets.length !== 7) {
-        return res.status(400).json({ message: "Assets must be exactly 7" });
-    }
+    // if (!point || !total_point || !assets || !month || !userId) {
+    //     return res.status(400).json({ error: true, message: AUTH_ERRORS.missingParams });
+    // }
+
+    // // Validate assets length
+    // if (!assets || assets.length !== 7) {
+    //     return res.status(400).json({ error: true, message: "Assets must be exactly 7" });
+    // }
 
     const current_round = user.current_status.current_round;
     const session = await mongoose.startSession();
@@ -57,7 +109,7 @@ export const addMonthStory = async (req: Request, res: Response) => {
         const result_txt = await monthStory(storyInput, userPrompt);
         if (result_txt.error) {
             await session.abortTransaction();
-            return res.status(500).json({ message: result_txt.message });
+            return res.status(500).json({ error: true, message: result_txt.message });
         }
         const story_txt = result_txt.message;
 
@@ -121,12 +173,12 @@ export const addMonthStory = async (req: Request, res: Response) => {
 
         // Commit the transaction
         await session.commitTransaction();
-        res.status(201).json({ message: "Successfully created or updated month story!" });
+        res.status(201).json({ error: false, message: "Successfully created or updated month story!" });
     } catch (error: any) {
         // Rollback the transaction and handle errors
         await session.abortTransaction();
         console.error("Error in addMonthStory:", error);
-        res.status(500).json({ error: "Failed to create or update story", details: error.message });
+        res.status(500).json({ error: true, message: error.message || "Failed to create or update story" });
     } finally {
         session.endSession();
     }

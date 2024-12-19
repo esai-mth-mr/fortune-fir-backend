@@ -6,6 +6,7 @@ import { AUTH_ERRORS } from "../../../constants";
 import mongoose from "mongoose";
 import { ISection } from "../../../interfaces";
 import { yearStory } from "../../../functions/openai/year_story";
+import Joi from "joi";
 
 interface DataType {
     month: number;
@@ -13,17 +14,40 @@ interface DataType {
 }
 
 interface IReq {
-    userId : string, total_point : number
+    userId: string, total_point: number
 }
 
+//Define a Joi Schema for input validation
+const addYearStorySchema = Joi.object({
+    userId: Joi.string().required().messages({
+        "string.base": "User ID must be a string",
+        "any.required": "User ID is required",
+    }),
+    total_point: Joi.number().required().messages({
+        "number.base": "Total point must be a number",
+        "any.required": "Total point is required",
+    })
+})
+
 export const addYearStory = async (req: Request<IReq>, res: Response) => {
-    const { userId, total_point } = req.body;
+    const { error, value } = addYearStorySchema.validate(req.body);
+    if (error) {
+        return res.status(400).json({ error: true, message: error.details.map(err => err.message) });
+    }
+    // Extract userId and total_point from the request body
+    const { userId, total_point } = value;
 
     // Validate user existence
     const user = await User.findById(userId);
     if (!user) {
-        return res.status(404).json({ message: AUTH_ERRORS.accountNotFound });
+        return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
     }
+
+
+    if (!user.accountStatus) {
+        return res.status(403).json({ error: true, message: AUTH_ERRORS.activateAccountRequired });
+    }
+
 
     const session = await mongoose.startSession();
 
@@ -54,7 +78,7 @@ export const addYearStory = async (req: Request<IReq>, res: Response) => {
         // Fetch stories for the user and current round
         const storyData = await Story.findOne({ round: current_round, user_id: user._id }).session(session);
         if (!storyData) {
-            return res.status(404).json({ message: "Stories not found" });
+            return res.status(404).json({ error: true, message: "Stories not found" });
         }
 
         // Prepare input for yearStory
@@ -74,7 +98,7 @@ export const addYearStory = async (req: Request<IReq>, res: Response) => {
 
         if (result_txt.error) {
             await session.abortTransaction();
-            return res.status(500).json({ message: result_txt.message });
+            return res.status(500).json({ error: true, message: result_txt.message });
         }
 
         const story_txt = result_txt.message;
@@ -93,12 +117,12 @@ export const addYearStory = async (req: Request<IReq>, res: Response) => {
 
         // Commit the transaction
         await session.commitTransaction();
-        res.status(200).json({ message: "Successfully generated total story" });
+        res.status(200).json({ error: false, message: "Successfully generated total story" });
     } catch (error: any) {
         // Rollback the transaction and handle errors
         await session.abortTransaction();
         console.error("Error in addYearStory:", error);
-        res.status(500).json({ error: error.message || "An unknown error occurred" });
+        res.status(500).json({ error: true, message: error.message || "An unknown error occurred" });
     } finally {
         session.endSession();
     }

@@ -9,11 +9,11 @@ export const upgradeRound = async (req: Request, res: Response) => {
 
     const user = await User.findById(userId);
     if (!user) {
-        return res.status(404).json({ message: AUTH_ERRORS.accountNotFound });
+        return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
     }
 
     if (!user.accountStatus) {
-        return res.status(403).json({ message: AUTH_ERRORS.activateAccountRequired });
+        return res.status(403).json({ error: true, message: AUTH_ERRORS.activateAccountRequired });
     }
 
     const session = await mongoose.startSession();
@@ -35,10 +35,10 @@ export const upgradeRound = async (req: Request, res: Response) => {
 
         await session.commitTransaction();
 
-        return res.status(200).json({ message: 'Round upgraded' });
+        return res.status(200).json({ error: false, message: 'Round upgraded' });
     } catch (error) {
         await session.abortTransaction();
-        return res.status(500).json({ message: 'Internal server error' });
+        return res.status(500).json({ error: true, message: 'Internal server error' });
     }
     finally {
         session.endSession();
