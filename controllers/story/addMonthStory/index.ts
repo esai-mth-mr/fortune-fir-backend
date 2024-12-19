@@ -28,11 +28,16 @@ const addMonthStorySchema = Joi.object({
         "number.base": "Total point must be a number",
         "any.required": "Total point is required",
     }),
-    assets: Joi.array().items(Joi.number()).length(7).required().messages({
-        "array.base": "Assets must be an array of numbers",
-        "array.length": "Assets must contain exactly 7 items",
-        "any.required": "Assets are required",
-    }),
+    assets: Joi.array()
+        .items(Joi.number().min(0).max(200))
+        .length(7)
+        .required()
+        .messages({
+            "array.base": "Assets must be an array of numbers",
+            "array.length": "Assets must contain exactly 7 items",
+            "array.includes": "Each asset must be a number between 0 and 200",
+            "any.required": "Assets are required",
+        }),
     month: Joi.number().integer().min(1).max(12).required().messages({
         "number.base": "Month must be a number",
         "number.min": "Month must be between 1 and 12",
