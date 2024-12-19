@@ -15,6 +15,7 @@ export const AUTH_ERRORS = {
     passwordNotMatch: "Password doesn't match.",
     validToken: "Unauthorized - invalid token",
     rightMethod: "Use right method",
+    activateAccountRequired : "Please activeate your account. Check your inbox or resend code to your email!"
 };
 export const SUCCESS_MSGS = {
     register: "Successfully registered",

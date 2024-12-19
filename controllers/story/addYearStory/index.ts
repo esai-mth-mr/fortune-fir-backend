@@ -12,7 +12,11 @@ interface DataType {
     story: string;
 }
 
-export const addYearStory = async (req: Request, res: Response) => {
+interface IReq {
+    userId : string, total_point : number
+}
+
+export const addYearStory = async (req: Request<IReq>, res: Response) => {
     const { userId, total_point } = req.body;
 
     // Validate user existence

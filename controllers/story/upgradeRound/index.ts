@@ -12,11 +12,14 @@ export const upgradeRound = async (req: Request, res: Response) => {
         return res.status(404).json({ message: AUTH_ERRORS.accountNotFound });
     }
 
+    if (!user.accountStatus) {
+        return res.status(403).json({ message: AUTH_ERRORS.activateAccountRequired });
+    }
+
     const session = await mongoose.startSession();
 
     try {
         session.startTransaction();
-
 
         user.current_status.current_round += 1;
         user.current_status.round_status = "progress";

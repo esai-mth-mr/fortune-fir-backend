@@ -1,5 +1,3 @@
-import { GLOBAL_ERRORS } from "../../constants";
-
 export const jwt = require("jsonwebtoken");
 const VERIFY_SECRET = process.env.VERIFY_SECRET;
 

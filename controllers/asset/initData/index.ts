@@ -17,12 +17,15 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             return res.json({ status: 404, message: AUTH_ERRORS.accountNotFound });
         }
 
+        if (!user.accountStatus) {
+            return res.status(403).json({ message: AUTH_ERRORS.activateAccountRequired });
+        }
+
         const current_round = user.current_status.current_round;
 
         // Determine the current month
         const story = await Story.findOne({ round: current_round, user_id: userId });
         const month = story ? story.stories[story.stories.length - 1].month + 1 : 1;
-
 
         if (current_round == 1) {
 

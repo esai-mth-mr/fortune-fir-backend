@@ -17,6 +17,10 @@ export const addMonthStory = async (req: Request, res: Response) => {
         return res.status(404).json({ message: AUTH_ERRORS.accountNotFound });
     }
 
+    if (!user.accountStatus) {
+        return res.status(403).json({ message: AUTH_ERRORS.activateAccountRequired });
+    }
+
     // Validate assets length
     if (!assets || assets.length !== 7) {
         return res.status(400).json({ message: "Assets must be exactly 7" });
