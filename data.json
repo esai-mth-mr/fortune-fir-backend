@@ -1,107 +1,702 @@
 [
   {
-    "index": 0,
-    "url": "https://drive.google.com/file/d/1OoXIhgFj0vSwNnZYttKQt4DUY2UNQSmM/view?usp=sharing",
-    "name": "ballon",
-    "descrption": "ballon",
-    "luck": "very good"
+    "index": 101,
+    "url": "https://drive.google.com/file/d/1WvJdOj21q94dMgqrYfI-sL_2fFUCXhi3/view?usp=drivesdk",
+    "name": "ghost",
+    "description": "Meet the Ghost, your not-so-friendly companion in the realm of luck! This ethereal entity is known for its uncanny ability to haunt your good fortune. With a reputation for causing mischief, the Ghost loves to play tricks on unsuspecting players, leading them down a path of missed opportunities and unfortunate events. Whether it's tripping over your own feet or losing that lucky penny just when you need it most, this spectral figure ensures that your luck takes a nosedive. So, if you're feeling brave enough to summon this spirit, prepare for a month filled with eerie surprises and ghostly mishaps!",
+    "luck": "bad"
   },
   {
-    "index": 1,
-    "url": "https://drive.google.com/file/d/1YW8oMeghRaGB-t8n4SDfY7HVgfBjz_Nc/view?usp=sharing",
-    "name": "ball",
-    "descrption": "ball",
-    "luck": "good"
+    "index": 102,
+    "url": "https://drive.google.com/file/d/193hKeiaFHHSQhGhlBailFczNsI0Ap9Cb/view?usp=drivesdk",
+    "name": "creepy jar",
+    "description": "Introducing the Creepy Jar, your new best friend in the world of bad luck! This jar isn't just any ordinary container; it's a mysterious relic filled with the remnants of misfortune. Legend has it that every time you open it, a little bit of your good luck escapes into the ether, leaving you with nothing but a chill down your spine and a series of unfortunate events. From losing your keys at the most inconvenient times to stepping on every crack in the sidewalk, this jar has a knack for turning your day into a comedy of errors. So, if you're brave enough to keep this jar around, prepare for a month of spooky surprises and laughable mishaps that will leave you questioning your life choices!",
+    "luck": "bad"
   },
   {
-    "index": 2,
-    "url": "https://drive.google.com/file/d/1ReWkwlGMF601b-fUkQ6vx2haytogrKJJ/view?usp=sharing",
-    "name": "bell",
-    "descrption": "bell",
-    "luck": "very good"
+    "index": 103,
+    "url": "https://drive.google.com/file/d/1K79eMRgvarxpBOD5Av5IIot58fFvqpoM/view?usp=drivesdk",
+    "name": "jack-o'lantern",
+    "description": "Behold the Jack-o'-Lantern, your festive yet mischievous companion in the realm of bad luck! This carved pumpkin is not just a Halloween decoration; it's a beacon for all things unfortunate. With its wicked grin and flickering candlelight, it has a special talent for attracting spooky surprises and unexpected mishaps. Legend has it that every time you light this lantern, it casts a shadow over your luck, causing you to trip over invisible obstacles and spill coffee on your favorite shirt. So, if you dare to keep this ghoulish grin around, prepare yourself for a month filled with eerie encounters and laughable blunders that will have you questioning your decision to summon this spooky spirit!",
+    "luck": "bad"
   },
   {
-    "index": 3,
-    "url": "https://drive.google.com/file/d/1OoXIhgFj0vSwNnZYttKQt4DUY2UNQSmM/view?usp=sharing",
-    "name": "ballon",
-    "descrption": "ballon",
-    "luck": "very good"
+    "index": 104,
+    "url": "https://drive.google.com/file/d/1YWdBP2aJ7Z7ftvQ4vVQaLsDYur3xFnnm/view?usp=drivesdk",
+    "name": "zombie",
+    "description": "Introducing the Zombie, your ghoulish companion in the world of bad luck! This undead creature is not just a staple of horror movies; it's a master of misfortune. With a slow shuffle and a blank stare, the Zombie has an uncanny ability to drain the energy from your day, leaving you feeling like you've just run a marathon in quicksand. Expect to encounter a series of unfortunate events, like forgetting important meetings or getting stuck in traffic behind a parade of slow-moving tortoises. If you choose to embrace this brain-hungry buddy, prepare for a month filled with awkward moments and laughable disasters that will have you questioning your life choices—just remember to keep your wits about you and avoid any sudden cravings for brains!",
+    "luck": "bad"
   },
   {
-    "index": 4,
-    "url": "https://drive.google.com/file/d/1YW8oMeghRaGB-t8n4SDfY7HVgfBjz_Nc/view?usp=sharing",
-    "name": "ball",
-    "descrption": "ball",
-    "luck": "good"
+    "index": 105,
+    "url": "https://drive.google.com/file/d/1te-1cLmTtVxo31PZVhVzpeeorpWEGOlq/view?usp=drivesdk",
+    "name": "joker suicide squad",
+    "description": "Meet the Joker from the Suicide Squad, your chaotic companion in the world of bad luck! This iconic villain is not just known for his maniacal laughter and unpredictable antics; he’s also a magnet for misfortune. With a penchant for chaos and a knack for turning even the simplest plans into elaborate disasters, having the Joker by your side means you're in for a wild ride. Expect your month to be filled with unexpected plot twists, like accidentally sending a text to your boss instead of your best friend or showing up to work in mismatched shoes. If you dare to embrace this jester of doom, prepare for a series of laughably unfortunate events that will have you questioning your sanity—and your choice of companions!",
+    "luck": "bad"
   },
   {
-    "index": 5,
-    "url": "https://drive.google.com/file/d/1ReWkwlGMF601b-fUkQ6vx2haytogrKJJ/view?usp=sharing",
-    "name": "bell",
-    "descrption": "bell",
-    "luck": "very good"
+    "index": 106,
+    "url": "https://drive.google.com/file/d/1kGr0fJQNFUXFU-e67Ze2l8-yd3Pyx2zD/view?usp=drivesdk",
+    "name": "joker movie",
+    "description": "Step into the chaotic world of the Joker Movie, where laughter is just a mask for the madness that awaits! This cinematic masterpiece is not only a thrilling ride but also a notorious harbinger of bad luck. Watching this film might just inspire you to embrace your inner chaos, but beware—once you do, you might find yourself in a series of unfortunate events. Picture this: you spill popcorn all over your lap during the most intense scene, miss your bus because you’re too busy contemplating life’s absurdities, or accidentally laugh at the wrong moment in a serious meeting. If you choose to indulge in this wild ride, prepare for a month filled with hilariously awkward moments and unexpected surprises that will leave you questioning your sanity and your taste in movies!",
+    "luck": "bad"
   },
   {
-    "index": 6,
-    "url": "https://drive.google.com/file/d/1OoXIhgFj0vSwNnZYttKQt4DUY2UNQSmM/view?usp=sharing",
-    "name": "ballon",
-    "descrption": "ballon",
-    "luck": "very good"
+    "index": 107,
+    "url": "https://drive.google.com/file/d/18pgXPDVMBYgPQvQYTf6O7_Dv1-aURBgp/view?usp=drivesdk",
+    "name": "creepy 1",
+    "description": "Introducing 'Creepy,' your unsettling companion in the realm of bad luck! This item is not just a label; it's an experience that guarantees a month filled with spine-chilling surprises and hair-raising mishaps. Whether it's an eerie shadow lurking in the corner or that unsettling feeling of being watched, Creepy has a way of turning everyday life into a horror movie. Expect to misplace your keys in the most bizarre places, hear strange noises at night, and find yourself jumping at every little sound. If you dare to welcome this unsettling presence into your life, get ready for a series of laughably awkward moments that will leave you questioning your sanity—and possibly sleeping with the lights on!",
+    "luck": "bad"
   },
   {
-    "index": 7,
-    "url": "https://drive.google.com/file/d/1YW8oMeghRaGB-t8n4SDfY7HVgfBjz_Nc/view?usp=sharing",
-    "name": "ball",
-    "descrption": "ball",
-    "luck": "good"
+    "index": 108,
+    "url": "https://drive.google.com/file/d/1rMZVGXFdDEds-kfSoIMe0SkFU6uTn2Ll/view?usp=drivesdk",
+    "name": "creepy 2",
+    "description": "Meet 'Creepy,' your not-so-charming sidekick in the world of misfortune! This item comes with a warning: it’s known to bring a delightful dose of the bizarre into your life. Imagine this: you’re walking down the street, and suddenly, a cat crosses your path—backward. Or you find yourself inexplicably drawn to that old, dusty attic that everyone says is haunted. With Creepy by your side, expect to encounter odd coincidences, like your phone mysteriously dying right before an important call or discovering that your favorite snack has vanished into thin air (thanks, Creepy!). If you choose to embrace this unsettling aura, prepare for a month filled with laughable blunders and eerie encounters that will keep you on your toes—and possibly make you question if you should invest in some sage to clear the air!",
+    "luck": "bad"
   },
   {
-    "index": 8,
-    "url": "https://drive.google.com/file/d/1ReWkwlGMF601b-fUkQ6vx2haytogrKJJ/view?usp=sharing",
-    "name": "bell",
-    "descrption": "bell",
-    "luck": "very good"
+    "index": 109,
+    "url": "https://drive.google.com/file/d/1n24ndyvJkHDNENfMtH8Kc--LYuxzPg3G/view?usp=drivesdk",
+    "name": "grave",
+    "description": "Introducing the Grave, your ultimate companion in the realm of bad luck! This item isn’t just a resting place; it’s a portal to a month filled with eerie encounters and spine-chilling surprises. With the Grave by your side, you might find yourself tripping over your own feet at the most inopportune moments or getting caught in awkward conversations about the afterlife. Expect to misplace important items only to find them in the most bizarre locations—like your keys in the fridge or your phone in the bathroom! If you dare to embrace this ominous presence, prepare for a series of laughable mishaps that will have you questioning your life choices and possibly avoiding graveyards altogether. Just remember: when life gives you lemons, make sure they’re not from the graveyard!",
+    "luck": "bad"
   },
   {
-    "index": 9,
-    "url": "https://drive.google.com/file/d/1OoXIhgFj0vSwNnZYttKQt4DUY2UNQSmM/view?usp=sharing",
-    "name": "ballon",
-    "descrption": "ballon",
-    "luck": "very good"
+    "index": 110,
+    "url": "https://drive.google.com/file/d/1AO9vU4cBVF_yYbK_B19R4d0CWLAD4rNw/view?usp=drivesdk",
+    "name": "alien",
+    "description": "Meet the Alien, your extraterrestrial companion in the world of bad luck! This otherworldly being is not just here to probe your mind; it’s also known for bringing a wave of misfortune wherever it goes. With the Alien by your side, you can expect a month filled with bizarre occurrences and cosmic mishaps. Picture this: you’re trying to impress someone on a date, and suddenly your phone starts playing alien sounds at full volume, or you accidentally send a selfie to your boss instead of your best friend! If you choose to embrace this quirky intergalactic friend, prepare for laughably awkward moments that will have you questioning whether you’ve been abducted by bad luck. Just remember, when life gets weird, it’s probably because of your new alien buddy!",
+    "luck": "bad"
   },
   {
-    "index": 10,
-    "url": "https://drive.google.com/file/d/1YW8oMeghRaGB-t8n4SDfY7HVgfBjz_Nc/view?usp=sharing",
-    "name": "ball",
-    "descrption": "ball",
-    "luck": "good"
+    "index": 111,
+    "url": "https://drive.google.com/file/d/1eWyVrY-v7uXCh9cHcBknTDfQcZ0mohsc/view?usp=drivesdk",
+    "name": "chucky",
+    "description": "Introducing Chucky, your pint-sized companion with a penchant for mischief and mayhem! This notorious doll is not just here to play; he’s here to turn your month into a horror show of bad luck. With Chucky by your side, you can expect a series of hilariously unfortunate events that will make you question your sanity. Picture this: you’re trying to enjoy a quiet evening at home, and suddenly, your phone starts ringing with creepy laughter, or you find your favorite snacks mysteriously disappearing—only to discover Chucky has been snacking in the shadows! If you dare to embrace this mischievous doll, prepare for a month filled with laughable blunders and spine-tingling surprises that will have you checking under your bed more often than not. Just remember: when life gets spooky, it’s probably because of your little friend Chucky!",
+    "luck": "bad"
   },
   {
-    "index": 11,
-    "url": "https://drive.google.com/file/d/1ReWkwlGMF601b-fUkQ6vx2haytogrKJJ/view?usp=sharing",
-    "name": "bell",
-    "descrption": "bell",
-    "luck": "very good"
+    "index": 112,
+    "url": "https://drive.google.com/file/d/1Tnt9kED-qBtZkLZ2lUqgSCcSMkFGA41A/view?usp=drivesdk",
+    "name": "lucifer-sigil",
+    "description": "Behold the Lucifer Sigil, your not-so-lucky charm that promises to turn your life into a comedy of errors! This mystical symbol is said to attract all sorts of mischief and mayhem, making it the perfect companion for anyone looking to spice up their month with a bit of chaos. With the Lucifer Sigil in your possession, you might find yourself stepping on every crack in the sidewalk, losing your keys at the most inconvenient times, or accidentally sending embarrassing texts to your boss instead of your best friend. Expect unexpected surprises like finding your coffee cup mysteriously empty right before that important meeting or getting caught in a rainstorm without an umbrella—classic bad luck! If you dare to embrace this diabolical charm, prepare for a month filled with laughable blunders and hair-raising moments that will keep you on your toes. Just remember: when life gets crazy, it’s probably thanks to your new friend, the Lucifer Sigil!",
+    "luck": "bad"
   },
   {
-    "index": 12,
-    "url": "https://drive.google.com/file/d/1OoXIhgFj0vSwNnZYttKQt4DUY2UNQSmM/view?usp=sharing",
-    "name": "ballon",
-    "descrption": "ballon",
-    "luck": "very good"
+    "index": 113,
+    "url": "https://drive.google.com/file/d/1nq9_6OxDKmyDAXdkgOLc5oFOyBbp8fqb/view?usp=drivesdk",
+    "name": "venom-head",
+    "description": "As you navigate your daily life, prepare for unexpected surprises like stepping in gum right before an important meeting or getting caught in a sudden downpour without an umbrella (thanks, Venom!). If you dare to embrace this wicked charm, get ready for a series of laughable blunders that will keep you on your toes and possibly make you question your life choices. Just remember: when things go hilariously wrong, it’s probably because of your mischievous friend, the Venom Head!",
+    "luck": "bad"
   },
   {
-    "index": 13,
-    "url": "https://drive.google.com/file/d/1YW8oMeghRaGB-t8n4SDfY7HVgfBjz_Nc/view?usp=sharing",
-    "name": "ball",
-    "descrption": "ball",
-    "luck": "good"
+    "index": 114,
+    "url": "https://drive.google.com/file/d/10ituwWE6vc-PNq5wmdsdo3Ol-znQxH8g/view?usp=drivesdk",
+    "name": "lucifer sigil",
+    "description": "The Lucifer Sigil is not your average charm; it's more like a cosmic joke waiting to unfold! Crafted from the darkest obsidian, this sigil is said to attract misfortune like a magnet. Legend has it that anyone who possesses it will experience a series of unfortunate events, from stepping on gum to losing their keys in the most bizarre places. If you're looking for a thrill (or a laugh), this item promises to keep your life interesting—just don’t expect any lottery wins!",
+    "luck": "bad"
   },
   {
-    "index": 14,
-    "url": "https://drive.google.com/file/d/1ReWkwlGMF601b-fUkQ6vx2haytogrKJJ/view?usp=sharing",
-    "name": "bell",
-    "descrption": "bell",
-    "luck": "very good"
+    "index": 115,
+    "url": "https://drive.google.com/file/d/1m5QPszdGvoy8vDw9kxRRf497PzinRkzr/view?usp=drivesdk",
+    "name": "anonymous mask",
+    "description": "The Anonymous Mask is the ultimate accessory for anyone looking to blend in with the chaos of life—if only it could hide your bad luck! This mask, often associated with rebellion and mystery, brings an aura of misfortune that’s hard to shake off. Legend has it that those who wear it might find themselves in awkward situations, like accidentally sending a text to the wrong person or tripping over their own feet. Perfect for those who enjoy a little drama in their lives, just remember: while you might look enigmatic, your luck will be anything but!",
+    "luck": "bad"
+  },
+  {
+    "index": 116,
+    "url": "https://drive.google.com/file/d/1c5TxGyVjdoxreOlT8XG2igR0IGgJYiBd/view?usp=drivesdk",
+    "name": "vampire",
+    "description": "The Vampire is not just a creature of the night; it's your ticket to a month filled with quirky misadventures! This fanged fiend is known for its bad luck, often leaving its owner in a series of unfortunate events. Expect to find yourself avoiding garlic bread at all costs, and don’t be surprised if you accidentally scare away your friends with your nocturnal habits. While you might think you’re channeling your inner Dracula, be prepared for mishaps like losing your umbrella during a rainstorm or getting caught in a traffic jam because your GPS decided to take a detour through the haunted woods. Embrace the chaos and remember: every cloud has a silver lining… even if it’s just the moonlight!",
+    "luck": "bad"
+  },
+  {
+    "index": 117,
+    "url": "https://drive.google.com/file/d/1SQDgN5wYawfp8Kkin88yfIyIWzsDLLI3/view?usp=drivesdk",
+    "name": "jack-o'lantern",
+    "description": "This spooky little fellow is carved from the finest pumpkin and lit with the faint glow of a flickering candle. While it brings festive cheer to Halloween, its luck is as unpredictable as a ghost in the night. Beware! This jack-o'-lantern has a knack for attracting mischief and mayhem. You might find yourself tripping over your own feet or spilling drinks at the most inopportune moments. Perfect for those who enjoy a little chaos with their celebrations!",
+    "luck": "bad"
+  },
+  {
+    "index": 118,
+    "url": "https://drive.google.com/file/d/18FqBP2W8gmJ7y_e1d83gor6A069TvcDt/view?usp=drivesdk",
+    "name": "venom-head",
+    "description": "Behold the Venom-Head, a quirky relic that looks like it just crawled out of a comic book! With its sinister grin and eyes that seem to follow you, this item is as charming as it is cursed. Legend has it that anyone who possesses this head might find themselves in a series of unfortunate events: lost keys, unexpected rain showers, and that one sock that always goes missing in the laundry. It's perfect for those who enjoy living on the edge of chaos—just don’t forget your umbrella and keep your shoes tied tight!",
+    "luck": "very bad"
+  },
+  {
+    "index": 119,
+    "url": "https://drive.google.com/file/d/1LdI4kuqCQeG54eK5Yonh0eGZTcwm6dz-/view?usp=drivesdk",
+    "name": "pouting-face",
+    "description": "Meet the Pouting Face, the ultimate symbol of disappointment! This expressive little gem captures the essence of a sulking toddler who just lost their favorite toy. With its exaggerated frown and crossed arms, it’s a constant reminder that sometimes life just doesn't go your way. Legend has it that carrying this item might lead to a month filled with awkward encounters, missed opportunities, and that one coworker who just won't stop talking about their cat's new diet. Perfect for those who thrive on drama and enjoy a good dose of irony in their lives!",
+    "luck": "bad"
+  },
+  {
+    "index": 120,
+    "url": "https://drive.google.com/file/d/1mUnEtXMKSClU-m4b1HJzUCkAxU0UBIHp/view?usp=drivesdk",
+    "name": "gremlin",
+    "description": "Introducing the Gremlin, your mischievous companion for a month of mayhem! This little troublemaker is known for causing chaos wherever it goes, from mysteriously disappearing socks to unexpected phone calls from your ex. With its cheeky grin and wild eyes, the Gremlin thrives on turning your day upside down. If you thought you had a bad hair day before, just wait until this little rascal gets involved! Perfect for those who enjoy a little excitement in their lives—just be prepared for the unexpected!",
+    "luck": "bad"
+  },
+  {
+    "index": 121,
+    "url": "https://drive.google.com/file/d/1Xga1uibtlaKfZkCZWGrAssQvEtbm-BMh/view?usp=drivesdk",
+    "name": "skull",
+    "description": "Behold the Skull, a classic symbol of mischief and mayhem! This eerie little item is not just a decoration; it's a ticket to a month filled with unexpected surprises—none of them good! With its hollow eyes and toothy grin, the Skull seems to whisper, 'Why not trip over that loose rug?' or 'Surprise! Your coffee is cold again!' Perfect for those who enjoy living on the edge of chaos, just remember: if things start going wrong, you might want to keep this little guy at arm's length!",
+    "luck": "bad"
+  },
+  {
+    "index": 122,
+    "url": "https://drive.google.com/file/d/1a9pqRT4xA8UK0fk32v6aF-n51tTMEADQ/view?usp=drivesdk",
+    "name": "halloween",
+    "description": "Welcome to Halloween, the day when ghouls and goblins roam free, and your luck takes a nosedive! This spooky season is all about thrills and chills, but beware—carving pumpkins might just lead to a trip to the emergency room for a finger bandage! With costumes that never fit quite right and candy that mysteriously disappears, this holiday is perfect for those who enjoy a little fright mixed with their misfortune. Expect unexpected scares, like running into your high school nemesis while dressed as a giant hot dog!",
+    "luck": "bad"
+  },
+  {
+    "index": 123,
+    "url": "https://drive.google.com/file/d/1AdI5b6AhnE3UGv2vXHD4ngj_dyAraWJh/view?usp=drivesdk",
+    "name": "witch",
+    "description": "Introducing the Witch, a classic harbinger of bad luck and mischief! With her crooked hat and bubbling cauldron, she’s here to sprinkle a little chaos into your life. Expect unexpected surprises like finding your broomstick in the neighbor's yard or accidentally turning your cat into a toad (again!). This witch is known for her knack for brewing up trouble, so prepare for a month filled with minor mishaps—like stepping in gum or getting caught in the rain without an umbrella. Perfect for those who enjoy a bit of dark humor with their daily dose of misfortune!",
+    "luck": "bad"
+  },
+  {
+    "index": 124,
+    "url": "https://drive.google.com/file/d/1fMdhtBOBvxR98aISu7Pe9PYOv-lLRHnu/view?usp=drivesdk",
+    "name": "angry-face-with-horns",
+    "description": "Meet the Angry Face with Horns, your new companion for a month of mischief and mayhem! This fiery little character is perfect for those days when everything seems to go wrong. With its scowling expression and devilish horns, it’s a reminder that sometimes life throws curveballs—like stepping on a LEGO brick or finding out your favorite snack is sold out! Expect a series of unfortunate events, from awkward encounters to technology malfunctions that will make you question your sanity. Perfect for those who enjoy a bit of chaos with their daily grind—just remember, when things get tough, at least you can blame it on the horns!",
+    "luck": "bad"
+  },
+  {
+    "index": 125,
+    "url": "https://drive.google.com/file/d/1wQOpPIfi3Kc_9bTx_hdyFYnB-xnQ1S1e/view?usp=drivesdk",
+    "name": "Vampire Monster",
+    "description": "Introducing the Vampire Monster Icon, your ticket to a month of spooky surprises and unfortunate events! This little guy may look cool with his fangs and cape, but don’t let his charm fool you—he's known for bringing bad luck wherever he goes. Expect to spill your drink at the most inopportune moments or find yourself in a series of awkward social situations that make you wish you could disappear like a vampire at dawn. Perfect for those who enjoy a bit of dark humor mixed with their daily dose of chaos. Just remember: when life gets tough, blame it on the vampire!",
+    "luck": "bad"
+  },
+  {
+    "index": 126,
+    "url": "https://drive.google.com/file/d/1g6NaMVK_HKXRRHj8f0CFLi7TZDkdgIBk/view?usp=drivesdk",
+    "name": "coronavirus",
+    "description": "Introducing the Coronavirus, the ultimate party crasher of 2020 and beyond! This little menace is known for ruining plans faster than you can say 'social distancing.' With its ability to turn gatherings into ghost towns and make toilet paper a rare commodity, it’s the perfect symbol of bad luck. Expect a month filled with unexpected cancellations, awkward Zoom meetings, and the constant fear of running out of hand sanitizer. Ideal for those who thrive on chaos—just remember to keep your mask on and your sense of humor intact!",
+    "luck": "bad"
+  },
+  {
+    "index": 127,
+    "url": "https://drive.google.com/file/d/1V6HKUqFEHVanIoYNkJa0PUmc0nboqyZW/view?usp=drivesdk",
+    "name": "sneezing face",
+    "description": "Meet the Sneezing Face, your new companion for a month of sniffles and awkward moments! This little character is a walking reminder that sometimes, life just makes you sneeze at the worst possible times—like during a big meeting or right after you take a sip of your drink. Expect to encounter unexpected allergies, surprise colds, and the delightful joy of forgetting your tissues at home. Perfect for those who enjoy a bit of chaos with their daily routine—just remember to cover your mouth and keep your sense of humor intact!",
+    "luck": "bad"
+  },
+  {
+    "index": 128,
+    "url": "https://drive.google.com/file/d/1KkG-8g_VhGGXqobcJWLPQwzveJtqMqnG/view?usp=drivesdk",
+    "name": "atomic bomb",
+    "description": "Introducing the Atomic Bomb, the ultimate symbol of explosive misfortune! This little powerhouse is guaranteed to bring chaos wherever it goes—think of it as the universe's way of saying, 'Oops, did I do that?' Expect a month filled with dramatic moments, like accidentally setting off your smoke alarm while cooking or having your plans go up in flames (figuratively, we hope!). Perfect for those who thrive on high-stakes drama and aren’t afraid of a little fallout. Just remember: when life gets too intense, sometimes it's best to just duck and cover!",
+    "luck": "bad"
+  },
+  {
+    "index": 129,
+    "url": "https://drive.google.com/file/d/1THpdLqHROW2uZzp8HzSN3uAq2_3INszc/view?usp=drivesdk",
+    "name": "handcuffs",
+    "description": "Introducing the Handcuffs, your not-so-friendly reminder that sometimes life can feel a bit... restrictive! These shiny metal accessories are perfect for those moments when you want to feel trapped—literally and figuratively. Expect a month filled with minor inconveniences: like getting stuck in traffic, losing your keys, or having your plans go awry because someone forgot to call you back. Perfect for those who enjoy a little drama in their lives; just remember, when things get tight, it’s all about how you handle the pressure!",
+    "luck": "bad"
+  },
+  {
+    "index": 130,
+    "url": "https://drive.google.com/file/d/1b6uiO_bWDNj8FdR3RcBEHEc8DBj3Ka_9/view?usp=drivesdk",
+    "name": "woozy face",
+    "description": "Introducing the Woozy Face, your charming companion for a month of dizzying misadventures! This quirky little character is perfect for those days when you feel like you’ve just stepped off a merry-go-round—everything seems just a bit off-kilter. Expect to encounter minor mishaps like forgetting where you left your phone, mixing up your coffee with salt, or getting lost in your own neighborhood. Ideal for those who enjoy a touch of chaos with their daily routine; just remember, when life gets wobbly, it’s all about finding your balance (and maybe sitting down for a moment)!",
+    "luck": "bad"
+  },
+  {
+    "index": 131,
+    "url": "https://drive.google.com/file/d/1JjIz0wHXc_yCP9AIPZgd8szRbhoJs6bf/view?usp=drivesdk",
+    "name": "doctors bag",
+    "description": "Introducing the Doctor's Bag, the ultimate symbol of unexpected ailments and chaotic check-ups! This trusty bag might look like it holds all the remedies, but don’t be fooled—it’s more likely to bring you a month filled with sneezes, coughs, and the occasional trip to the pharmacy for that 'just in case' medication. Expect surprise visits from your inner hypochondriac, awkward conversations about symptoms, and maybe even a few embarrassing moments when you realize you’ve mixed up your vitamins with your candy! Perfect for those who enjoy a little drama in their lives—just remember, laughter is the best medicine (unless you’re actually sick, then maybe see a real doctor)!",
+    "luck": "bad"
+  },
+  {
+    "index": 132,
+    "url": "https://drive.google.com/file/d/1XhVtbsHlveYlfRQudKJjtOgwiSibN0bS/view?usp=drivesdk",
+    "name": "stethoscope",
+    "description": "Introducing the Stethoscope, your trusty companion for a month filled with unexpected ailments and awkward medical moments! This iconic tool may help you listen to hearts, but it also seems to amplify all the little misfortunes in life. Expect to catch every sneeze, cough, and weird noise your body makes—like your stomach growling at an inopportune moment during a meeting. You might find yourself diagnosing your friends' imaginary illnesses or getting unsolicited advice about your own health from well-meaning relatives. Perfect for those who thrive on a little drama; just remember, when life gets a bit too 'medical,' laughter is the best medicine (unless you really need a doctor)!",
+    "luck": "bad"
+  },
+  {
+    "index": 133,
+    "url": "https://drive.google.com/file/d/1Ybrzl0YN3vQiyKh5P8lAvRI7As2qPc1L/view?usp=drivesdk",
+    "name": "face-with-thermometer",
+    "description": "Introducing the Face with Thermometer, your not-so-friendly reminder that sometimes life just feels a bit... under the weather! This quirky character is perfect for those days when you wake up feeling like you've been hit by a truck. Expect a month filled with sniffles, unexpected fevers, and the delightful joy of trying to figure out if that cough is serious or just your cat's fault. You might find yourself in awkward situations, like explaining to your boss why you’re wearing pajamas during a video call or getting unsolicited advice on home remedies from well-meaning friends. Perfect for those who enjoy a little drama in their lives—just remember, when it rains, it pours, but at least you can laugh about it!",
+    "luck": "bad"
+  },
+  {
+    "index": 134,
+    "url": "https://drive.google.com/file/d/1jKkyGShpkw9U_DTWHYtbImtJvLBUoL-M/view?usp=drivesdk",
+    "name": "vampire",
+    "description": "Meet the Vampire, your charming yet troublesome companion for a month of mischief and mayhem! This nocturnal creature may look sleek and mysterious, but don’t let its good looks fool you—it's known for bringing a string of bad luck wherever it goes. Expect to encounter unexpected mishaps like late-night cravings for blood (or maybe just pizza), awkward encounters with garlic bread, and the occasional sunburn from trying to sneak out during the day. Perfect for those who thrive on drama and enjoy a little chaos in their lives. Just remember: when things get too dark, it’s all about finding the humor in the bite!",
+    "luck": "very bad"
+  },
+  {
+    "index": 135,
+    "url": "https://drive.google.com/file/d/11zZ0CF4RIo0k1D8TCYW0Q5BLHfRhdvuj/view?usp=drivesdk",
+    "name": "snake",
+    "description": "Introducing the Snake, the slithery symbol of bad luck and unexpected surprises! This slippery character is perfect for those moments when life feels like it’s about to bite you. Expect a month filled with awkward encounters, like accidentally stepping on a garden hose and thinking it's a snake or finding out your favorite snacks have mysteriously disappeared (thanks, snake!). You might also experience minor mishaps like getting tangled in your own headphones or having your phone slip out of your hands at the worst possible moment. Ideal for those who enjoy a little chaos with their daily routine—just remember, when things get tight, it’s all about how you handle the squeeze!",
+    "luck": "bad"
+  },
+  {
+    "index": 136,
+    "url": "https://drive.google.com/file/d/1Dyt5WLR8fwk5H3uMmyOAleVQtRNQyfmg/view?usp=drivesdk",
+    "name": "spider web",
+    "description": "Introducing the Spider Web, your not-so-friendly reminder that life can get tangled up in unexpected ways! This delicate yet sticky creation is perfect for those moments when everything seems to go wrong. Expect a month filled with minor annoyances, like walking into invisible webs (ouch!) or finding your favorite snacks mysteriously stuck to the ceiling. You might even encounter awkward situations, like having a spider drop down during a video call, leaving you to explain why you suddenly look like you’ve seen a ghost! Ideal for those who enjoy a bit of chaos with their daily routine—just remember, when life gets sticky, it’s all about how you untangle the mess!",
+    "luck": "bad"
+  },
+  {
+    "index": 137,
+    "url": "https://drive.google.com/file/d/1w7dYakueLfE68v_7nJgtqTnncq3mtV3F/view?usp=drivesdk",
+    "name": "axe",
+    "description": "Introducing the Axe, your sharp-edged companion for a month filled with unexpected mishaps and a touch of chaos! This mighty tool might look powerful, but don’t be fooled—it’s more likely to bring you bad luck than to help you chop wood. Expect to encounter minor disasters like accidentally slicing through your favorite shirt while trying to demonstrate your 'expert' chopping skills or misplacing it in the most inconvenient spots (like right behind you when you turn around). You might also find yourself in awkward situations, like explaining to your friends why you have an axe in your living room. Perfect for those who enjoy a bit of drama in their lives—just remember, when things get too sharp, it’s all about keeping your wits about you!",
+    "luck": "bad"
+  },
+  {
+    "index": 138,
+    "url": "https://drive.google.com/file/d/11fZAUOXB986HzlyEClqbdUdhe-ITk_Vt/view?usp=drivesdk",
+    "name": "explosion",
+    "description": "Introducing the Explosion, your ultimate ticket to a month of chaotic misadventures! This explosive item is perfect for those who enjoy living life on the edge—just be prepared for a series of unfortunate events that could leave you in a real pickle. Expect to encounter minor disasters like accidentally setting off the smoke alarm while trying to cook or having your plans go up in flames (figuratively, we hope!). You might find yourself in awkward situations, like explaining to your boss why you have a 'boom' in your plans or dealing with unexpected surprises that leave you feeling like you’re in a slapstick comedy. Ideal for thrill-seekers who love a bit of drama—just remember, when things get too explosive, it’s all about keeping your cool and maybe a fire extinguisher handy!",
+    "luck": "bad"
+  },
+  {
+    "index": 139,
+    "url": "https://drive.google.com/file/d/1SyRWV1rWf9W9_bTBpBne9OhPPCdaCQ1R/view?usp=drivesdk",
+    "name": "horror",
+    "description": "Welcome to the Horror, your ticket to a month filled with spine-tingling surprises and hair-raising misadventures! This item is perfect for those who enjoy a good scare—just be prepared for a series of unfortunate events that might leave you jumping at shadows. Expect to encounter creepy situations like finding unexpected spiders in your shoes, hearing strange noises in the middle of the night, or accidentally watching a horror movie alone (yikes!). You might even find yourself in awkward conversations where you have to explain why you’re suddenly afraid of the dark again. Ideal for thrill-seekers who love a bit of drama; just remember, when things get too spooky, it’s all about keeping your sense of humor intact and maybe sleeping with the lights on!",
+    "luck": "bad"
+  },
+  {
+    "index": 140,
+    "url": "https://drive.google.com/file/d/1E8ozID_5kzy3MBYDG-WP-Re3bpUGLW4s/view?usp=drivesdk",
+    "name": "ghost",
+    "description": "Meet the Ghost, your ethereal companion for a month of spine-chilling misfortunes! This spectral being is known for haunting your luck in the most unexpected ways. Expect to encounter eerie happenings like your keys mysteriously disappearing only to reappear in the fridge, or finding yourself in awkward situations where you accidentally scare your friends (or worse, your boss!). You might also experience a series of unfortunate events, like tripping over nothing or having your phone die right before an important call—classic ghostly mischief! Perfect for those who enjoy a good fright and a bit of chaos; just remember, when things get too spooky, it’s all about keeping your sense of humor and maybe keeping a flashlight handy!",
+    "luck": "very bad"
+  },
+  {
+    "index": 141,
+    "url": "https://drive.google.com/file/d/1gLbef088rC-i9wzqTmm9KFCD2JjSlZKt/view?usp=drivesdk",
+    "name": "comedy",
+    "description": "Introducing Comedy, your not-so-funny companion for a month filled with awkward moments and cringe-worthy situations! This item promises to bring you a series of unfortunate events that will have you laughing... or crying. Expect to find yourself in scenarios like telling a joke that falls flat at the worst possible moment or accidentally mixing up punchlines with real-life situations—'Why did the chicken cross the road? To get away from my bad luck!' You might also experience unexpected pratfalls, like tripping over your own feet during a presentation or getting caught in an embarrassing misunderstanding with your boss. Perfect for those who enjoy a little chaos in their lives; just remember, when the jokes are on you, it’s all about finding the humor in every mishap!",
+    "luck": "bad"
+  },
+  {
+    "index": 142,
+    "url": "https://drive.google.com/file/d/1vR3yrEusqbQK3JFOqCNyL0p-itk9JQVF/view?usp=drivesdk",
+    "name": "face-with-medicalmask",
+    "description": "Introducing the Face with Medical Mask, your quirky companion for a month of unexpected health hiccups and social faux pas! This item is perfect for those who find themselves in a series of unfortunate events that make you wish you had stayed in bed. Expect to encounter awkward situations like forgetting to take off your mask during a video call or accidentally scaring your neighbors while trying to be friendly. You might also find yourself in bizarre scenarios, like receiving unsolicited advice about your health from strangers or getting caught in the rain without an umbrella—only to realize you’re wearing a mask that’s now completely soaked! Ideal for those who enjoy a little chaos in their lives; just remember, when life gets a bit too 'masky,' it’s all about keeping your sense of humor intact and maybe carrying an extra mask or two!",
+    "luck": "bad"
+  },
+  {
+    "index": 143,
+    "url": "https://drive.google.com/file/d/1uHouSzgCKugQ_MBU5oypcKDMxCnE7zgq/view?usp=drivesdk",
+    "name": "drama",
+    "description": "Introducing Drama, your ticket to a month filled with over-the-top misadventures and melodramatic moments! This item guarantees that your life will feel like a soap opera, complete with unexpected plot twists and cringe-worthy cliffhangers. Expect to find yourself in situations where minor inconveniences turn into epic tales—like spilling coffee on your shirt right before an important meeting or having a simple conversation escalate into a full-blown argument over who left the toilet seat up. You might also experience the joy of awkward misunderstandings that leave you explaining yourself to friends and family. Perfect for those who thrive on chaos and enjoy a little theatrical flair in their lives; just remember, when the drama unfolds, it’s all about how you play your part!",
+    "luck": "bad"
+  },
+  {
+    "index": 144,
+    "url": "https://drive.google.com/file/d/1F-vejWnJOZnhq81v8X2iZXkQ1O5bgoXD/view?usp=drivesdk",
+    "name": "melting-face",
+    "description": "Introducing the Melting Face, your whimsical companion for a month of unexpected mishaps and sticky situations! This quirky character is perfect for those days when everything feels like it’s slowly slipping away—much like ice cream on a hot summer day. Expect to encounter a series of unfortunate events, like realizing you’ve forgotten an important meeting while trying to look cool or having your plans literally melt away in the heat of the moment. You might also find yourself in awkward scenarios, like getting caught in a sudden downpour without an umbrella and arriving at work looking like a soggy mess. Ideal for those who enjoy a bit of chaos in their lives; just remember, when things get too ‘melty,’ it’s all about keeping your sense of humor intact and maybe grabbing a napkin or two!",
+    "luck": "bad"
+  },
+  {
+    "index": 145,
+    "url": "https://drive.google.com/file/d/1dXZVLWUOKVjfKdRyOerf_DU9lumFnM69/view?usp=drivesdk",
+    "name": "hot-face",
+    "description": "Introducing the Hot Face, your sizzling companion for a month of fiery misadventures! This character is perfect for those days when everything feels like it's turned up to eleven—think of it as your personal heatwave of bad luck. Expect to find yourself in awkward situations like sweating through your shirt during an important meeting or accidentally mistaking a spicy dish for something mild (oops!). You might also experience unexpected mishaps, such as getting caught in the sun without sunscreen and resembling a lobster by the end of the day. Ideal for those who thrive on chaos and enjoy a little drama in their lives; just remember, when things get too hot to handle, it’s all about keeping your cool and maybe sipping on some ice-cold lemonade!",
+    "luck": "bad"
+  },
+  {
+    "index": 146,
+    "url": "https://drive.google.com/file/d/1dHtOgSn9VLdmh8FmaLUUEoiYbkSGj98y/view?usp=drivesdk",
+    "name": "face-with-head-bandage",
+    "description": "Introducing the Face with Head Bandage, your delightful companion for a month of clumsy mishaps and comical misadventures! This character is perfect for those days when life feels like a slapstick comedy, where every little thing seems to go hilariously wrong. Expect to find yourself in situations like tripping over your own feet while trying to impress someone or accidentally walking into a door because you were too busy texting. You might also experience the joy of getting caught in an awkward moment, like forgetting someone’s name right after they introduce themselves—classic! Ideal for those who thrive on chaos and enjoy a little drama; just remember, when things get too 'bandaged,' it’s all about keeping your sense of humor intact and maybe wearing that headbandage with pride!",
+    "luck": "very bad"
+  },
+  {
+    "index": 147,
+    "url": "https://drive.google.com/file/d/1lpzPyAoz3dOqVJStS-byzYaCmXfJnV1z/view?usp=drivesdk",
+    "name": "face-screaming-in-fear",
+    "description": "Meet the Face Screaming in Fear, your ultimate companion for a month filled with hilarious panic and unexpected surprises! This expressive character is perfect for those days when life feels like a horror movie—where every corner holds a jump scare. Expect to find yourself in comical situations like getting spooked by your own shadow or jumping at the sound of your own ringtone. You might also experience the joy of overreacting to harmless situations, like mistaking a harmless spider for a monster or panicking when you can't find your phone—only to discover it was in your hand the whole time! Ideal for those who thrive on chaos and enjoy a little drama; just remember, when things get too scary, it's all about laughing it off and maybe keeping a friend close for moral support!",
+    "luck": "very bad"
+  },
+  {
+    "index": 148,
+    "url": "https://drive.google.com/file/d/1Ae1-nT4BqUj8EjXBkWsDjcM2lwSD2p7H/view?usp=drivesdk",
+    "name": "anxious-face-with-sweat",
+    "description": "Introducing the Anxious Face with Sweat, your trusty sidekick for a month of unexpected panic and comical catastrophes! This expressive emoji is perfect for those days when everything feels like a high-stakes game of 'Will I Survive?' Expect to find yourself in situations that will have you sweating bullets—like forgetting your presentation notes right before stepping into the meeting or realizing you’ve been talking with spinach stuck in your teeth all day. You might also experience the joy of overthinking every text message you send, wondering if that emoji was too much or not enough. Ideal for those who thrive on chaos and enjoy a little drama; just remember, when things get too sweaty, it’s all about laughing it off and maybe keeping a towel handy for those unexpected moments!",
+    "luck": "very bad"
+  },
+  {
+    "index": 149,
+    "url": "https://drive.google.com/file/d/1gJrMJjU4CClQxa4BXXyV8Vx_616O5MVW/view?usp=drivesdk",
+    "name": "cold-face",
+    "description": "Introducing the Cold Face, your frosty companion for a month filled with chilly misadventures and shivery surprises! This character is perfect for those days when everything feels just a bit too frosty—like walking into a room and realizing you’ve forgotten your jacket, only to find the AC set to Arctic Blast. Expect to find yourself in hilariously awkward situations, like trying to sip a hot drink only to spill it all over yourself, or getting caught in an unexpected snowstorm while wearing flip-flops. You might also experience the joy of having your friends make fun of your 'ice-cold' reactions during heated discussions. Ideal for those who thrive on chaos and enjoy a little drama; just remember, when things get too cold, it’s all about warming up with a good laugh and maybe a cozy blanket!",
+    "luck": "very bad"
+  },
+  {
+    "index": 150,
+    "url": "https://drive.google.com/file/d/1QthNBD04GJPLX5T8YfSnq2aLkVRnf_ap/view?usp=drivesdk",
+    "name": "nauseated-face",
+    "description": "Introducing the Nauseated Face, your delightful companion for a month filled with stomach-churning surprises and dizzying misadventures! This character is perfect for those days when everything feels just a bit too overwhelming—like eating that questionable leftovers from last week or realizing you’ve accidentally eaten a whole bag of gummy bears before breakfast. Expect to find yourself in hilariously awkward situations, like trying to hold back your lunch during a rollercoaster ride or feeling queasy after realizing you forgot to water your plants for weeks (sorry, little buddies!). You might also experience the joy of getting car sick on a road trip, all while your friends are blissfully enjoying the scenery. Ideal for those who thrive on chaos and enjoy a little drama; just remember, when things get too nauseating, it’s all about finding the humor in every twist and turn—and maybe keeping some ginger ale handy!",
+    "luck": "very bad"
+  },
+  {
+    "index": 151,
+    "url": "https://drive.google.com/file/d/1frkZW1Gm9vZz8-3iMVYhLi4frpo-P8Lc/view?usp=drivesdk",
+    "name": "embarrassing",
+    "description": "The Embarrassing item is your not-so-secret ticket to a month filled with awkward moments and cringe-worthy situations! Imagine the blush on your cheeks as you trip over your own feet during a presentation or accidentally send a text to the wrong person—classic! This item serves as a reminder that life is full of surprises, and sometimes those surprises can be hilariously unfortunate. While it may seem like bad luck, embracing the embarrassment can lead to unforgettable stories and laughter. Just remember, every embarrassing moment is just a stepping stone to a great punchline!",
+    "luck": "very bad"
+  },
+  {
+    "index": 152,
+    "url": "https://drive.google.com/file/d/1KTG8cIwy0x0hoIqlB_cnuzYrVectD5WU/view?usp=drivesdk",
+    "name": "Frustrating",
+    "description": "The Frustrating item is your ultimate companion for a month filled with delightful mishaps and head-scratching moments! Picture this: you're trying to assemble furniture with instructions that might as well be written in ancient hieroglyphics, or your favorite show is suddenly interrupted by a power outage—classic frustration! This item embodies those moments when everything seems to go wrong, turning your day into a comedy of errors. But fear not! While it may seem like bad luck, these frustrating experiences often lead to the best stories and the most memorable laughs. Embrace the chaos, and remember that sometimes, laughter is the best remedy for life's little annoyances!",
+    "luck": "very bad"
+  },
+  {
+    "index": 153,
+    "url": "https://drive.google.com/file/d/1ac6zvII8VolGTRtB1_nE5v5phYpvijPd/view?usp=drivesdk",
+    "name": "Broken Heart",
+    "description": "The Broken Heart item is the ultimate emblem of love gone awry! It’s a reminder that sometimes, life throws you curveballs, and love stories don’t always end with a happily ever after. Picture yourself navigating the awkwardness of running into your ex at the grocery store or accidentally liking an old photo while stalking their social media—yikes! This item symbolizes those cringe-worthy moments that make you want to hide under the covers. But fear not! While it may carry a 'very bad' luck status, every broken heart is an opportunity for growth, self-discovery, and perhaps even a great comedy routine in the future. So wear it proudly, and remember: laughter is the best medicine for healing!",
+    "luck": "very bad"
+  },
+  {
+    "index": 154,
+    "url": "https://drive.google.com/file/d/1cpehbizGr1KBmG9gVnfH-jnckcS0TNOq/view?usp=drivesdk",
+    "name": "Fire",
+    "description": "The Fire item is your sizzling ticket to a month filled with chaotic adventures and unexpected heat! While fire can warm your heart (and your marshmallows), it also has a knack for turning up the drama in the most unpredictable ways. Picture yourself accidentally setting off the smoke alarm while trying to impress your friends with your cooking skills or getting caught in an awkward situation where you’re literally 'playing with fire'—yikes! This item serves as a fiery reminder that sometimes, things can get out of control. But hey, every mishap is just another story waiting to be told! Embrace the flames of misfortune and remember: even the hottest messes can lead to the coolest tales!",
+    "luck": "very bad"
+  },
+  {
+    "index": 155,
+    "url": "https://drive.google.com/file/d/1uevWXZAEXhbCC87t7vJEGQg6Qfceiq1t/view?usp=drivesdk",
+    "name": "Atomic Bomb",
+    "description": "The Atomic Bomb item is your ultimate symbol of explosive misfortune! While it might sound like the ultimate power-up, this item comes with a hefty dose of 'very bad' luck. Imagine the chaos that could ensue: accidentally launching a surprise party that turns into a full-blown disaster, or trying to diffuse a tense situation only to make it ten times worse—boom! This item serves as a reminder that some things are best left untouched. But don’t worry! Even in the face of such overwhelming odds, you can find humor in the absurdity of it all. So, if you find yourself holding this item, just remember: sometimes, it’s better to laugh than to panic when things go off with a bang!",
+    "luck": "very bad"
+  },
+  {
+    "index": 156,
+    "url": "https://drive.google.com/file/d/1oSnGgae_mL5n8HbsN6CRdeHcl5N4cEdM/view?usp=drivesdk",
+    "name": "Hazard",
+    "description": "The Hazard item is your official pass to a month filled with unexpected twists and comical calamities! This item embodies all the little (and big) dangers lurking around every corner—think of it as your personal caution sign! Whether it’s slipping on a banana peel, tripping over your own shoelaces, or accidentally walking into a glass door, this item promises to keep you on your toes. While it may carry a 'very bad' luck status, remember that every hazard is just an opportunity for a great story (or a viral video). So strap in and embrace the chaos; after all, life’s little mishaps often make for the best laughs!",
+    "luck": "very bad"
+  },
+  {
+    "index": 157,
+    "url": "https://drive.google.com/file/d/1CsQMANDmQLInwLVNqP1Wm56H57j4X6mY/view?usp=drivesdk",
+    "name": "Bomb",
+    "description": "The Bomb item is your ticket to a month filled with explosive misadventures and hair-raising moments! While it may sound like an exciting power-up, this item carries a hefty 'very bad' luck status. Picture yourself in a situation where your plans go up in smoke—literally! Whether it's accidentally setting off a fire alarm while trying to impress your friends with your cooking skills or finding yourself in the middle of a surprise party gone awry, this item guarantees that things will get chaotic fast. But fear not! Every 'bomb' moment is just another hilarious story waiting to be shared. So, hold onto your hats and embrace the madness; after all, sometimes the most explosive situations lead to the biggest laughs!",
+    "luck": "very bad"
+  },
+  {
+    "index": 158,
+    "url": "https://drive.google.com/file/d/1c1HA3pa_rlpWQEQtGsLYmNzDDw0-2f6_/view?usp=drivesdk",
+    "name": "Injector",
+    "description": "The Injector item is your gateway to a month filled with unexpected pokes and prods of misfortune! While it may sound like a medical miracle, this item carries a 'very bad' luck status that promises to keep you on your toes. Imagine finding yourself in a situation where you accidentally schedule an appointment for the wrong procedure, or you show up at the clinic only to realize you forgot your insurance card—ouch! This item serves as a playful reminder that sometimes, life can feel like one big needle prick. But don’t fret! Every awkward moment is just another chance to laugh at the absurdity of it all. So, embrace the quirks and remember: even the most uncomfortable situations can lead to hilarious stories!",
+    "luck": "very bad"
+  },
+  {
+    "index": 159,
+    "url": "https://drive.google.com/file/d/1VskTHTNumnkhbQ5Dd0vxbfCHmqWriby5/view?usp=drivesdk",
+    "name": "Stop Here",
+    "description": "The Stop Here item is your official signpost to a month of unexpected roadblocks and comical detours! This item embodies the feeling of being stuck in limbo, where every plan seems to hit a brick wall. Picture this: you’re all set for an adventure, only to find yourself caught in traffic, waiting for a train that never arrives, or realizing you’ve taken a wrong turn into a never-ending loop of 'detour' signs—yikes! While it may come with a 'very bad' luck status, this item reminds you that sometimes the best stories come from the moments when life says 'not today.' So take a deep breath, embrace the pause, and remember: every stop can lead to an unexpected twist that makes for a great laugh later on!",
+    "luck": "very bad"
+  },
+  {
+    "index": 160,
+    "url": "https://drive.google.com/file/d/161Qn4gGu_wZjqLQyFJ8IFIV_W_sv2Ofq/view?usp=drivesdk",
+    "name": "Warning",
+    "description": "The Warning item is your official alert to a month filled with comical misadventures and cautionary tales! This item serves as a bright neon sign flashing 'proceed with caution'—because things are about to get interesting! Imagine embarking on a new project only to realize you’ve forgotten the most crucial step, or diving into a new relationship that comes with more red flags than a bullfighting arena. While it may carry a 'very bad' luck status, this item is a playful reminder that sometimes, the best stories come from ignoring those warnings! So buckle up and embrace the chaos; after all, every mishap is just another opportunity for laughter and unforgettable memories!",
+    "luck": "very bad"
+  },
+  {
+    "index": 161,
+    "url": "https://drive.google.com/file/d/1O89VDtccDkZ4KQ7livgtmo7GOrQZ2-a6/view?usp=drivesdk",
+    "name": "Alert",
+    "description": "The Alert item is your personal beacon of impending chaos, signaling a month filled with comical surprises and unexpected twists! This item embodies the feeling of being constantly on edge, where every little thing could lead to a hilarious disaster. Imagine receiving a text from an old friend that leads to an awkward reunion, or trying to navigate a crowded event only to trip over your own feet—classic! While it carries a 'very bad' luck status, this item serves as a playful reminder that life is full of surprises, and sometimes those surprises can be downright funny. So stay sharp and embrace the mayhem; after all, every alert moment is just another chance for laughter in the grand adventure of life!",
+    "luck": "very bad"
+  },
+  {
+    "index": 162,
+    "url": "https://drive.google.com/file/d/1mlWe3Dn13Fl2wXoIpFlCsRINGwbusuip/view?usp=drivesdk",
+    "name": "Halloween Woffin",
+    "description": "The Halloween Coffin item is your ticket to a month filled with spine-chilling surprises and comically eerie situations! While it may be the perfect prop for a haunted house, this item carries a 'very bad' luck status that promises to keep things delightfully creepy. Picture yourself in situations where everything goes hilariously wrong: maybe you accidentally scare your neighbors instead of trick-or-treaters, or you find yourself in a costume that’s more frightful than fun—yikes! This item serves as a playful reminder that sometimes, life can feel like a spooky comedy. So embrace the chills and thrills; after all, every spooky moment is just another chance to laugh at the absurdity of it all!",
+    "luck": "very bad"
+  },
+  {
+    "index": 163,
+    "url": "https://drive.google.com/file/d/13fGxQ2nAXGVvDrVcNLyyymCNLj8KAmtU/view?usp=drivesdk",
+    "name": "Skull-and-Crossbones",
+    "description": "The Skull-and-Crossbones item is your emblem of impending mischief and dark humor, promising a month filled with hilariously unfortunate events! This iconic symbol has long been associated with pirates, poison, and all things perilous, making it the perfect companion for those who enjoy living on the edge—albeit a very wobbly edge! Picture yourself in situations where every decision feels like a roll of the dice: maybe you accidentally mix up your cleaning products and create a mini-explosion, or you find yourself in a costume party where everyone else is dressed as angels while you show up as the grim reaper—awkward! While it carries a 'very bad' luck status, this item serves as a playful reminder that life’s greatest adventures often come with a side of danger. So embrace the chaos and remember: every misstep is just another chance to laugh at life’s little ironies!",
+    "luck": "very bad"
+  },
+  {
+    "index": 164,
+    "url": "https://drive.google.com/file/d/1Gw2dm8FAXtG-8-jbdTo0qbR7RImsWT6R/view?usp=drivesdk",
+    "name": "Anonymous Mask",
+    "description": "The Anonymous Mask is your gateway to a month of incognito mischief and hilariously awkward situations! This mask symbolizes the allure of anonymity, allowing you to blend into the crowd—or perhaps stand out for all the wrong reasons! Imagine attending a party where everyone is wearing elaborate costumes, and you show up in your pajamas with just this mask on—talk about a fashion faux pas! Or picture yourself trying to pull off a secret prank, only to have it backfire spectacularly, leaving you the center of attention for all the wrong reasons. While it carries a 'very bad' luck status, this item reminds you that even in anonymity, life can be delightfully unpredictable. So don your mask and embrace the chaos; after all, every misadventure is just another chance to laugh at your own antics!",
+    "luck": "very bad"
+  },
+  {
+    "index": 165,
+    "url": "https://drive.google.com/file/d/1iMLv8EXyY1tbpPAy7NgcZXl82EC94m_P/view?usp=drivesdk",
+    "name": "jack-o'lantern",
+    "description": "The Jack-o'-Lantern is your charming companion for a month filled with spooky surprises and delightfully unfortunate events! This iconic symbol of Halloween brings to mind flickering candlelight and mischievous spirits, but beware—it's also a beacon for hilarity and chaos! Imagine carving the perfect pumpkin only to have it collapse before the big night, or placing it on your porch, only to find it mysteriously missing the next morning—was it the neighborhood raccoons or a mischievous ghost? While it carries a 'very bad' luck status, this item serves as a playful reminder that even the spookiest situations can lead to laughter. So light that candle, embrace the eerie glow, and remember: every mishap is just another story waiting to be told at your next Halloween gathering!",
+    "luck": "very bad"
+  },
+  {
+    "index": 166,
+    "url": "https://drive.google.com/file/d/1E_XE4ykSRF8Jrk5KRteAEDnLDXcXjt0F/view?usp=drivesdk",
+    "name": "Black Spider",
+    "description": "The Black Spider is your eight-legged harbinger of hilariously bad luck and unexpected twists! This creepy critter might send shivers down your spine, but it also promises a month filled with amusingly unfortunate encounters. Imagine walking into a room only to find one of these little guys dangling right in front of your face, or accidentally mistaking your friend’s dark hair for a spider—talk about a fright! While it carries a 'very bad' luck status, this item serves as a playful reminder that sometimes, the things we fear most can lead to the best stories. So embrace the spooky vibes and remember: every encounter with this little arachnid is just another chance to laugh at life’s little surprises!",
+    "luck": "very bad"
+  },
+  {
+    "index": 167,
+    "url": "https://drive.google.com/file/d/1AKGREVIc2l-m2KsDLJl5Uen8HlEyj8eC/view?usp=drivesdk",
+    "name": "Mummy",
+    "description": "The Mummy is your classic symbol of ancient mysteries and comically bad luck! Wrapped in layers of bandages, this item promises a month filled with hilariously awkward situations and unexpected twists. Imagine trying to navigate a crowded party only to trip over your own 'wrappings,' or showing up at a costume contest where everyone else is dressed as modern superheroes while you’re stuck in an ancient Egyptian getup—talk about a fashion faux pas! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most wrapped-up situations can lead to memorable laughs. So embrace the spooky charm of the Mummy, and remember: every mishap is just another chance to unravel a great story!",
+    "luck": "very bad"
+  },
+  {
+    "index": 168,
+    "url": "https://drive.google.com/file/d/1R9uvuztpplEPppjaJze44yLcASo_DY6h/view?usp=drivesdk",
+    "name": "Zombie",
+    "description": "The Zombie is your ultimate ticket to a month filled with hilariously bad luck and brainless blunders! This iconic creature, shuffling through life with one goal in mind—well, you know—brings a unique charm to your adventures. Imagine finding yourself in situations where you’re moving so slowly that you miss out on all the fun, or trying to communicate only to have everyone misunderstand you, thinking you're just groaning for snacks! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most undead moments can lead to unforgettable laughs. So embrace your inner zombie and shuffle through the chaos; after all, every misstep is just another chance to create a legendary story!",
+    "luck": "very bad"
+  },
+  {
+    "index": 169,
+    "url": "https://drive.google.com/file/d/1chTIE7iMNM8_N8qmhqO5KmjLEkXDDIrR/view?usp=drivesdk",
+    "name": "Danger Zombie",
+    "description": "The Danger Zombie is your ultimate harbinger of hilariously catastrophic luck! This isn't just any undead creature; it's the embodiment of chaotic mischief and unexpected disasters. Imagine stumbling into a situation where this zombie is lurking around, only to find yourself in a series of slapstick moments: perhaps you trip over your own feet while trying to escape, or you accidentally lead it straight to your friends during a game of hide-and-seek—oops! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most perilous encounters can lead to unforgettable laughs. So gear up for some wild adventures and remember: every close call with this Danger Zombie is just another chance to turn fear into fun!",
+    "luck": "very bad"
+  },
+  {
+    "index": 170,
+    "url": "https://drive.google.com/file/d/17BjiLwVHHXKUwfPWAR0OFIUD77tY5qaV/view?usp=drivesdk",
+    "name": "Creepy",
+    "description": "The Creepy item is your ticket to a month filled with spine-tingling surprises and hilariously awkward situations! This item embodies everything that sends shivers down your spine—think eerie shadows, unsettling noises, and those moments when you feel like someone (or something) is watching you. Imagine walking through a dimly lit room only to find a stuffed toy staring back at you, or accidentally bumping into someone dressed as a ghost at an unexpected moment—yikes! While it carries a 'very bad' luck status, this item serves as a playful reminder that the creepiest moments often lead to the best stories. So embrace the chills and thrills; after all, every creepy encounter is just another chance to laugh at life’s little oddities!",
+    "luck": "very bad"
+  },
+  {
+    "index": 171,
+    "url": "https://drive.google.com/file/d/1ByEX1PluqD732xHcafnAGoUVpMEa80Ff/view?usp=drivesdk",
+    "name": "Venom Head",
+    "description": "The Venom Head is your ultimate symbol of chaotic mischief and hilariously bad luck! Inspired by the iconic anti-hero, this item promises a month filled with wild antics and unexpected surprises. Imagine strutting around with this headpiece only to find yourself in situations where your plans go awry: perhaps you accidentally scare your friends instead of impressing them or trip over your own excitement during a costume party—oops! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most chaotic moments can lead to unforgettable laughs. So don your Venom Head and embrace the madness; after all, every mishap is just another chance to create legendary stories!",
+    "luck": "very bad"
+  },
+  {
+    "index": 172,
+    "url": "https://drive.google.com/file/d/1iG0zdzm3ZmWY8pxh0YOk-gikHK6OXgSs/view?usp=drivesdk",
+    "name": "Jack-o'lantern",
+    "description": "The Jack-o'-Lantern is a traditional symbol of Halloween, originating from Irish folklore. It is created by hollowing out a pumpkin, carving a face into it, and placing a candle inside to illuminate it. This practice has deep roots in the story of Stingy Jack, a figure who tricked the devil and was condemned to wander the Earth with only a carved-out turnip to light his way. Over time, this tradition evolved, especially among Irish immigrants in America, who found pumpkins to be more suitable for carving than turnips.",
+    "luck": "very bad"
+  },
+  {
+    "index": 173,
+    "url": "https://drive.google.com/file/d/1hEg4SGwDKDQWeTPQOtjAamxVN_UCWGRB/view?usp=drivesdk",
+    "name": "Evil",
+    "description": "The Evil item is your ultimate badge of chaotic mischief and hilariously bad luck! This item embodies the darker side of life, promising a month filled with wicked antics and unexpected disasters. Imagine trying to pull off a prank that goes horribly wrong, or finding yourself in situations where your 'evil' plans backfire spectacularly—like accidentally spilling your drink on the person you were trying to impress! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most diabolical schemes can lead to unforgettable laughter. So embrace your inner villain and prepare for some wild adventures; after all, every evil moment is just another chance to turn mischief into memorable stories!",
+    "luck": "very bad"
+  },
+  {
+    "index": 174,
+    "url": "https://drive.google.com/file/d/15n0fRRsoUjty3fsObd-91KfNBWOilpG_/view?usp=drivesdk",
+    "name": "Satan",
+    "description": "The Satan item is your ultimate emblem of chaotic mischief and hilariously bad luck! Often depicted as the prince of darkness, this figure promises a month filled with wicked antics and unexpected disasters. Imagine trying to pull off a devious plan only to have it backfire spectacularly—perhaps you accidentally summon your neighbor’s cat instead of causing chaos, or you find yourself in a situation where your 'evil' intentions lead to the most awkward social faux pas imaginable! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most notorious figures can inspire laughter. So embrace your inner trickster and prepare for some wild adventures; after all, every misstep with this iconic character is just another chance to create legendary stories!",
+    "luck": "very bad"
+  },
+  {
+    "index": 175,
+    "url": "https://drive.google.com/file/d/1w8U72qhI5m2XO0uGPvPekAE9qNV8YGgS/view?usp=drivesdk",
+    "name": "Danger Satan",
+    "description": "The Danger Satan item is your ultimate emblem of chaotic mischief and hilariously disastrous luck! This character, often associated with temptation and trickery, promises a month filled with wicked antics and unexpected calamities. Imagine trying to enact a clever scheme only to have it backfire spectacularly—perhaps you attempt to charm your way into a party but end up locked out, or your 'evil' plans lead to the most awkward encounters imaginable! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most notorious figures can inspire laughter. So embrace your inner trickster and prepare for some wild adventures; after all, every close call with this Danger Satan is just another chance to turn mischief into memorable stories!",
+    "luck": "very bad"
+  },
+  {
+    "index": 176,
+    "url": "https://drive.google.com/file/d/1IYbrOfLy_gd_7x8sVZfcYp0CzX2-0brP/view?usp=drivesdk",
+    "name": "Bat",
+    "description": "The Bat is your quirky companion of mischief and very bad luck! This nocturnal creature promises a month filled with unexpected surprises and comical mishaps. Imagine trying to enjoy a peaceful evening, only to have the Bat swoop in and turn your plans upside down—perhaps it knocks over your snack bowl during a movie night or distracts you just as you’re about to make an important call! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most chaotic moments can lead to the best stories. So embrace the whimsical antics of the Bat and prepare for some outrageous adventures; after all, every little blunder is just another chance to turn misfortune into legendary laughter!",
+    "luck": "very bad"
+  },
+  {
+    "index": 177,
+    "url": "https://drive.google.com/file/d/1MBkhHAMRGKwDGkaBBnlZqu8KlzduTyO7/view?usp=drivesdk",
+    "name": "Cross",
+    "description": "The Cross is your quirky emblem of irony and very bad luck! This symbolic item promises a month filled with unexpected twists and comical mishaps. Imagine carrying the Cross with you, only to find that every plan you make seems to go hilariously awry—like attempting to start a new project only to encounter endless distractions or trying to enjoy a quiet moment, only to be interrupted by the most chaotic of situations! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most serious symbols can lead to the funniest stories. So embrace the whimsical chaos of the Cross and prepare for some outrageous adventures; after all, every little blunder is just another chance to turn misfortune into legendary laughter!",
+    "luck": "very bad"
+  },
+  {
+    "index": 178,
+    "url": "https://drive.google.com/file/d/1p7LX-uSgLKm93C26qpNijjwzY5gP8tiU/view?usp=drivesdk",
+    "name": "Man wearing jack-o'lantern",
+    "description": "The Man Wearing Jack-o'-Lantern is your whimsical symbol of festive mischief and very bad luck! This quirky character, sporting a vibrant pumpkin head, promises a month filled with unexpected surprises and comical mishaps. Imagine stepping out in your jack-o'-lantern attire, ready to spread some Halloween cheer, only to find that every plan you make leads to delightful chaos—like trying to carve the perfect pumpkin but ending up with a lopsided masterpiece, or attempting to impress friends at a party only to have your pumpkin head roll off at the most inopportune moment! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most festive occasions can lead to the funniest stories. So embrace the playful spirit of the Man Wearing Jack-o'-Lantern and prepare for some outrageous adventures; after all, every little blunder is just another chance to turn misfortune into legendary laughter!",
+    "luck": "very bad"
+  },
+  {
+    "index": 179,
+    "url": "https://drive.google.com/file/d/1n_54XMZWadHqRMsqFd6eTYma6c0NjDmh/view?usp=drivesdk",
+    "name": "Skeleton",
+    "description": "The Skeleton is your cheeky symbol of spooky mischief and very bad luck! This bony figure promises a month filled with unexpected surprises and comical blunders. Picture yourself hanging out with this skeletal companion, only to find that every plan you make seems to go hilariously wrong—like trying to host a Halloween party but accidentally inviting the wrong guests, or attempting to scare your friends only to have them laugh at your bony antics instead! While it carries a 'very bad' luck status, this item serves as a whimsical reminder that even the spookiest moments can lead to unforgettable laughter. So embrace the playful chaos of the Skeleton and prepare for some outrageous adventures; after all, every little mishap is just another chance to turn misfortune into legendary stories!",
+    "luck": "very bad"
+  },
+  {
+    "index": 180,
+    "url": "https://drive.google.com/file/d/1CcPYBHw_7UwaGJzwVvHzs_Pga6cSGmL8/view?usp=drivesdk",
+    "name": "Assassin with skull",
+    "description": "The Assassin with Skull is your ultimate emblem of stealthy mischief and very bad luck! This enigmatic figure, cloaked in shadows and adorned with a menacing skull, promises a month filled with unexpected twists and comical disasters. Imagine trying to navigate your day with this fearsome companion—perhaps you plan a covert operation, only to trip over your own feet or accidentally reveal your hiding spot with an ill-timed sneeze! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most serious characters can lead to the funniest situations. So embrace the chaotic charm of the Assassin with Skull and prepare for some outrageous adventures; after all, every little blunder is just another chance to turn misfortune into legendary tales!",
+    "luck": "very bad"
+  },
+  {
+    "index": 181,
+    "url": "https://drive.google.com/file/d/1Ya14uBnvaQ-a8xyxk-CF3v7hpfOlyJ1B/view?usp=drivesdk",
+    "name": "Heart Eyes Devil",
+    "description": "The Heart Eyes Devil is your cheeky emblem of love and mischief, promising a month filled with delightfully chaotic moments and hilariously bad luck! This devilish character, known for its charming smirk and heart-shaped eyes, embodies a playful blend of attraction and trouble. Imagine trying to flirt with someone only to accidentally spill your drink or mix up your words in the most awkward way possible—classic! While it carries a 'very bad' luck status, this item serves as a reminder that even the most mischievous encounters can lead to unforgettable laughter. So embrace your inner trickster and prepare for some wild adventures; after all, every flirty mishap with the Heart Eyes Devil is just another chance to create legendary stories!",
+    "luck": "very bad"
+  },
+  {
+    "index": 182,
+    "url": "https://drive.google.com/file/d/10GJ3c3gNFG-oVEMxwuT_Il6XIFfTdxlU/view?usp=drivesdk",
+    "name": "Devil Ghost",
+    "description": "The Devil Ghost is your ultimate embodiment of spooky mischief and hilariously bad luck! This spectral figure blends the mischievous charm of a devil with the eerie presence of a ghost, promising a month filled with delightfully chaotic moments. Imagine trying to navigate through life with this haunting companion—perhaps you accidentally scare your friends instead of charming them, or your attempts at being mysterious lead to comical misunderstandings! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most mischievous spirits can inspire laughter. So embrace the spooky vibes and prepare for some wild adventures; after all, every encounter with the Devil Ghost is just another chance to create legendary stories!",
+    "luck": "very bad"
+  },
+  {
+    "index": 183,
+    "url": "https://drive.google.com/file/d/1OUAOoBXRGEUMDiUH8bAhplYwnUR26GiS/view?usp=drivesdk",
+    "name": "Balloons",
+    "description": "The Balloons item is your colorful ticket to a month filled with unexpected surprises and delightfully chaotic moments! While balloons are often symbols of celebration and joy, this particular batch comes with a 'very bad' luck status that promises to keep things interesting. Imagine planning a festive gathering, only to have your balloons mysteriously deflate before the party starts, or watching in horror as a gust of wind carries them away just as you’re about to take the perfect photo—oops! This item serves as a playful reminder that sometimes, even the lightest things can lead to the heaviest mishaps. So grab those balloons and prepare for some wild adventures; after all, every pop and flutter is just another chance to turn misfortune into memorable laughter!",
+    "luck": "very bad"
+  },
+  {
+    "index": 184,
+    "url": "https://drive.google.com/file/d/1V7zuoOOfIRczpahiypbRnvRG9H7ijU9u/view?usp=drivesdk",
+    "name": "Alien",
+    "description": "The Alien item is your ticket to a month filled with out-of-this-world mischief and hilariously bad luck! Often depicted as mysterious and unpredictable, this extraterrestrial companion promises to turn your life upside down in the most amusing ways. Imagine trying to make plans only to have them thwarted by sudden alien abductions—like losing your keys to an intergalactic spaceship or accidentally inviting your friends over for a movie night, only for them to be abducted instead! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most bizarre encounters can lead to unforgettable laughter. So embrace the chaos of the cosmos and prepare for some wild adventures; after all, every alien mishap is just another chance to create legendary stories!",
+    "luck": "very bad"
+  },
+  {
+    "index": 185,
+    "url": "https://drive.google.com/file/d/1ua7nIv17vcvpekIjVug9pKYtik47SjNk/view?usp=drivesdk",
+    "name": "Dangerous Devil",
+    "description": "The Dangerous Devil is your ultimate symbol of wicked charm and hilariously bad luck! This item embodies the playful spirit of mischief, promising a month filled with chaotic antics and unexpected surprises. Imagine strutting around in your devilish attire, only to find that every plan you make ends in delightful disaster—like trying to impress someone and accidentally setting off the fire alarm instead! While it carries a 'very bad' luck status, this item serves as a reminder that even the most devilish encounters can lead to unforgettable laughter. So embrace your inner trickster and prepare for some wild adventures; after all, every mischievous moment with the Dangerous Devil is just another chance to create legendary stories!",
+    "luck": "very bad"
+  },
+  {
+    "index": 186,
+    "url": "https://drive.google.com/file/d/1_BQxnp2UQSF9WQXYEaNNhSA4IE6AKAS9/view?usp=drivesdk",
+    "name": "White Devil",
+    "description": "The White Devil is your ultimate symbol of mischievous charm and hilariously bad luck! This enigmatic figure, cloaked in a striking white guise, promises a month filled with unexpected antics and comical misfortunes. Imagine trying to navigate your day with the White Devil at your side—perhaps you attempt to impress someone with your suave demeanor, only to trip over your own words or spill coffee all over yourself just as you’re about to make a grand entrance! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that even the most chaotic moments can lead to the best stories. So embrace the whimsical chaos of the White Devil and prepare for some outrageous adventures; after all, every blunder is just another chance to turn misfortune into legendary laughter!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 187,
+    "url": "https://drive.google.com/file/d/1jl9Jsm1pbOzPjrgtKUBawRILDQoD-Vwe/view?usp=drivesdk",
+    "name": "Red Devil Mask",
+    "description": "The Red Devil Mask is your ultimate emblem of mischief and hilariously bad luck! This striking mask, adorned with devilish features and vibrant red hues, promises a month filled with unexpected antics and comical disasters. Imagine putting on the Red Devil Mask, ready to unleash your inner trickster, only to find that every plan you concoct leads to delightful chaos—like attempting to scare your friends but ending up startling yourself instead, or trying to pull off a clever prank that backfires spectacularly! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that even the most mischievous moments can lead to unforgettable laughter. So embrace the wild spirit of the Red Devil Mask and prepare for some outrageous adventures; after all, every mishap is just another chance to turn misfortune into legendary stories!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 188,
+    "url": "https://drive.google.com/file/d/1DIaahOJW6YrtLSZslmvM8mKwuYmX4KFV/view?usp=drivesdk",
+    "name": "Crossbone Devil",
+    "description": "The Crossbone Devil is your ultimate emblem of mischief and hilariously bad luck! This cheeky character, adorned with crossbones and a devilish grin, promises a month filled with unexpected twists and comical calamities. Imagine trying to navigate your day with the Crossbone Devil by your side—perhaps you attempt to embark on a daring adventure, only to trip over your own feet or get caught in a series of unfortunate events that leave you laughing in disbelief! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that even the most chaotic moments can lead to the best stories. So embrace the wild antics of the Crossbone Devil and prepare for some outrageous adventures; after all, every mishap is just another chance to turn misfortune into legendary laughter!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 189,
+    "url": "https://drive.google.com/file/d/1i0vVc3-4bYlZGV6aC1Mta8gOYiy6xt9O/view?usp=drivesdk",
+    "name": "Black Mask Devil",
+    "description": "The Black Mask Devil is your ultimate emblem of mischief and hilariously bad luck! This enigmatic figure, cloaked in mystery and chaos, promises a month filled with unexpected twists and comical disasters. Imagine donning the Black Mask Devil only to find that every plan you make leads to delightful disaster—like trying to sneak into a party but getting hilariously caught in the act, or attempting to pull off a clever prank that backfires spectacularly! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that even the most devilish encounters can lead to unforgettable laughter. So embrace the wild spirit of the Black Mask Devil and prepare for some outrageous adventures; after all, every mishap is just another chance to turn misfortune into legendary stories!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 190,
+    "url": "https://drive.google.com/file/d/1GHb68ENlpTlCTPp6EFd1i_CgWIlFOPms/view?usp=drivesdk",
+    "name": "Bat Devil",
+    "description": "The Bat Devil is your ultimate symbol of nocturnal mischief and hilariously bad luck! This quirky creature combines the eerie charm of bats with the playful chaos of a devil, promising a month filled with unexpected shenanigans and comical disasters. Imagine trying to enjoy a peaceful night in, only to have the Bat Devil swoop in and turn your plans upside down—perhaps it knocks over your snacks during a movie marathon or causes you to trip over your own feet while trying to impress your friends with some bat-inspired dance moves! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that even the darkest moments can lead to the brightest laughs. So embrace the wild antics of the Bat Devil and prepare for some outrageous adventures; after all, every blunder is just another chance to turn misfortune into legendary stories!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 191,
+    "url": "https://drive.google.com/file/d/1ZAjy1hMWADFlnkd8Awq467e-VTE7yM5H/view?usp=drivesdk",
+    "name": "Hell Devil",
+    "description": "The Hell Devil is your ultimate embodiment of mischief and hilariously bad luck! This fiery figure brings a whirlwind of chaos and unexpected surprises, promising a month filled with outrageous antics and comical disasters. Imagine trying to navigate your day with the Hell Devil by your side—perhaps you attempt to spice up a gathering with some devilish charm, only to accidentally set off the smoke alarm or spill hot sauce everywhere! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that even the most chaotic encounters can lead to the best stories. So embrace the wild energy of the Hell Devil and prepare for some unforgettable adventures; after all, every mishap is just another chance to turn misfortune into legendary laughter!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 192,
+    "url": "https://drive.google.com/file/d/1uEA0Bi1udbM9KedXNs3fwfQRG7e8OZyS/view?usp=drivesdk",
+    "name": "Cat Devil",
+    "description": "The Cat Devil is your ultimate symbol of feline mischief and hilariously bad luck! This mischievous creature combines the charm of a cat with the chaos of a devil, promising a month filled with unexpected antics and comical disasters. Imagine trying to enjoy a quiet evening at home, only to have the Cat Devil knock over your favorite vase or sneakily swipe your snack right off the table! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that even the most chaotic moments can lead to unforgettable laughter. So embrace the wild spirit of the Cat Devil and prepare for some outrageous adventures; after all, every little mishap is just another chance to turn misfortune into legendary stories!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 193,
+    "url": "https://drive.google.com/file/d/1K0DTh2f_n_Ss-Bds8-Iz-mbjujmt461p/view?usp=drivesdk",
+    "name": "Black Devil",
+    "description": "The Black Devil is your ultimate emblem of mischief and hilariously bad luck! Cloaked in shadows and chaos, this character promises a month filled with unexpected surprises and comical calamities. Imagine trying to navigate your daily life with the Black Devil at your side—perhaps you attempt to pull off a clever scheme, only to have it backfire spectacularly, like accidentally sending a text to the wrong person or tripping over your own feet during an important moment! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that even the darkest encounters can lead to the brightest laughs. So embrace the wild antics of the Black Devil and prepare for some outrageous adventures; after all, every mishap is just another chance to turn misfortune into legendary stories!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 194,
+    "url": "https://drive.google.com/file/d/11mXDTbG4-KGGBNqbGxMVbeHd7MMtB7D4/view?usp=drivesdk",
+    "name": "Red Devil",
+    "description": "The Red Devil is your ultimate symbol of mischief and hilariously bad luck! This fiery character embodies chaos and playful trouble, promising a month filled with unexpected twists and comical disasters. Imagine strutting around with the Red Devil’s charm, only to find that every plan you make ends in delightful disaster—like trying to impress someone with your devilish wit, only to accidentally spill your drink all over them! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that even the most mischievous encounters can lead to unforgettable laughter. So embrace the wild side of the Red Devil and prepare for some outrageous adventures; after all, every blunder is just another chance to turn misfortune into legendary tales!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 195,
+    "url": "https://drive.google.com/file/d/1ilruA3JOjqtTA6-VzyUYYt3Y7a26vBtJ/view?usp=drivesdk",
+    "name": "R Devil",
+    "description": "The R Devil is your cheeky emblem of chaos and hilariously bad luck! This mischievous character, embodying the spirit of mischief and mayhem, promises to turn your month into a wild ride filled with unexpected twists and comical disasters. Imagine trying to navigate your day with the R Devil by your side—perhaps you attempt to pull off a clever prank that goes awry, resulting in an epic fail, or you find yourself in a series of unfortunate events that leave you scratching your head in disbelief! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that even the most devilish encounters can lead to unforgettable laughter. So embrace the chaos of the R Devil and prepare for some wild adventures; after all, every mishap is just another chance to turn misfortune into legendary stories!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 196,
+    "url": "https://drive.google.com/file/d/1hCu-J5BJptrmUn2X4z8cRJuszkSbkX8z/view?usp=drivesdk",
+    "name": "O Devil",
+    "description": "The Ox Devil is your ultimate symbol of mischief and hilariously bad luck! This quirky creature combines the strength of an ox with the playful chaos of a devil, promising a month filled with unexpected shenanigans and comical mishaps. Imagine trying to harness the power of the Ox Devil only to find yourself in ridiculous situations—like attempting to impress your friends with a show of strength, only to accidentally knock over the snack table instead! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that sometimes, the most chaotic moments lead to the best stories. So embrace your inner Ox Devil and prepare for some wild adventures; after all, every blunder is just another chance to turn misfortune into legendary laughter!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 197,
+    "url": "https://drive.google.com/file/d/1M1DIQB1eis39RLq60zovujOwnHITdXgp/view?usp=drivesdk",
+    "name": "Luck Number Oldschool Tattoo Thirteen",
+    "description": "The Luck Number Oldschool Tattoo Thirteen is your cheeky emblem of misfortune and hilariously bad luck! Traditionally seen as an unlucky number, this tattoo promises a month filled with unexpected twists and comical disasters. Imagine proudly showing off your new ink, only to have it lead to a series of unfortunate events—like spilling coffee on your favorite shirt or stepping in gum right after you leave the tattoo parlor! While it carries an 'extremely bad' luck status, this item serves as a playful reminder that sometimes, embracing the unconventional can lead to the best stories. So wear your thirteen with pride and prepare for a wild ride; after all, every mishap linked to your tattoo is just another chance to turn misfortune into legendary laughter!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 198,
+    "url": "https://drive.google.com/file/d/1u4ZCpupnS2ovWQ_N1kMEe2dYRXk8DdJe/view?usp=drivesdk",
+    "name": "Asana Cat Namaste Pose",
+    "description": "The Asana Cat Namaste Pose is your playful reminder that even the most serene yoga practices can lead to hilariously bad luck! This pose, meant to embody grace and tranquility, ironically comes with an 'extremely bad' luck status that promises a month filled with unexpected mishaps. Picture yourself trying to find your zen in this pose, only to have your cat decide it’s the perfect moment to leap onto your back, or perhaps you lose your balance and end up in a tangle on the mat—classic! While this item may seem like a peaceful practice, it serves as a humorous reminder that life can be anything but calm. So roll out your mat and prepare for some wild yoga adventures; after all, every awkward moment in the Asana Cat Namaste Pose is just another chance to laugh at life’s little surprises!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 199,
+    "url": "https://drive.google.com/file/d/1UHxZKWdHEkKw0wRPz96zA7iWebRYzHK1/view?usp=drivesdk",
+    "name": "Accident Broken Car Damage Door",
+    "description": "The Accident Broken Car Damage Door item is your ultimate emblem of vehicular misadventures and hilariously bad luck! This item symbolizes those days when everything that can go wrong, does go wrong—especially when it comes to your trusty ride. Imagine getting into your car only to discover that the door won’t open because of a mysterious dent, or trying to impress someone with your driving skills, only to have the engine sputter and die at the most inconvenient moment! While it carries a 'very bad' luck status, this item serves as a playful reminder that even the most frustrating car troubles can lead to unforgettable stories and laughter. So buckle up and prepare for some wild rides; after all, every mishap with your broken car is just another chance to turn misfortune into legendary tales!",
+    "luck": "extremely bad"
+  },
+  {
+    "index": 200,
+    "url": "https://drive.google.com/file/d/1CBN7Bb3mqSv9t7Lgm9kkXCvPxhj9VSFB/view?usp=drivesdk",
+    "name": "Broken Heart",
+    "description": "The Broken Heart item is your poignant reminder of love's ups and downs, promising a month filled with hilariously unfortunate events and awkward encounters! While this symbol often signifies heartbreak and sorrow, it also brings with it a playful twist of mischief. Imagine trying to navigate the dating scene only to find yourself in the most cringe-worthy situations—like accidentally texting your ex when you meant to message your best friend or showing up to a romantic dinner with mismatched socks! While it carries a 'very bad' luck status, this item serves as a reminder that even the most painful moments can lead to laughter and growth. So embrace the chaos of love and prepare for some wild adventures; after all, every mishap with a Broken Heart is just another chance to create legendary stories and learn from life’s little lessons!",
+    "luck": "extremely bad"
   }
 ]
