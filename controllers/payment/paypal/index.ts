@@ -4,6 +4,7 @@ import {Document} from 'mongoose';
 import Payment from "../../../models/payment";
 import User from '../../../models/User';
 import { IPayment, IUser } from "../../../interfaces";
+import { PAY_AMOUNT } from "../../../constants";
 
 const clientId = process.env.PAYPAL_CLIENT_ID;  
 const clientSecret = process.env.PAYPAL_CLIENT_SECRET;  
@@ -20,31 +21,23 @@ paypal.configure({
 
 interface paymentRequestBody{   
     user_id: string;
-    amount: number;
     action: string;
 }
 
+
 export const pay = async (req: Request<{}, {}, paymentRequestBody>, res:Response) => {
     
-    //Check out user is vaild or not
-    const {user_id, action, amount} = req.body;
+    
+    const {user_id, action} = req.body;
     try{
+        //Check out user is vaild or not
         const user = await User.findById(user_id);
         if(!user) {
             return res.status(404).json({message: "User not found"});
         }
+        if(action !== "regenration" && action !== "preview") return res.status(404).json({message: "invalid action"});
         const round = user.current_status.current_round;
-        // //create and save payment
-        // const payment = new Payment({
-        //     user_id,
-        //     provider: "paypal",
-        //     action,
-        //     amount,
-        //     round: round,  //to-do list
-        //     created_at: new Date()
-        // });
-        const payment = {user_id, provider: "paypal", action, amount, round};
-        //await payment.save();
+        const payment = {user_id, provider: "paypal", action, PAY_AMOUNT, round};
         const paymentData = encodeURIComponent(JSON.stringify(payment));
         //create payPal payment JSON
         const create_payment_json: paypal.Payment = {
@@ -53,7 +46,7 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res:Response
                 payment_method: 'paypal'
             },
             redirect_urls: {
-                return_url: 'http://localhost:3000/payment/paypal/success?state={paymentData}',
+                return_url: `http://localhost:3000/payment/paypal/success?state=${paymentData}`,
                 cancel_url: 'http://localhost:3000/payment/paypal/cancel'
             },
             transactions: [
@@ -61,9 +54,9 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res:Response
                     item_list: {
                         items: [
                             {
-                                name: action || 'default action', // Ensure `action` is defined
+                                name: "howlucky2025", // Ensure `action` is defined
                                 sku: 'item', // Uncomment and provide a valid SKU if required
-                                price: amount ? amount.toFixed(2) : '0.00', // Ensure `amount` is valid
+                                price: PAY_AMOUNT ? PAY_AMOUNT.toFixed(2) : '0.99', // Ensure `amount` is valid
                                 currency: 'USD',
                                 quantity: 1
                             }
@@ -71,10 +64,10 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res:Response
                     },
                     amount: {
                         currency: 'USD',
-                        total: amount ? amount.toFixed(2) : '0.00' // Ensure `amount` is valid
+                        total: PAY_AMOUNT ? PAY_AMOUNT.toFixed(2) : '0.99' // Ensure `amount` is valid
                     },
                     description: action && round 
-                        ? `payment for ${action} round ${round}` 
+                        ? `payment for ${action} in round ${round}` 
                         : 'action or round is not defined.' // Ensure `action` and `round` are defined
                 }
             ]

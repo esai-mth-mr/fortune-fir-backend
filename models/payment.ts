@@ -7,7 +7,7 @@ const paymentSchema: Schema<IPayment> = new Schema({
     user_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     provider: {
         type: String,
-        enum: ['stripe', 'paypal', 'crypt'],
+        enum: ['stripe', 'paypal', 'crypto'],
         default: 'stripe',
         required: true
     },

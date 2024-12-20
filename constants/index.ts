@@ -6,6 +6,8 @@ export const baseClientUrl = "http://localhost:3000"; // in dev env
 export const GLOBAL_ERRORS = {
     serverError: "An unexpected error occurred",
 };
+
+export const PAY_AMOUNT = 0.99;
 export const AUTH_ERRORS = {
     missingParams: "Insufficient params",
     accountExist: "An account already exists",
