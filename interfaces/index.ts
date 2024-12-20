@@ -6,8 +6,7 @@ export interface ILog {
     success: boolean;
     reason?: string;
 }
-
-export interface IUser  {
+export interface IUser {
     name: string;
     email: string;
     password: string;
@@ -21,33 +20,41 @@ export interface IUser  {
     accountStatus: boolean
 }
 
-export interface IAsset  {
+export interface IAsset {
     index: number;
     url: string;
     name: string;
-    description: Text;
+    description: string;
     luck: string;
 }
-
-export interface IStory  {
+export interface IStory {
     round: number;
     user_id: string;
     stories: ISection[];
-    total_story: Text;
+    total_story: String;
     total_point: number;
 }
 
 export interface ISection {
     month: number;
-    story: Text;
+    story: string;
     point: number;
     asset: number[],
-    tip: Text;
+}
+
+export interface IValidDates {
+    available_dates: Date[];
+}
+
+export interface ITransferStoryInput {
+    name: string,
+    luck: string,
+    description: string
 }
 
 export interface IPayment {
- //   user_id:string;
-    user_id: mongoose.Types.ObjectId;
+    //   user_id:string;
+    user_id: string;
     provider: string;
     action: string;
     amount: number;

@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 
-export const AssetData = async (req: Request, res: Response) => {
+export const insert = async (req: Request, res: Response) => {
 
     try {
         const __dirname = path.resolve();

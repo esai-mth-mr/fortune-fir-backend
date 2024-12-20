@@ -1,27 +1,41 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI();
+// Initialize OpenAI API client
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY, // Ensure the API key is set in the environment variables
+});
 
 export const sendMessage = async (systemPrompt: string, userPrompt: string) => {
     try {
-        const completion = await openai.chat.completions.create({
+        // Send a request to OpenAI API for chat completion
+        const response = await openai.chat.completions.create({
+            model: "gpt-4-turbo", // Correct model name
             messages: [
                 { role: "system", content: systemPrompt },
                 { role: "user", content: userPrompt },
             ],
-            model: "gpt-3.5-turbo",
         });
 
-        return completion.choices[0];
-    } catch (error) {
-        if (error instanceof OpenAI.APIError) {
-            console.log(error.message);
+        // Extract and return the response message
+        return {
+            error: false,
+            message: response.choices[0]?.message?.content || "No response content",
+        };
+    } catch (error: any) {
+        console.error("Error communicating with OpenAI API:", error);
+
+        // Handle OpenAI API-specific errors
+        if (error.status && error.error?.message) {
+            return {
+                error: true,
+                message: `OpenAI API Error: ${error.error.message}`,
+            };
         }
-        // For other types of errors
+
+        // Handle generic errors
         return {
             error: true,
-            message:
-                error instanceof Error ? error.message : "An unknown error occurred",
+            message: error.message || "An unknown error occurred",
         };
     }
 };

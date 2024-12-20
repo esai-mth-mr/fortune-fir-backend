@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import paypal from "paypal-rest-sdk";
 import {Document} from 'mongoose';
-import Payment from "../../../models/payment";
+import Payment from "../../../models/Payment";
 import User from '../../../models/User';
 import { IPayment, IUser } from "../../../interfaces";
 import { PAY_AMOUNT } from "../../../constants";

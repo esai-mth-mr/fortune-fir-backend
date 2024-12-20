@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 // import bcrypt from 'bcrypt';
 import Stripe from 'stripe';
-import Payment from "../../../models/payment";
+import Payment from "../../../models/Payment";
 
 
 let price_ids: {  
