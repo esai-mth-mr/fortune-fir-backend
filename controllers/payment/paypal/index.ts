@@ -4,7 +4,7 @@ import {Document} from 'mongoose';
 import Payment from "../../../models/Payment";
 import User from '../../../models/User';
 import { IPayment, IUser } from "../../../interfaces";
-import { PAY_AMOUNT } from "../../../constants";
+import { baseClientUrl, PAY_AMOUNT } from "../../../constants";
 
 const clientId = process.env.PAYPAL_CLIENT_ID;  
 const clientSecret = process.env.PAYPAL_CLIENT_SECRET;  
@@ -46,8 +46,8 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res:Response
                 payment_method: 'paypal'
             },
             redirect_urls: {
-                return_url: `http://localhost:3000/payment/paypal/success?state=${paymentData}`,
-                cancel_url: 'http://localhost:3000/payment/paypal/cancel'
+                return_url: `${baseClientUrl}/payment/paypal/success?state=${paymentData}`,
+                cancel_url: `${baseClientUrl}/payment/paypal/cancel`
             },
             transactions: [
                 {
