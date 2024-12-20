@@ -35,7 +35,7 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res:Response
         if(!user) {
             return res.status(404).json({message: "User not found"});
         }
-        if(action !== "regenration" && action !== "preview") return res.status(404).json({message: "invalid action"});
+        if(action !== "regeneration" && action !== "preview") return res.status(404).json({message: "invalid action"});
         const round = user.current_status.current_round;
         const payment = {user_id, provider: "paypal", action, PAY_AMOUNT, round};
         const paymentData = encodeURIComponent(JSON.stringify(payment));
