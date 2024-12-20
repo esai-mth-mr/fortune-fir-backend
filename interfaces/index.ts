@@ -43,7 +43,7 @@ export interface ISection {
 }
 
 export interface IValidDates {
-    available_dates: Date[];
+    available_dates: string[];
 }
 
 export interface ITransferStoryInput {
