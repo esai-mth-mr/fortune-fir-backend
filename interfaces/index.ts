@@ -1,3 +1,4 @@
+import mongoose, { Document, Schema } from 'mongoose';  
 export interface ILog {
     userId: string;
     time: Date;
@@ -5,7 +6,6 @@ export interface ILog {
     success: boolean;
     reason?: string;
 }
-
 export interface IUser {
     name: string;
     email: string;
@@ -27,7 +27,6 @@ export interface IAsset {
     description: string;
     luck: string;
 }
-
 export interface IStory {
     round: number;
     user_id: string;

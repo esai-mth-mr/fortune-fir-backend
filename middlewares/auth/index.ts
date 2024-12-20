@@ -32,7 +32,7 @@ export const authorizeBearerToken = async (request: any, response: any, next: an
             }
 
             request.auth = auth
-            request.body.userId = auth.userId
+            request.body.user_id = auth.userId
             next()
         }
     } catch (error) {
