@@ -1,10 +1,8 @@
 import { Request, Response } from "express";
 import paypal from "paypal-rest-sdk";
-import {Document} from 'mongoose';
 import Payment from "../../../models/Payment";
 import User from '../../../models/User';
-import { IPayment, IUser } from "../../../interfaces";
-import { baseClientUrl, PAY_AMOUNT } from "../../../constants";
+import { AUTH_ERRORS, baseClientUrl, PAY_AMOUNT } from "../../../constants";
 
 const clientId = process.env.PAYPAL_CLIENT_ID;  
 const clientSecret = process.env.PAYPAL_CLIENT_SECRET;  
@@ -20,33 +18,36 @@ paypal.configure({
 });
 
 interface paymentRequestBody{   
-    user_id: string;
+    userId: string;
     action: string;
 }
 
 
 export const pay = async (req: Request<{}, {}, paymentRequestBody>, res:Response) => {
     
-    
-    const {user_id, action} = req.body;
+    const {userId, action} = req.body;
+    const isPayment = await Payment.findOne({user_id: userId, action});
+    if(isPayment) return res.status(400).json({ message: "Payment already exist"});
+
     try{
         //Check out user is vaild or not
-        const user = await User.findById(user_id);
+        const user = await User.findById(userId);
         if(!user) {
             return res.status(404).json({message: "User not found"});
         }
         if(action !== "regeneration" && action !== "preview") return res.status(404).json({message: "invalid action"});
         const round = user.current_status.current_round;
-        const payment = {user_id, provider: "paypal", action, PAY_AMOUNT, round};
+        const payment = {user_id:userId, provider: "paypal", action, PAY_AMOUNT, round}; //potential error will happen
         const paymentData = encodeURIComponent(JSON.stringify(payment));
         //create payPal payment JSON
+
         const create_payment_json: paypal.Payment = {
             intent: 'sale',
             payer: {
                 payment_method: 'paypal'
             },
             redirect_urls: {
-                return_url: `${baseClientUrl}/payment/paypal/success?state=${paymentData}`,
+                return_url: `${baseClientUrl}/payment/paypal/result?state=${paymentData}`,
                 cancel_url: `${baseClientUrl}/payment/paypal/cancel`
             },
             transactions: [
@@ -82,7 +83,7 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res:Response
             // Redirect user to approval URL
             const approvalUrl = payment?.links?.find((link:any) => link.rel === 'approval_url')?.href;
             if (approvalUrl) {
-            return res.redirect(approvalUrl);
+            return res.send({approvalUrl});
             }    
             res.status(400).send('no approval URL found');    
         });
@@ -92,11 +93,12 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res:Response
     }
 }
 
-
 export const success = async (req: Request, res: Response) => {
-    const payerId = req.query.PayerID as string;
-    const paymentId = req.query.paymentId as string;
-
+    const {payerId, paymentId, userId, state} = req.body;
+    // const {paymentId} = req.body;
+    // const {userId} = req.body;
+    // const {state} = req.body;
+    
     if(!payerId || !paymentId) {
         return res.status(400).send('Missing PayerID or PaymentID');
     }
@@ -107,10 +109,8 @@ export const success = async (req: Request, res: Response) => {
       console.error(error);
       return res.status(500).send('Error retrieving payment details');
     }
-
     // Extract the amount from the payment object
     const totalAmount = payment.transactions[0].amount.total;
-
     // Proceed to execute the payment with the retrieved amount
     const execute_payment_json = {
       payer_id: payerId as string,
@@ -125,7 +125,7 @@ export const success = async (req: Request, res: Response) => {
     };
 
     // Execute the payment
-    paypal.payment.execute(paymentId, execute_payment_json, (error:any, payment:any) => {
+    paypal.payment.execute(paymentId, execute_payment_json, async (error:any, payment:any) =>  {
       if (error) {
         switch (error.response.name) {
             case 'INSUFFICIENT_FUNDS':
@@ -146,16 +146,41 @@ export const success = async (req: Request, res: Response) => {
       }
       const stateString = req.query.state as string;
     if(!stateString) {
-        const state = JSON.parse(stateString);
-        const payment = new Payment({...state, created_at: new Date()});
-        payment.save();
+        const user_state = JSON.parse(state);
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
+        }
+
+        if (!user.accountStatus) {
+            return res.status(403).json({ error: true, action: "verify", message: AUTH_ERRORS.activateAccountRequired });
+        }
+        
+        if(userId !== state.userId) {
+            return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
+        }
+
+        if(user.current_status.current_round !== state?.round) {
+            return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
+        }
+
+        if(state?.provider !== "paypal" || state?.PAY_AMOUNT !== 0.99 ) {
+            return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
+        }
+
+        const payment = new Payment({...user_state, created_at: new Date()});
+        console.log(payment);
+        console.log("payment successfully created");
+        await payment.save();
     }
-      res.send('Payment successful');
+    return res.status(200).json({ error: false, message: "Thank you! Payment successfully released.", url:"/payment/paypal/success" });
+
     });
   });
 }
 
 //cancel route
 export const cancel = (req: Request, res: Response) => {
-    res.send('payment cancelled');
+    return res.status(200).json({ error: true, message: "Payment Failed." });
 }
