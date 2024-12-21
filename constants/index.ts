@@ -3,7 +3,7 @@ import { regeneration } from "../controllers/story/regeneration";
 export const ORIGIN = "*";
 export const PORT = process.env.PORT || 8000;
 export const supportEmail = "c.m.brilliant34310@gmail.com";
-export const baseClientUrl = "http://localhost:5173"; // in dev env
+export const baseClientUrl = "http://154.205.152.213:5173"; // in dev env
 
 export const GLOBAL_ERRORS = {
     serverError: "An unexpected error occurred",
