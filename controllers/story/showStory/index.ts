@@ -27,20 +27,6 @@ export const showStory = async (req: Request, res: Response) => {
     }
 
 
-    let sendData = [];
-    sendData.push({
-        month: "total",
-        story: story.total_story
-    })
-
-    story.stories.map((each) => {
-        sendData.push({
-            month: each.month,
-            story: each.story
-        })
-    })
-
-
     const action = PAYMENT_MSGS.action.preview;
 
     if (!await available(userId, current_round, action)) {
@@ -53,9 +39,39 @@ export const showStory = async (req: Request, res: Response) => {
 
         await log.save();
 
-        return res.status(200).json({ error: false, display: false, message: "Unavailable" });
+        let sendData = [];
+        sendData.push({
+            month: 13,
+            point: story.total_point
+        })
+
+        story.stories.map((each) => {
+            sendData.push({
+                month: each.month,
+                point: each.point
+            })
+        })
+
+
+        return res.status(200).json({ error: false, display: false, message: sendData });
 
     }
+
+
+    let sendData = [];
+    sendData.push({
+        month: 13,
+        story: story,
+        point: story.total_point
+    })
+
+    story.stories.map((each) => {
+        sendData.push({
+            month: each.month,
+            story: each.story,
+            point: each.point
+        })
+    })
 
     const log = new Log({
         userId: user._id,

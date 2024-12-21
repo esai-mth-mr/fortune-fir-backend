@@ -1,7 +1,6 @@
 import ValidDates from "../../models/ValidDates";
 import Payment from "../../models/Payment";
 
-
 const isChrismas = async (): Promise<boolean> => {
     const today = new Date();
     const year = today.getFullYear();

@@ -3,6 +3,7 @@ import { regeneration } from "../controllers/story/regeneration";
 export const ORIGIN = "*";
 export const PORT = process.env.PORT || 8000;
 export const supportEmail = "c.m.brilliant34310@gmail.com";
+export const adminEmail = "jamesdavis34310@gmail.com";
 export const baseClientUrl = "http://localhost:5173"; // in dev env
 
 export const GLOBAL_ERRORS = {
@@ -28,6 +29,7 @@ export const SUCCESS_MSGS = {
 };
 export const EMAIL_MSGS = {
     registerSubject: `Action Required: Verify Email`,
+    contactSubject: "Customer Support Required"
 };
 
 export const STORY_MSGG = {

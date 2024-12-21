@@ -1,49 +1,79 @@
-import { supportEmail } from "../../constants";
+import { supportEmail, adminEmail } from "../../constants";
 import { verifyEmail } from "../auth";
 const { Sender } = require("node-mailjet");
 const EMAIL_API_KEY = process.env.EMAIL_API_KEY;
 const EMAIL_SECRET_KEY = process.env.EMAIL_SECRET_KEY;
 
 const mailjet = require("node-mailjet").apiConnect(
-    EMAIL_API_KEY,
-    EMAIL_SECRET_KEY
+  EMAIL_API_KEY,
+  EMAIL_SECRET_KEY
 );
 
 export const sendEmail = async (
-    email: string,
-    subject: string,
-    content: string
+  email: string,
+  subject: string,
+  content: string
 ) => {
-    try {
-        const request = await mailjet.post("send", { version: "v3.1" }).request({
-            Messages: [
-                {
-                    From: {
-                        Email: supportEmail,
-                        Name: "Fortune Support",
-                    },
-                    To: [
-                        {
-                            Email: email,
-                        },
-                    ],
-                    Subject: subject,
-                    HTMLPart: content,
-                },
-            ],
-        });
+  try {
+    const request = await mailjet.post("send", { version: "v3.1" }).request({
+      Messages: [
+        {
+          From: {
+            Email: supportEmail,
+            Name: "Fortune Support",
+          },
+          To: [
+            {
+              Email: email,
+            },
+          ],
+          Subject: subject,
+          HTMLPart: content,
+        },
+      ],
+    });
 
-        return request.response.status;
-    } catch (error) {
-        return 500;
-    }
+    return request.response.status;
+  } catch (error) {
+    return 500;
+  }
+};
+
+export const contactEmail = async (
+  email: string,
+  subject: string,
+  content: string
+) => {
+  try {
+    const request = await mailjet.post("send", { version: "v3.1" }).request({
+      Messages: [
+        {
+          From: {
+            Email: supportEmail,
+            Name: "Fortune Support"
+          },
+          To: [
+            {
+              Email: adminEmail
+            },
+          ],
+          Subject: subject,
+          HTMLPart: content,
+        },
+      ],
+    });
+
+    return request.response.status;
+  } catch (error) {
+    return 500;
+  }
 };
 
 export const createRegisterEmailCotent = async (
-    verifyLink: string,
-    name: string
+  verifyLink: string,
+  name: string
 ) => {
-    const content: string = `
+  const content: string = `
         <html>
           <head>
             <style>
@@ -111,6 +141,6 @@ export const createRegisterEmailCotent = async (
         </html>
         `;
 
-    return content;
+  return content;
 };
 
