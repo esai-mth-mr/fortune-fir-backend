@@ -19,7 +19,7 @@ app.get('*', (req, res) => {
 app.use('/storage', express.static('storage'));
 
 const corsOptions = {
-  origin: baseClientUrl, // Replace with your frontend URL
+  origin: baseClientUrl, 
   methods: ['GET', 'POST', 'DELETE', 'UPDATE'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
   credentials: true, // Include cookies in requests
