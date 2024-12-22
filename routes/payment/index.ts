@@ -10,5 +10,4 @@ router.post("/paypal/pay", authorizeBearerToken, paypalController.pay);
 router.post("/paypal/success", authorizeBearerToken, paypalController.success);
 router.post("/paypal/cancel", authorizeBearerToken, paypalController.cancel);
 
-
 module.exports = router;
