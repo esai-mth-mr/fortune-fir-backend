@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import * as bodyParser from "body-parser"
-import { baseClientUrl } from "../constants";
+import { baseClientUrl, ORIGIN } from "../constants";
 import path from "path";
 
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
@@ -18,15 +18,7 @@ app.get('*', (req, res) => {
 // Serve static files from the 'storage' directory
 app.use('/storage', express.static('storage'));
 
-const corsOptions = {
-  origin: baseClientUrl, 
-  methods: ['GET', 'POST', 'DELETE', 'UPDATE'], // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-  credentials: true, // Include cookies in requests
-};
-
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.use(cors({origin: ORIGIN}))
 // middlewares
 app.use(urlencodedParser) // body parser
 app.use(express.json())
