@@ -1,0 +1,1 @@
+export { sendData } from "./sendData"
