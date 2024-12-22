@@ -8,6 +8,6 @@ router.post("/register", authcontroller.register);
 router.post("/login", authcontroller.login);
 router.post("/verify-Email", authcontroller.Emailverify);
 router.post("/resend-email", authcontroller.resendEmail);
-router.post("/checkUser", authorizeBearerToken, authcontroller.checkUser);
+router.get("/checkUser", authorizeBearerToken, authcontroller.checkUser);
 
 module.exports = router;

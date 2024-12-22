@@ -35,6 +35,7 @@ export const EMAIL_MSGS = {
 export const STORY_MSGG = {
     storyNotFound: "Story not found",
     storyNotAvailable: "Story not available",
+    preStoryNotFound: "Previous Story not found",
 }
 
 export const PAYMENT_MSGS = {
