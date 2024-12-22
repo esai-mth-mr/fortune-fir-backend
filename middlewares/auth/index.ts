@@ -13,6 +13,7 @@ export const verifyToken = (payload = {}, expiresIn = "0.2h") => {
 };
 
 export const authorizeBearerToken = async (request: any, response: any, next: any) => {
+    console.log("-------middleware log")
     try {
         const token = request.headers.authorization && request.headers.authorization.split(' ')[1];
         if (!token) {

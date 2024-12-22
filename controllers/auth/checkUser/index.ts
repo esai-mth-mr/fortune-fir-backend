@@ -5,6 +5,8 @@ import User from "../../../models/User";
 
 
 export const checkUser = async (req: Request, res: Response) => {
+
+    console.log("-------controller log")
     const { userId } = req.body;
     try {
         const user = await User.findById(userId);
