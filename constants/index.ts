@@ -3,7 +3,7 @@ import { regeneration } from "../controllers/story/regeneration";
 export const ORIGIN = "*";
 export const PORT = process.env.PORT || 8000;
 export const supportEmail = "c.m.brilliant34310@gmail.com";
-// export const baseClientUrl = "http://154.205.152.213:5173"; // in dev env
+export const adminEmail = "jamesdavis34310@gmail.com";
 export const baseClientUrl = "https://howlucky2025.com"; // in live env
 
 export const GLOBAL_ERRORS = {
@@ -29,11 +29,13 @@ export const SUCCESS_MSGS = {
 };
 export const EMAIL_MSGS = {
     registerSubject: `Action Required: Verify Email`,
+    contactSubject: "Customer Support Required"
 };
 
 export const STORY_MSGG = {
     storyNotFound: "Story not found",
     storyNotAvailable: "Story not available",
+    preStoryNotFound: "Previous Story not found",
 }
 
 export const PAYMENT_MSGS = {

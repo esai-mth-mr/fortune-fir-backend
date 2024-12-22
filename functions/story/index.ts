@@ -1,7 +1,6 @@
 import ValidDates from "../../models/ValidDates";
 import Payment from "../../models/Payment";
 
-
 const isChrismas = async (): Promise<boolean> => {
     const today = new Date();
     const year = today.getFullYear();
@@ -42,23 +41,21 @@ export const available = async (userId: string, current_round: number, action: s
 };
 
 export const generateUniqueRandomIntArray = (length: number, min: number, max: number): number[] => {
-    // Validate that the range can accommodate the required number of unique values
     const rangeSize = max - min + 1;
     if (rangeSize < length) {
         throw new Error("Range is too small to generate unique numbers");
     }
 
-    // Step 1: Generate numbers in the range [min, max]
-    const numbers = Array.from({ length: rangeSize }, (_, i) => i + min);
+    const result: Set<number> = new Set();
 
-    // Step 2: Shuffle only as much as needed
-    for (let i = 0; i < length; i++) {
-        const j = Math.floor(Math.random() * (rangeSize - i)) + i; // Random index in the unshuffled portion
-        [numbers[i], numbers[j]] = [numbers[j], numbers[i]]; // Swap elements
+    while (result.size < length) {
+        // Generate a random number in the range [min, max]
+        const randomNum = Math.floor(Math.random() * rangeSize) + min;
+        result.add(randomNum); // Set ensures uniqueness
     }
 
-    // Step 3: Return the first `length` numbers (already shuffled)
-    return numbers.slice(0, length);
+    // Convert the Set to an array and return it
+    return Array.from(result);
 };
 
 

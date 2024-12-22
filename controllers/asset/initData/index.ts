@@ -7,11 +7,10 @@ import { generateUniqueRandomIntArray, getAssetRange } from '../../../functions/
 import Log from '../../../models/Log';
 
 export const init = async (req: Request, res: Response): Promise<Response> => {
-
     const { userId } = req.body;
 
     try {
-
+        // Fetch the user and validate the account status
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
@@ -22,69 +21,47 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
         }
 
         const current_round = user.current_status.current_round;
-
-        // Determine the current month
         const story = await Story.findOne({ round: current_round, user_id: userId });
         const month = story ? story.stories[story.stories.length - 1].month + 1 : 1;
 
-        if (current_round == 1) {
+        let assets: any[] = [];
+        let indicesArray: number[] = [];
+        const log = new Log({
+            userId,
+            activity: current_round === 1 ? "getInitAsset" : "getInitAsset-upgradeRound",
+            success: true
+        });
 
-            // Get the total count of assets
-            const count: number = await Asset.countDocuments();
+        // If round is 1, fetch assets directly or using random indices if there are more than 12
+        if (current_round === 1) {
+            const count = await Asset.countDocuments();
 
-            // If there are fewer than or equal to 12 assets, return all assets
             if (count <= 12) {
-                const assets = await Asset.find();
-                return res.status(200).json(assets);
+                assets = await Asset.find();
+            } else {
+                indicesArray = generateUniqueRandomIntArray(12, 0, count - 1);
+                const allAssets = await Asset.find();
+                assets = indicesArray.map(index => allAssets[index]);
+            }
+        } else {
+            // Round > 1: fetch the previous story and determine asset range based on point value
+            const preStory = await Story.findOne({ round: current_round - 1, user_id: userId });
+            if (!preStory) {
+                return res.status(404).json({ error: true, message: STORY_MSGG.preStoryNotFound });
             }
 
+            const point = preStory.stories[preStory.stories.length - 1].point;
+            const { start, end } = getAssetRange(point);
 
-            // Generate 12 unique random indices within the range of available assets
-            const indicesArray: number[] = generateUniqueRandomIntArray(12, 0, count - 1);
+            indicesArray = generateUniqueRandomIntArray(12, start, end);
             const allAssets = await Asset.find();
-            const assets = indicesArray.map(index => allAssets[index]);
-
-            const log = new Log({
-                userId: userId,
-                activity: "getInitAsset",
-                success: true
-            })
-
-            await log.save();
-
-            //const assets = await Asset.find().skip(indicesArray[0]).limit(indicesArray.length); // Skip the first index and limit to 12 assets
-            return res.status(200).json({ error: false, month: month, data: assets });
+            assets = indicesArray.map(index => allAssets[index]);
         }
 
-        // Fetch the previous story to determine the user's point
-        const preStory = await Story.findOne({ round: current_round - 1, user_id: userId });
-        if (!preStory) {
-            return res.status(404).json({ error: true, message: STORY_MSGG.storyNotFound });
-        }
-
-        const point = preStory.stories[preStory.stories.length - 1].point;
-
-        // Determine the range of assets based on the point value
-        const { start, end } = getAssetRange(point);
-
-        // Generate 12 unique random indices within the selected range
-        const indicesArray = generateUniqueRandomIntArray(12, start, end);
-
-        // Fetch assets using the random indices
-        const allAssets = await Asset.find();
-        const assets = indicesArray.map(index => allAssets[index]);
-
-        const log = new Log({
-            userId: userId,
-            activity: "getInitAsset-upgradeRound",
-            success: true
-        })
-
+        // Log the successful fetch of assets
         await log.save();
 
         return res.status(200).json({ error: false, month, data: assets });
-
-
     } catch (err) {
         console.error('Error fetching assets:', err);
         return res.status(500).json({ error: true, message: 'Internal Server Error' });

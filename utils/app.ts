@@ -6,6 +6,14 @@ import path from "path";
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
 const cors = require('cors') // HTTP headers (enable requests)
+
+const { ORIGIN } = require('../constants')
+// initialize app
+const app = express()
+
+// middlewares
+app.use(cors({ origin: ORIGIN }))
+
 const app = express()
 
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -20,11 +28,12 @@ app.use('/storage', express.static('storage'));
 
 app.use(cors({origin: ORIGIN}))
 // middlewares
+
 app.use(urlencodedParser) // body parser
 app.use(express.json())
 
 // // error handling
-app.use((err : Error, req : Request, res : Response, next : NextFunction) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err)
   res.status(500).send()
   next()
