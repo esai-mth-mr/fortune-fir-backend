@@ -1,15 +1,34 @@
 import express, { NextFunction, Request, Response } from "express";
 import * as bodyParser from "body-parser"
+import { baseClientUrl, ORIGIN } from "../constants";
+import path from "path";
 
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
 const cors = require('cors') // HTTP headers (enable requests)
+
 const { ORIGIN } = require('../constants')
 // initialize app
 const app = express()
 
 // middlewares
 app.use(cors({ origin: ORIGIN }))
+
+const app = express()
+
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// Handle other routes and return the main index.html file
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
+// Serve static files from the 'storage' directory
+app.use('/storage', express.static('storage'));
+
+app.use(cors({origin: ORIGIN}))
+// middlewares
+
 app.use(urlencodedParser) // body parser
 app.use(express.json())
 
