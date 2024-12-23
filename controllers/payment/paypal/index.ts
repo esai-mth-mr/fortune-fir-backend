@@ -224,6 +224,7 @@ export const success = async (req: Request, res: Response) => {
                         const payment = new Payment({
                             ...user_state,
                             unit: "USD",
+                            amount: userId.PAY_AMOUNT,
                             created_at: new Date(),
                             timeStamp: new Date()
                         });
