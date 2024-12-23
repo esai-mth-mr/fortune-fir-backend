@@ -4,71 +4,59 @@ import express, { Request, Response } from "express";
 
 const webHookKey = process.env.STRIPE_WEBHOOK_SECRET;
 const secretKey = process.env.STRIPE_SECRET_KEY;
+const priceIds = process.env.STRIPE_PRICE_IDS;
 
-if (!webHookKey) throw new Error("Missing Stripe Webhook Key");
-if (!secretKey) throw new Error("Missing Stripe Secret Key");
+if (!webHookKey) {
+  throw new Error("Missing Stripe Webhook Key");
+}
+if (!priceIds) {
+  throw new Error("Missing Stripe Price IDs");
+}
 
-export const stripewebHook = async (req: Request, res: Response) => {
-  const stripe = new Stripe(secretKey); // Adjust API version if necessary
-  const signature = req.headers["stripe-signature"] as string;
+if (!secretKey) {
+  throw new Error("Missing Stripe Secret Key");
+}
+export const stripewebHook = async (request: Request, response: Response) => {
+  const stripe = new Stripe(secretKey);
 
-  if (!signature) {
-    return res.status(400).send("Missing Stripe signature");
+  let event;
+  if (!request.body) {
+    return;
   }
-
-  let event: Stripe.Event;
 
   try {
-    event = stripe.webhooks.constructEvent(req.body, signature, webHookKey);
-  } catch (error) {
-    console.error("Webhook signature verification failed:", error);
-    return res.status(400).send("Webhook Error");
-  }
-
-  if (event.type !== "checkout.session.completed") {
-    return res.status(200).send("Event type not handled");
-  }
-
-  const session = event.data.object as Stripe.Checkout.Session;
-
-  try {
-    if (session.payment_status === "paid" && session.metadata) {
-      const { user_id, round, action, provider, amount, unit } = session.metadata;
-
-      // Ensure metadata fields exist
-      if (!user_id || !round || !action || !provider || !amount || !unit) {
-        console.error("Missing required metadata fields");
-        return res.status(400).send("Invalid session metadata");
-      }
-
-      // Check if payment already exists
-      const existingPayment = await Payment.findOne({ user_id, round, action });
-      if (existingPayment) {
-        console.log("Payment already exists for user:", user_id);
-        return res.status(200).send("Payment already processed");
-      }
-
-      // Save payment to the database
-      const payment = new Payment({
-        user_id,
-        provider,
-        action,
-        amount: parseFloat(amount),
-        unit,
-        round,
-        created_at: new Date(),
-        timestamp: new Date(),
-      });
-
-      await payment.save();
-      console.log("Payment successfully saved for user:", user_id);
-    } else {
-      console.error("Session metadata missing or payment status invalid");
+    const signature = request.headers["stripe-signature"] as string;
+    if (!signature || typeof signature !== "string") {
+      return;
     }
+    event = stripe.webhooks.constructEvent(request.body, signature, webHookKey);
   } catch (error) {
-    console.error("Error processing payment:", error);
-    return res.status(500).send("Error processing payment");
+    console.log(error);
+    return;
   }
 
-  return res.status(200).send("Webhook handled successfully");
+  if (event.type === "checkout.session.completed") {
+    const session = event.data.object;
+
+    try {
+      // complete your customer's order
+      // e.g. save the purchased product into your database
+      // take the clientReferenceId to map your customer to a
+      if (session.payment_status === "paid" && session.metadata) {
+        const payment = new Payment({
+          user_id: session.metadata.user_id, // Provide fallback value if necessary
+          provider: session.metadata.provider,
+          action: session.metadata.action,
+          amount: session.metadata.amount,
+          unit: session.metadata.unit,
+          round: session.metadata.round,
+          created_at: new Date(),
+          timestamp: new Date(),
+        });
+        await payment.save();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 };
