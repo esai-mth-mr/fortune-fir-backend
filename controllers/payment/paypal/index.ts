@@ -196,18 +196,23 @@ export const success = async (req: Request, res: Response) => {
           }
 
           if (userId !== state.userId) {
+            console.log("-------------00000")
+
             return res
               .status(400)
               .json({ error: true, message: AUTH_ERRORS.rightMethod });
           }
 
           if (user.current_status.current_round !== state?.round) {
+            console.log("-------------11111")
+
             return res
               .status(400)
               .json({ error: true, message: AUTH_ERRORS.rightMethod });
           }
 
           if (state?.provider !== "paypal" || state?.PAY_AMOUNT !== 0.99) {
+            console.log("-------------21222")
             return res
               .status(400)
               .json({ error: true, message: AUTH_ERRORS.rightMethod });
