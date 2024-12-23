@@ -20,9 +20,6 @@ export const stripewebHook = async (request: Request, response: Response) => {
   const stripe = new Stripe(secretKey);
 
   let event;
-  if (!request.body) {
-    return;
-  }
 
   try {
     const signature = request.headers["stripe-signature"] as string;
