@@ -237,7 +237,6 @@ export const success = async (req: Request, res: Response) => {
                         });
 
                     } catch (error) {
-                        console.log("------error--------", error);
                         return res.status(500).json({
                             error: true,
                             message: "Error occured.",
