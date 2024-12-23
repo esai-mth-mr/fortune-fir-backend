@@ -46,9 +46,7 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             indicesArray = generateUniqueRandomIntArray(12, 0, 200);
 
             assets = await Asset.find({ index: { $in: indicesArray } })
-            console.log(assets)
-            // const allAssets = await Asset.find();
-            // assets = indicesArray.map(index => allAssets[index]);
+
         } else {
             // Round > 1: fetch the previous story and determine asset range based on point value
             const preStory = await Story.findOne({ round: current_round - 1, user_id: userId });
@@ -60,10 +58,8 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             const { start, end } = getAssetRange(point);
 
             indicesArray = generateUniqueRandomIntArray(12, start, end);
-            // const allAssets = await Asset.find();
-            // assets = indicesArray.map(index => allAssets[index]);
+
             assets = await Asset.find({ index: { $in: indicesArray } })
-            console.log(assets)
         }
 
         // Log the successful fetch of assets
