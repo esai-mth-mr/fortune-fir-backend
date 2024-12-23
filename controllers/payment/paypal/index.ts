@@ -116,7 +116,7 @@ export const success = async (req: Request, res: Response) => {
   }
 
   // Fetch the payment details
-  paypal.payment.get(paymentId,async (error: any, payment: any) => {
+  paypal.payment.get(paymentId, async (error: any, payment: any) => {
     if (error) {
       console.error(error);
       return res.status(500).send("Error retrieving payment details");
@@ -207,7 +207,17 @@ export const success = async (req: Request, res: Response) => {
               .status(400)
               .json({ error: true, message: AUTH_ERRORS.rightMethod });
           }
-          const payHistory = await Payment({user_id:state.user_id, action: state.action, round.state.round });
+          const payHistory = await Payment.findOne({
+            user_id: state.user_id,
+            action: state.action,
+            round: state.round,
+          });
+          if (payHistory) {
+            return res.status(400).json({
+              error: true,
+              message: "You already have paid.",
+            });
+          }
           const payment = new Payment({
             ...user_state,
             created_at: new Date(),
