@@ -52,7 +52,6 @@ const addMonthStorySchema = Joi.object({
 
 
 export const addMonthStory = async (req: Request<IReq>, res: Response) => {
-
     const { error, value } = addMonthStorySchema.validate(req.body, { abortEarly: false });
     if (error) {
         // Return validation errors to the client
@@ -171,6 +170,8 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
                     asset: assets,
                 });
             }
+
+            story.total_point = total_point;
 
             // Save the updated story document
             await story.save({ session });

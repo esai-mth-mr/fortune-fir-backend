@@ -4,7 +4,6 @@ import { contactEmail } from '../../../functions/email';
 
 export const sendData = async (req: Request, res: Response) => {
     const { email, message } = req.body;
-    console.log(req.body);
     if (!email || !message) {
         return res.status(400).json({ message: AUTH_ERRORS.missingParams });
     }
