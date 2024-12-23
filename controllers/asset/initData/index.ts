@@ -62,6 +62,9 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             assets = await Asset.find({ index: { $in: indicesArray } })
         }
 
+        // Shuffle assets array
+        assets = assets.sort(() => Math.random() - 0.5);
+
         // Log the successful fetch of assets
         await log.save();
 
