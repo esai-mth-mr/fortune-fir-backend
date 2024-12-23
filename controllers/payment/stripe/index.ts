@@ -94,6 +94,7 @@ export const sessionInitiate = async (
 
 export const sessionComplete = async (req: Request, res: Response) => {
   const stripe = new Stripe(secretKey);
+  console.log("----------endpoint test---")
 
   let event;
 
@@ -112,6 +113,7 @@ export const sessionComplete = async (req: Request, res: Response) => {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
 
+    console.log("----------session log-------", session)
     try {
       // complete your customer's order
       // e.g. save the purchased product into your database
