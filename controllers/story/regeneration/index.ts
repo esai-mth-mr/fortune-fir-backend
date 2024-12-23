@@ -75,7 +75,7 @@ export const regeneration = async (req: Request<IReq>, res: Response) => {
     await log.save();
 
     //refind necessary Info
-    const story = await Story.findOne({ userId: user._id, round: current_round });
+    const story = await Story.findOne({ user_id: userId, round: current_round });
     if (!story) {
         return res.status(404).json({ error: true, message: STORY_MSGG.storyNotFound });
     }
