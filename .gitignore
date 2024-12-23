@@ -1,6 +1,8 @@
 # dependencies
 /node_modules
 /storage
+/models/payment.ts
+/dist
 # misc
 .DS_Store
 .env
