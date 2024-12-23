@@ -46,7 +46,7 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             indicesArray = generateUniqueRandomIntArray(12, 0, 200);
 
             assets = await Asset.find({ index: { $in: indicesArray } })
-
+            console.log(assets)
             // const allAssets = await Asset.find();
             // assets = indicesArray.map(index => allAssets[index]);
         } else {
@@ -63,6 +63,7 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             // const allAssets = await Asset.find();
             // assets = indicesArray.map(index => allAssets[index]);
             assets = await Asset.find({ index: { $in: indicesArray } })
+            console.log(assets)
         }
 
         // Log the successful fetch of assets
