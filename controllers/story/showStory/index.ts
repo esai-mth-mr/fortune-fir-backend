@@ -32,7 +32,7 @@ export const showStory = async (req: Request, res: Response) => {
             return res.status(404).json({ error: true, message: STORY_MSGG.storyNotFound });
         }
 
-        if (story.total_story === "") {
+        if (!story.total_story) {
             return res.status(403).json({ error: true, message: STORY_MSGG.errorShowResult });
         }
 
