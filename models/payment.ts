@@ -15,6 +15,7 @@ const paymentSchema: Schema<IPayment> = new Schema({
     amount: { type: Number, required: true },
     unit: { type: String, required: true },
     round: { type: Number, required: true },
+
 }, { timestamps: true });
 
 const Payment = mongoose.model<IPayment>('Payment', paymentSchema);
