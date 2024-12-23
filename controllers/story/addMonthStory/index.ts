@@ -171,6 +171,8 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
                 });
             }
 
+            story.total_point = total_point;
+
             // Save the updated story document
             await story.save({ session });
 
