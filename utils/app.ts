@@ -63,6 +63,7 @@ app.post('/api/payment/stripe/session-complete', express.raw({ type: 'applicatio
           amount: session.metadata.amount,
           unit: session.metadata.unit,
           round: session.metadata.round,
+          created_at: new Date(),
           timestamp: new Date(),
         });
         await payment.save();
