@@ -111,6 +111,7 @@ export const success = async (req: Request, res: Response) => {
   // const {userId} = req.body;
   // const {state} = req.body;
 
+  console.log("----------payerId------", payerId, "---------paymentId------", paymentId)
   if (!payerId || !paymentId) {
     return res.status(400).send("Missing PayerID or PaymentID");
   }
@@ -123,6 +124,8 @@ export const success = async (req: Request, res: Response) => {
     }
     // Extract the amount from the payment object
     const totalAmount = payment.transactions[0].amount.total;
+
+    console.log("-------total Amount------" , totalAmount)
     // Proceed to execute the payment with the retrieved amount
     const execute_payment_json = {
       payer_id: payerId as string,
@@ -141,6 +144,7 @@ export const success = async (req: Request, res: Response) => {
       paymentId,
       execute_payment_json,
       async (error: any, payment: any) => {
+        
         if (error) {
           switch (error.response.name) {
             case "INSUFFICIENT_FUNDS":
@@ -171,6 +175,7 @@ export const success = async (req: Request, res: Response) => {
                 .send("Payment execution failed: Unknown error");
           }
         }
+        
         const stateString = req.query.state as string;
         if (!stateString) {
           const user_state = JSON.parse(state);
