@@ -83,7 +83,7 @@ export const createRegisterEmailCotent = async (
                 color: #333;
               }
               .container {
-                width: 80%;
+                width: 600px;
                 margin: 0 auto;
                 padding: 20px;
                 border: 1px solid #ddd;
@@ -91,7 +91,7 @@ export const createRegisterEmailCotent = async (
                 background-color: #f9f9f9;
               }
               .header, .footer {
-                background-color: #0044cc;
+                background-color: #e4111f;
                 color: white;
                 padding: 10px 20px;
                 border-radius: 10px 10px 0 0;
@@ -108,7 +108,7 @@ export const createRegisterEmailCotent = async (
                 padding: 10px 20px;
                 margin: 20px 0;
                 color: white !important;
-                background-color: #28a745;
+                background-color: #e21010;
                 text-decoration: none;
                 border-radius: 5px;
               }
@@ -120,21 +120,21 @@ export const createRegisterEmailCotent = async (
           <body>
             <div class="container">
               <div class="header">
-                <h2>Fortune - Verify Your Email</h2>
+                <h2>How Lucky 2025 - Verify Your Email</h2>
               </div>
               <div class="content">
                 <p>Hello ${name},</p>
-                <p>Thank you for register in our platform - Fortune</p>
+                <p>Thank you for register in our platform - HowLucky2025</p>
                 <p>To use our service, you should verify your email.</p>
                 <p>Please use link below or click Verify button.</p>
                 <p>${verifyLink}</p>
                 <a href="${verifyLink}" target="_blank" class="button">Verify</a>
                 <p>If you have any questions or need assistance, please contact our support team.</p>
                 <p>Thank you,</p>
-                <p>The Fortune Team</p>
+                <p>The HowLucky2025 Team</p>
               </div>
               <div class="footer">
-                <p>&copy; 2024 Fortune Team</p>
+                <p>&copy; 2024 - 2025 HowLucky2025 Team</p>
               </div>
             </div>
           </body>
