@@ -7,14 +7,12 @@ const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
 const cors = require('cors') // HTTP headers (enable requests)
 
-const { ORIGIN } = require('../constants')
 // initialize app
 const app = express()
 
 // middlewares
 app.use(cors({ origin: ORIGIN }))
 
-const app = express()
 
 app.use(express.static(path.join(__dirname, '../dist')));
 
