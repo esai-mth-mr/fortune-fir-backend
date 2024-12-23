@@ -106,6 +106,7 @@ export const sessionComplete = async (req: Request, res: Response) => {
     }
     event = stripe.webhooks.constructEvent(req.body, JSON.stringify(signature) , webHookKey);
   } catch (error) {
+    console.log("-----------error in signation--------")
     console.log(error);
     return;
   }
