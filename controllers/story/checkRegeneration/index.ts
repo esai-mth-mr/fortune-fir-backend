@@ -61,10 +61,8 @@ export const checkRegeneration = async (req: Request<IReq>, res: Response) => {
         });
         await log.save();
 
-        return res.status(404).json({ error: true, payment: false });
+        return res.status(200).json({ error: false, payment: false });
     }
-
-
 
     return res.status(200).json({ error: false, payment: true });
 }
