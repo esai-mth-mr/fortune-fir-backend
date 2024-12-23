@@ -41,15 +41,12 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
 
         // If round is 1, fetch assets directly or using random indices if there are more than 12
         if (current_round === 1) {
-            const count = await Asset.countDocuments();
+            // const count = await Asset.countDocuments();
 
-            if (count <= 12) {
-                assets = await Asset.find();
-            } else {
-                indicesArray = generateUniqueRandomIntArray(12, 0, count - 1);
-                const allAssets = await Asset.find();
-                assets = indicesArray.map(index => allAssets[index]);
-            }
+            indicesArray = generateUniqueRandomIntArray(12, 0, 200);
+
+            assets = await Asset.find({ index: { $in: indicesArray } })
+
         } else {
             // Round > 1: fetch the previous story and determine asset range based on point value
             const preStory = await Story.findOne({ round: current_round - 1, user_id: userId });
@@ -61,8 +58,8 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             const { start, end } = getAssetRange(point);
 
             indicesArray = generateUniqueRandomIntArray(12, start, end);
-            const allAssets = await Asset.find();
-            assets = indicesArray.map(index => allAssets[index]);
+
+            assets = await Asset.find({ index: { $in: indicesArray } })
         }
 
         // Log the successful fetch of assets

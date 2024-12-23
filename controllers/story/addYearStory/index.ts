@@ -14,10 +14,11 @@ interface DataType {
 }
 
 interface IReq {
-    userId: string, total_point: number
+    userId: string;
+    total_point: number;
 }
 
-//Define a Joi Schema for input validation
+// Define a Joi schema for input validation
 const addYearStorySchema = Joi.object({
     userId: Joi.string().required().messages({
         "string.base": "User ID must be a string",
@@ -26,104 +27,114 @@ const addYearStorySchema = Joi.object({
     total_point: Joi.number().required().messages({
         "number.base": "Total point must be a number",
         "any.required": "Total point is required",
-    })
-})
+    }),
+});
 
 export const addYearStory = async (req: Request<IReq>, res: Response) => {
-    const { error, value } = addYearStorySchema.validate(req.body);
+    const { error, value } = addYearStorySchema.validate(req.body, { abortEarly: false });
     if (error) {
-        return res.status(400).json({ error: true, message: error.details.map(err => err.message) });
+        return res.status(400).json({
+            error: true,
+            message: error.details.map((err) => err.message),
+        });
     }
-    // Extract userId and total_point from the request body
+
     const { userId, total_point } = value;
 
-    // Validate user existence
-    const user = await User.findById(userId);
-    if (!user) {
-        return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
-    }
-
-
-    if (!user.accountStatus) {
-        return res.status(403).json({ error: true, action: "verify", message: AUTH_ERRORS.activateAccountRequired });
-    }
-
-
-    const session = await mongoose.startSession();
-
     try {
-        session.startTransaction();
+        // Fetch user and their story data in parallel
+        const [user, storyData] = await Promise.all([
+            User.findById(userId)
+                .select("accountStatus current_status.dob current_status.current_round current_status.round_status gender job")
+                .lean(),
+            Story.findOne({ user_id: userId }).select("stories total_story total_point round").lean(),
+        ]);
 
-        // Set user's current status to "complete"
-        if (user.current_status.round_status !== "complete") {
-            // Update round status and save the user in a single step
-            await Promise.all([
-                User.updateOne(
-                    { _id: user._id },
-                    { $set: { "current_status.round_status": "complete" } }
-                ).session(session),
-                // Log the status update
-                new Log({
-                    userId: user._id,
-                    activity: "story_Status",
-                    success: true,
-                    reason: "complete",
-                }).save({ session }),
-            ]);
+        // Validate user existence
+        if (!user) {
+            return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
         }
 
-        // Get the current round
-        const current_round = user.current_status.current_round;
+        // Validate user account status
+        if (!user.accountStatus) {
+            return res.status(403).json({
+                error: true,
+                action: "verify",
+                message: AUTH_ERRORS.activateAccountRequired,
+            });
+        }
 
-        // Fetch stories for the user and current round
-        const storyData = await Story.findOne({ round: current_round, user_id: user._id }).session(session);
+        // Check if the story data exists
         if (!storyData) {
             return res.status(404).json({ error: true, message: "Stories not found" });
         }
 
-        // Prepare input for yearStory
-        const input: DataType[] = storyData.stories.map((section: ISection) => ({
-            month: section.month,
-            story: section.story,
-        }));
+        const session = await mongoose.startSession();
+        session.startTransaction();
 
-        // Construct user prompt
-        const age = new Date().getFullYear() - new Date(user.dob).getFullYear();
-        const gender = user.gender === "male" ? "man" : "woman";
-        const job = user.job;
-        const userPrompt = `I am ${age} years old. I am a ${gender} and work as a ${job}.`;
+        try {
+            // Update the user's round status if not already "complete"
+            if (user.current_status.round_status !== "complete") {
+                await Promise.all([
+                    User.updateOne(
+                        { _id: userId },
+                        { $set: { "current_status.round_status": "complete" } }
+                    ).session(session),
+                    new Log({
+                        userId: userId,
+                        activity: "story_Status",
+                        success: true,
+                        reason: "complete",
+                    }).save({ session }),
+                ]);
+            }
 
-        // Generate the year story using OpenAI
-        const result_txt = await yearStory(input, userPrompt);
+            // Prepare input for yearStory
+            const input: DataType[] = storyData.stories.map((section: ISection) => ({
+                month: section.month,
+                story: section.story,
+            }));
 
-        if (result_txt.error) {
+            // Construct user prompt
+            const age = new Date().getFullYear() - new Date(user.dob).getFullYear();
+            const gender = user.gender === "male" ? "man" : "woman";
+            const job = user.job;
+            const userPrompt = `I am ${age} years old. I am a ${gender} and work as a ${job}.`;
+
+            // Generate the year story using OpenAI
+            const result_txt = await yearStory(input, userPrompt);
+            if (result_txt.error) {
+                await session.abortTransaction();
+                return res.status(500).json({ error: true, message: result_txt.message });
+            }
+
+            const story_txt = result_txt.message;
+
+            // Update the story data
+            await Promise.all([
+                Story.updateOne(
+                    { _id: storyData._id },
+                    { $set: { total_story: story_txt, total_point: total_point } }
+                ).session(session),
+                new Log({
+                    userId: userId,
+                    activity: "addTotalStory",
+                    success: true,
+                }).save({ session }),
+            ]);
+
+            // Commit the transaction
+            await session.commitTransaction();
+            res.status(200).json({ error: false, message: "Successfully generated total story" });
+        } catch (err) {
+            // Rollback the transaction on error
             await session.abortTransaction();
-            return res.status(500).json({ error: true, message: result_txt.message });
+            throw err;
+        } finally {
+            session.endSession();
         }
-
-        const story_txt = result_txt.message;
-
-        // Update the story data
-        storyData.total_story = story_txt;
-        storyData.total_point = total_point;
-        await storyData.save({ session });
-
-        const log = new Log({
-            userId: user._id,
-            activity: "addTotalStory",
-            success: true,
-        });
-        await log.save({ session });
-
-        // Commit the transaction
-        await session.commitTransaction();
-        res.status(200).json({ error: false, message: "Successfully generated total story" });
-    } catch (error: any) {
-        // Rollback the transaction and handle errors
-        await session.abortTransaction();
-        console.error("Error in addYearStory:", error);
-        res.status(500).json({ error: true, message: error.message || "An unknown error occurred" });
-    } finally {
-        session.endSession();
+    } catch (err: any) {
+        console.error("Error in addYearStory:", err);
+        res.status(500).json({ error: true, message: err.message || "An unknown error occurred" });
     }
 };
