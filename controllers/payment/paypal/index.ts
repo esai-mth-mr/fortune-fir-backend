@@ -214,7 +214,7 @@ export const success = async (req: Request, res: Response) => {
           });
           if (payHistory) {
             return res.status(400).json({
-              error: true,
+              error: false,
               message: "You already have paid.",
             });
           }
