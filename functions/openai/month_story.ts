@@ -1,20 +1,19 @@
 import { sendMessage } from "./send_message";
 import { ITransferStoryInput } from "../../interfaces";
 
-export const monthStory = async (data: ITransferStoryInput[], user: string) => {
+export const monthStory = async (data: ITransferStoryInput, user: string) => {
     try {
         // Construct the system prompt
         const systemPrompt = `
-I am developing a simple luck prediction game. In our betting, the user selects items like below:
-${data.map((each) => `
+I am developing a simple luck prediction game. In our betting, the user selects item like below:
+
 -----------------------------------
-Item Name: ${each.name}
-Lucky Value: ${each.luck}
-Description: ${each.description}
------------------------------------`
-        ).join("")}
+Item Name: ${data.name}
+Lucky Value: ${data.luck}
+Description: ${data.description}
+-----------------------------------
     
-Based on these information, you should predict the user's luck for a 1-month period. 
+Based on this information, you should predict the user's luck for a 1-month period. 
 No need any description. Make it funny, humorous or even miserable, nervous, or dead according to the lucky value. 
 It is important to make it lively and humorously. Finally, provide the user with tips. 
 Here are example output.

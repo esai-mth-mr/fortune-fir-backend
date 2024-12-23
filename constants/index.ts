@@ -45,3 +45,18 @@ export const STORY_MSGG = {
 export const PAYMENT_MSGS = {
   action: { regeneration: "regeneration", preview: "preview" },
 };
+
+export const MONTH_LABEL = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];

@@ -2,9 +2,7 @@ import { Request, Response } from 'express';
 import User from '../../../models/User';
 import Asset from '../../../models/Asset';
 import { AUTH_ERRORS, STORY_MSGG, PAYMENT_MSGS } from '../../../constants';
-import { available } from '../../../functions/story';
 import { generateUniqueRandomIntArray } from '../../../functions/story';
-import Log from '../../../models/Log';
 import Story from '../../../models/Story';
 import Joi from 'joi';
 
@@ -66,13 +64,6 @@ export const regeneration = async (req: Request<IReq>, res: Response) => {
     const allAssets = await Asset.find(); // Fetch all documents
     const assets = indicesArray.map(index => allAssets[index]); // Select the required indices
 
-    const log = new Log({
-        userId: user._id,
-        activity: "regenerate",
-        success: true,
-    });
-
-    await log.save();
 
     //refind necessary Info
     const story = await Story.findOne({ user_id: userId, round: current_round });
