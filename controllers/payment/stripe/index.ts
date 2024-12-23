@@ -99,15 +99,15 @@ export const sessionComplete = async (req: Request, res: Response) => {
   let event;
 
   try {
-    const signature = req.headers["stripe-signature"];
+    const signature = req.headers["stripe-signature"] as string;
     if (!signature || typeof signature !== "string") {
-      return res
-        .status(400)
-        .send("Webhook Error: Missing or invalid Stripe signature.");
+      console.log("-----------signature error----------")
+      return;
     }
     event = stripe.webhooks.constructEvent(req.body, signature, webHookKey);
   } catch (error) {
-    return res.status(400).send(`Webhook Error: ${error}`); //error = === error.message
+    console.log(error);
+    return;
   }
 
   if (event.type === "checkout.session.completed") {
