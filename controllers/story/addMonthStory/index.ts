@@ -80,13 +80,14 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
             "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December",
         ];
-
+        console.log(preStory)
         // Validate story progression
         if (!preStory) {
             if (month !== 1) {
                 return res.status(400).json({ error: true, message: "You must try January" });
             }
-        } else if (preStory.stories.length !== month - 1) {
+
+        } else if (preStory?.stories.length !== month - 1) {
             return res.status(400).json({
                 error: true,
                 message: `You must try ${month_label[preStory.stories.length]}`,
