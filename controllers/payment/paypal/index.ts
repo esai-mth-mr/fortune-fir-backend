@@ -106,13 +106,8 @@ export const pay = async (
 };
 
 export const success = async (req: Request, res: Response) => {
-  const { payerId, paymentId, userId, state=JSON.parse(req.body.state) } = req.body;
-  // const {paymentId} = req.body;
-  // const {userId} = req.body;
-  // const {state} = req.body;
+  const { payerId, paymentId, userId, state } = req.body;
 
-  console.log("------state-------", state)
-  console.log("----------payerId------", payerId, "---------paymentId------", paymentId)
   if (!payerId || !paymentId) {
     return res.status(400).send("Missing PayerID or PaymentID");
   }
@@ -126,7 +121,6 @@ export const success = async (req: Request, res: Response) => {
     // Extract the amount from the payment object
     const totalAmount = payment.transactions[0].amount.total;
 
-    console.log("-------total Amount------" , totalAmount)
     // Proceed to execute the payment with the retrieved amount
     const execute_payment_json = {
       payer_id: payerId as string,
@@ -196,10 +190,10 @@ export const success = async (req: Request, res: Response) => {
             });
           }
 
-          if (userId !== state.user_id) {
+          if (userId !== user_state.user_id) {
 
             console.log("-------userId from token" , userId);
-            console.log("-------userId state" , state.user_id);
+            console.log("-------userId state" , user_state.user_id);
 
             console.log("-------------00000")
 
@@ -208,7 +202,7 @@ export const success = async (req: Request, res: Response) => {
               .json({ error: true, message: AUTH_ERRORS.rightMethod });
           }
 
-          if (user.current_status.current_round !== state?.round) {
+          if (user.current_status.current_round !== user_state?.round) {
             console.log("-------------11111")
 
             return res
@@ -216,16 +210,16 @@ export const success = async (req: Request, res: Response) => {
               .json({ error: true, message: AUTH_ERRORS.rightMethod });
           }
 
-          if (state?.provider !== "paypal" || state?.PAY_AMOUNT !== 0.99) {
+          if (user_state?.provider !== "paypal" || user_state?.PAY_AMOUNT !== 0.99) {
             console.log("-------------21222")
             return res
               .status(400)
               .json({ error: true, message: AUTH_ERRORS.rightMethod });
           }
           const payHistory = await Payment.findOne({
-            user_id: state.user_id,
-            action: state.action,
-            round: state.round,
+            user_id: user_state.user_id,
+            action: user_state.action,
+            round: user_state.round,
           });
           if (payHistory) {
             return res.status(400).json({
