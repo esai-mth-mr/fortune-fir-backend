@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
 import Story from "../../../models/Story";
+import Log from "../../../models/Log";
 import User from "../../../models/User";
 import Asset from "../../../models/Asset";
 import { monthStory } from "../../../functions/openai/month_story";
+import mongoose from "mongoose";
 import { AUTH_ERRORS } from "../../../constants";
 import { ITransferStoryInput } from "../../../interfaces";
 import Joi from "joi";
@@ -35,7 +37,7 @@ const addMonthStorySchema = Joi.object({
         .required()
         .messages({
             "array.base": "Assets must be an array of numbers",
-            "array.length": "Assets must contain exactly 1 item",
+            "array.length": "Assets must contain exactly 1 items",
             "array.includes": "Each asset must be a number between 0 and 200",
             "any.required": "Assets are required",
         }),
@@ -65,55 +67,58 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
             message: error.details.map((err) => err.message),
         });
     }
-    const { point, total_point, asset, month, userId } = value;
+    const { point, total_point, assets, month, userId } = value;
 
-    try {
-        // Validate user existence
-        const user = await User.findById(userId);
-        if (!user) {
+    // Validate user existence
+    const user = await User.findById(userId);
+    if (!user) {
+        return res
+            .status(404)
+            .json({ error: true, message: AUTH_ERRORS.accountNotFound });
+    }
+
+    if (!user.accountStatus) {
+        return res.status(403).json({
+            error: true,
+            action: "verify",
+            message: AUTH_ERRORS.activateAccountRequired,
+        });
+    }
+
+    const current_round = user.current_status.current_round;
+
+    const preStory = await Story.findOne({
+        round: current_round,
+        user_id: userId,
+    });
+
+    if (!preStory) {
+        if (month !== 1)
             return res
-                .status(404)
-                .json({ error: true, message: AUTH_ERRORS.accountNotFound });
-        }
-
-        if (!user.accountStatus) {
-            return res.status(403).json({
-                error: true,
-                action: "verify",
-                message: AUTH_ERRORS.activateAccountRequired,
-            });
-        }
-
-        const current_round = user.current_status.current_round;
-
-        const preStory = await Story.findOne({
-            round: current_round,
-            user_id: userId,
+                .status(400)
+                .json({ error: true, message: "You must try January" });
+    } else if (preStory.stories.length !== month - 1)
+        return res.status(400).json({
+            error: true,
+            message: `You must try ${MONTH_LABEL[preStory.stories.length]}`,
         });
 
-        if (!preStory) {
-            if (month !== 1)
-                return res
-                    .status(400)
-                    .json({ error: true, message: "You must try January" });
-        } else if (preStory.stories.length !== month - 1)
-            return res.status(400).json({
-                error: true,
-                message: `You must try ${MONTH_LABEL[preStory.stories.length]}`,
-            });
+    try {
+        // Fetch all required assets in a single query
+        const assetDocuments = await Asset.find({ index: { $in: assets } });
 
-        // Fetch required asset in a single query
-        const assetDocument = await Asset.findOne({ index: asset });
-        if (!assetDocument) {
-            return res.status(404).json({ error: true, message: "Asset not found" });
+        // Check if all assets were found
+        if (assetDocuments.length !== assets.length) {
+            throw new Error("Not all assets were found");
         }
 
         // Map the fetched assets into the desired format for the story input
         const storyInput: ITransferStoryInput = {
-            name: asset.name,
-            luck: asset.luck,
-            description: asset.description,
+            name: assetDocuments[0].name,
+            luck: assetDocuments[0].luck,
+            description: assetDocuments[0].description,
         };
+
         // Construct the user prompt
         const age = new Date().getFullYear() - new Date(user.dob).getFullYear();
         const gender = user.gender === "male" ? "man" : "woman";
@@ -134,7 +139,6 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
             round: current_round,
             user_id: userId,
         });
-
         if (!story) {
             // Create a new story document if it doesn't exist
             story = new Story({
@@ -146,22 +150,31 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
                         month: month,
                         point: point,
                         story: story_txt,
-                        asset: [asset],
+                        asset: assets,
                     },
                 ],
             });
 
             // Save the new story document
             await story.save();
+
+            // Log the activity
+            await new Log({
+                userId: userId,
+                activity: "addNewStory",
+                success: true,
+                reason: "Story created successfully",
+            }).save();
         } else {
             // Check if a story for the given month already exists
+
             const existingMonthStory = story.stories.find((s) => s.month === month);
 
             if (existingMonthStory) {
                 // Update the existing story for the given month
                 existingMonthStory.point = point;
                 existingMonthStory.story = story_txt;
-                existingMonthStory.asset = asset;
+                existingMonthStory.asset = assets;
             } else {
                 // Add a new story section for the month
 
@@ -169,19 +182,24 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
                     month: month,
                     point: point,
                     story: story_txt,
-                    asset: [asset],
+                    asset: assets,
                 });
             }
 
             story.total_point = total_point;
+
             // Save the updated story document
+
             await story.save();
 
-            res.status(201).json({
-                error: false,
-                message: "Successfully created or updated month story!",
-            });
         }
+
+        // Commit the transaction
+
+        res.status(201).json({
+            error: false,
+            message: "Successfully created or updated month story!",
+        });
     } catch (error: any) {
         // Rollback the transaction and handle errors
 
