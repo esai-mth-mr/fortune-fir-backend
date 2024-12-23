@@ -13,7 +13,7 @@ if (!clientId || !clientSecret) {
 }
 
 paypal.configure({
-    mode: "live", // Use 'live' for production
+    mode: "sandbox", // Use 'live' for production
     client_id: clientId,
     client_secret: clientSecret,
 });
