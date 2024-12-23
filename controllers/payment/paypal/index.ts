@@ -223,6 +223,7 @@ export const success = async (req: Request, res: Response) => {
                     try {
                         const payment = new Payment({
                             ...user_state,
+                            unit: "USD",
                             created_at: new Date(),
                             timeStamp: new Date()
                         });
