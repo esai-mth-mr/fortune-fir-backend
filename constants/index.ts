@@ -37,6 +37,8 @@ export const STORY_MSGG = {
     storyNotFound: "Story not found",
     storyNotAvailable: "Story not available",
     preStoryNotFound: "Previous Story not found",
+    errorShowResult: "You have to complete every months.",
+    storyNotFoundForMonth: "Story for month doesn't exist."
 }
 
 export const PAYMENT_MSGS = {
