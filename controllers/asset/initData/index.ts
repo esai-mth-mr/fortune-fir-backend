@@ -22,7 +22,14 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
 
         const current_round = user.current_status.current_round;
         const story = await Story.findOne({ round: current_round, user_id: userId });
-        const month = story ? story.stories[story.stories.length - 1].month + 1 : 1;
+        let month = story ? story.stories[story.stories.length - 1].month + 1 : 1;
+        if (month === 13 && story?.total_story !== "") {
+            return res.status(403).json({ error: true, message: "You have already processed all months" });
+        }
+        else if (month === 13) {
+            month = 12;
+        }
+
         const total_point = story ? story.total_point : 0;
         let assets: any[] = [];
         let indicesArray: number[] = [];
