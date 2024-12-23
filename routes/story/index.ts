@@ -8,6 +8,7 @@ router.post("/add-month-story", authorizeBearerToken, storyController.addMonthSt
 router.post("/add-year-story", authorizeBearerToken, storyController.addYearStory);
 router.post("/show-story", authorizeBearerToken, storyController.showStory);
 router.post("/regeneration", authorizeBearerToken, storyController.regeneration);
+router.post("/check-regeneration", authorizeBearerToken, storyController.regeneration);
 router.post("/upgradeRound", authorizeBearerToken, storyController.upgradeRound);
 
 module.exports = router;
