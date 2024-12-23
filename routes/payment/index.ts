@@ -2,9 +2,10 @@ import express from "express";
 import { authorizeBearerToken } from "../../middlewares/auth";
 import * as stripeController from "../../controllers/payment/stripe";
 import * as paypalController from "../../controllers/payment";
+import bodyParser from "body-parser";
 const router = express.Router();
 
-router.post("/stripe/session-complete", stripeController.sessionComplete);
+router.post("/stripe/session-complete", bodyParser.raw({ type: "application/json" }), stripeController.sessionComplete);
 router.post(
   "/stripe/session-initiate",
   authorizeBearerToken,
