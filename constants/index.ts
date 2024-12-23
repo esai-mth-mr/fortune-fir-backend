@@ -4,6 +4,7 @@ export const ORIGIN = "*";
 export const PORT = process.env.PORT || 8000;
 export const supportEmail = "c.m.brilliant34310@gmail.com";
 export const adminEmail = "jamesdavis34310@gmail.com";
+// export const adminEmail = "t56200840@gmail.com";
 export const baseClientUrl = "http://localhost:5173"; // in dev env
 
 export const GLOBAL_ERRORS = {
@@ -36,6 +37,8 @@ export const STORY_MSGG = {
     storyNotFound: "Story not found",
     storyNotAvailable: "Story not available",
     preStoryNotFound: "Previous Story not found",
+    errorShowResult: "You have to complete every months.",
+    storyNotFoundForMonth: "Story for month doesn't exist."
 }
 
 export const PAYMENT_MSGS = {
