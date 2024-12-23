@@ -128,12 +128,11 @@ export const sessionComplete = async (req: Request, res: Response) => {
           round: session.metadata.round,
         });
         await payment.save();
-        return res.status(200).send({ received: true });
       }
     } catch (error) {
-      return res.status(404).send({ error, session });
+      console.log(error)
     }
   } else {
-    return res.status(404).send({ error: "Invalid event type" });
+    console.log("---------------")
   }
 };
