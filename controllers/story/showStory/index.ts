@@ -48,6 +48,7 @@ export const showStory = async (req: Request, res: Response) => {
             responseData = {
                 month: 13,
                 point: story.total_point,
+                year_point: story.total_point,
                 ...(isPaymentAvailable && { story: story.total_story }),
             };
         } else {
@@ -61,6 +62,7 @@ export const showStory = async (req: Request, res: Response) => {
             responseData = {
                 month: specificStory.month,
                 point: specificStory.point,
+                year_point: story.total_point,
                 ...(isPaymentAvailable && { story: specificStory.story }),
             };
         }
