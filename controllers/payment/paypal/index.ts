@@ -106,11 +106,12 @@ export const pay = async (
 };
 
 export const success = async (req: Request, res: Response) => {
-  const { payerId, paymentId, userId, state } = req.body;
+  const { payerId, paymentId, userId, state=JSON.parse(req.body.state) } = req.body;
   // const {paymentId} = req.body;
   // const {userId} = req.body;
   // const {state} = req.body;
 
+  console.log("------state-------", state)
   console.log("----------payerId------", payerId, "---------paymentId------", paymentId)
   if (!payerId || !paymentId) {
     return res.status(400).send("Missing PayerID or PaymentID");
