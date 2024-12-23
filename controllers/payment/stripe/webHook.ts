@@ -40,6 +40,12 @@ export const stripewebHook = async (request: Request, response: Response) => {
       // e.g. save the purchased product into your database
       // take the clientReferenceId to map your customer to a
       if (session.payment_status === "paid" && session.metadata) {
+        let paymentCheck = await Payment.findOne({
+          user_id: session.metadata.user_id,
+          round: session.metadata.round,
+          action: session.metadata.action,
+        });
+        if (paymentCheck) return console.log("Payment already exists");
         const payment = new Payment({
           user_id: session.metadata.user_id, // Provide fallback value if necessary
           provider: session.metadata.provider,
