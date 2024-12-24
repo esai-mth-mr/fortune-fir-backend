@@ -33,22 +33,15 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
         let assets: any[] = [];
         let indicesArray: number[] = [];
 
-        // If round is 1, fetch assets directly or using random indices if there are more than 12
         if (current_round === 1) {
-            // const count = await Asset.countDocuments();
+            // Round 1: Fetch assets using random indices
+            const goodArray = generateShuffledArray(6, 0, 100);
+            const badArray = generateShuffledArray(6, 101, 200);
 
-            let goodArray = generateUniqueRandomIntArray(6, 0, 100);
-            let badArray = generateUniqueRandomIntArray(6, 101, 200);
-            goodArray = goodArray.sort(() => Math.random() - 0.5);
-            badArray = badArray.sort(() => Math.random() - 0.5);
-            indicesArray = indicesArray.concat(goodArray);
-            indicesArray = indicesArray.concat(badArray);
-            //indicesArray = indicesArray.sort(() => Math.random() - 0.5);
-
-            assets = await Asset.find({ index: { $in: indicesArray } })
-
+            indicesArray = [...goodArray, ...badArray];
+            assets = await Asset.find({ index: { $in: indicesArray } });
         } else {
-            // Round > 1: fetch the previous story and determine asset range based on point value
+            // Round > 1: Fetch previous story and determine asset range
             const preStory = await Story.findOne({ round: current_round - 1, user_id: userId });
             if (!preStory) {
                 return res.status(404).json({ message: STORY_MSGG.preStoryNotFound });
@@ -57,15 +50,12 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             const point = preStory.stories[preStory.stories.length - 1].point;
             const { start, end } = getAssetRange(point);
 
+            const midPoint = Math.floor((end - start + 1) / 2);
+            const goodArray = generateShuffledArray(6, start, midPoint);
+            const badArray = generateShuffledArray(6, midPoint + 1, end);
 
-            let goodArray = generateUniqueRandomIntArray(6, start, (end - start + 1) / 2);
-            let badArray = generateUniqueRandomIntArray(6, (end - start + 1) / 2, end);
-            goodArray = goodArray.sort(() => Math.random() - 0.5);
-            badArray = badArray.sort(() => Math.random() - 0.5);
-            indicesArray = indicesArray.concat(goodArray);
-            indicesArray = indicesArray.concat(badArray);
-
-            assets = await Asset.find({ index: { $in: indicesArray } })
+            indicesArray = [...goodArray, ...badArray];
+            assets = await Asset.find({ index: { $in: indicesArray } });
         }
 
         return res.status(200).json({ month, year_point: total_point, data: assets });
@@ -73,4 +63,10 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
         console.error('Error fetching assets:', err);
         return res.status(500).json({ message: 'Internal Server Error' });
     }
+};
+
+
+const generateShuffledArray = (count: number, start: number, end: number): number[] => {
+    const array = generateUniqueRandomIntArray(count, start, end);
+    return array.sort(() => Math.random() - 0.5);
 };

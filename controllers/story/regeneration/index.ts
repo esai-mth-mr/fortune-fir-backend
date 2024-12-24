@@ -49,21 +49,22 @@ export const regeneration = async (req: Request<IReq>, res: Response) => {
     const current_round = user.current_status.current_round;
 
     // Get the total count of assets
-    const count: number = await Asset.countDocuments();
+    // const count: number = await Asset.countDocuments();
 
     // If there are fewer than or equal to 12 assets, return all assets
-    if (count <= 12) {
-        const assets = await Asset.find();
-        return res.status(200).json({ error: false, data: assets });
-    }
+    // if (count <= 12) {
+    //     const assets = await Asset.find();
+    //     return res.status(200).json({ error: false, data: assets });
+    // }
 
     // Generate 12 unique random indices within the range of available assets
-    const indicesArray: number[] = generateUniqueRandomIntArray(12, 0, count - 1);
+    const indicesArray: number[] = generateUniqueRandomIntArray(12, 0, 200);
 
     // Fetch assets using random indices (with skip and limit)
-    const allAssets = await Asset.find(); // Fetch all documents
-    const assets = indicesArray.map(index => allAssets[index]); // Select the required indices
+    // const allAssets = await Asset.find(); // Fetch all documents
+    // const assets = indicesArray.map(index => allAssets[index]); // Select the required indices
 
+    const assets = await Asset.find({ index: { $in: indicesArray } });
 
     //refind necessary Info
     const story = await Story.findOne({ user_id: userId, round: current_round });
@@ -73,7 +74,6 @@ export const regeneration = async (req: Request<IReq>, res: Response) => {
 
     const total_point = story.total_point;
     // const point = story.stories[month - 1].point;
-
 
     return res.status(200).json({ error: false, month, year_point: total_point, data: assets });
 }

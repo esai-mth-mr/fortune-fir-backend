@@ -1,22 +1,13 @@
 import { Request, Response } from "express";
 import Story from "../../../models/Story";
-import Log from "../../../models/Log";
 import User from "../../../models/User";
 import Asset from "../../../models/Asset";
 import { monthStory } from "../../../functions/openai/month_story";
-import mongoose from "mongoose";
 import { AUTH_ERRORS } from "../../../constants";
-import { ITransferStoryInput } from "../../../interfaces";
+import { IAddMonthReq, ITransferStoryInput } from "../../../interfaces";
 import Joi from "joi";
 import { MONTH_LABEL } from "../../../constants";
 
-interface IReq {
-    point: number;
-    total_point: number;
-    assets: number[];
-    month: number;
-    userId: string;
-}
 
 // Define a Joi schema for input validation
 
@@ -55,7 +46,7 @@ const addMonthStorySchema = Joi.object({
     }),
 });
 
-export const addMonthStory = async (req: Request<IReq>, res: Response) => {
+export const addMonthStory = async (req: Request<IAddMonthReq>, res: Response) => {
     const { error, value } = addMonthStorySchema.validate(req.body, {
         abortEarly: false,
     });
@@ -93,15 +84,23 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
     });
 
     if (!preStory) {
-        if (month !== 1)
-            return res
-                .status(400)
-                .json({ error: true, message: "You must try January" });
-    } else if (preStory.stories.length !== month - 1)
-        return res.status(400).json({
-            error: true,
-            message: `You must try ${MONTH_LABEL[preStory.stories.length]}`,
-        });
+        // Ensure the user starts with January (month 1)
+        if (month !== 1) {
+            return res.status(400).json({
+                error: true,
+                message: "You must try January",
+            });
+        }
+    } else {
+        // Validate if the user's story progression matches the current month
+        const expectedMonth = preStory.stories.length + 1;
+        if (month !== expectedMonth) {
+            return res.status(400).json({
+                error: true,
+                message: `You must try ${MONTH_LABEL[preStory.stories.length]}`,
+            });
+        }
+    }
 
     try {
         // Fetch all required assets in a single query
@@ -157,14 +156,6 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
 
             // Save the new story document
             await story.save();
-
-            // Log the activity
-            await new Log({
-                userId: userId,
-                activity: "addNewStory",
-                success: true,
-                reason: "Story created successfully",
-            }).save();
         } else {
             // Check if a story for the given month already exists
 
@@ -189,13 +180,11 @@ export const addMonthStory = async (req: Request<IReq>, res: Response) => {
             story.total_point = total_point;
 
             // Save the updated story document
-
             await story.save();
 
         }
 
         // Commit the transaction
-
         res.status(201).json({
             error: false,
             message: "Successfully created or updated month story!",
