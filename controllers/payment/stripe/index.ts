@@ -5,9 +5,9 @@ import User from "../../../models/User";
 import { baseClientUrl } from "../../../constants";
 import { isChrismas } from "../../../functions/story";
 
-const webHookKey = process.env.STRIPE_WEBHOOK_SECRET;
-const secretKey = process.env.STRIPE_SECRET_KEY;
-const priceIds = process.env.STRIPE_PRICE_IDS;
+const webHookKey = process.env.STRIPE_WEBHOOK_SECRET_TEST;
+const secretKey = process.env.STRIPE_SECRET_KEY_TEST;
+const priceIds = process.env.STRIPE_PRICE_IDS_TEST;
 
 if (!webHookKey || !secretKey || !priceIds) {
   throw new Error("Missing required Stripe environment variables");
@@ -71,6 +71,8 @@ export const sessionInitiate = async (
   try {
     const amount = isAvailableDate ? 0.99 : 1.99;
 
+    console.log("----------amount------- ", amount)
+    console.log("----------price id------- ", price)
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       metadata: {
