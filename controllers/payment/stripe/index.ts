@@ -71,6 +71,8 @@ export const sessionInitiate = async (
   try {
     const amount = isAvailableDate ? 0.99 : 1.99;
 
+    console.log("----------amount------- ", amount)
+    console.log("----------price id------- ", price)
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       metadata: {
