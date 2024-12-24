@@ -29,9 +29,9 @@ export const stripewebHook = async (req: Request, res: Response) => {
     return res.status(200).send("Event type not handled");
   }
 
-  const session = event.data.object as Stripe.Checkout.Session;
 
   try {
+    const session = event.data.object as Stripe.Checkout.Session;
     if (session.payment_status === "paid" && session.metadata) {
       const { user_id, round, action, provider, amount, unit } = session.metadata;
 
@@ -62,13 +62,15 @@ export const stripewebHook = async (req: Request, res: Response) => {
 
       await payment.save();
       console.log("Payment successfully saved for user:", user_id);
+      return res.status(200).send("Webhook handled successfully");
+
     } else {
       console.error("Session metadata missing or payment status invalid");
+      return res.status(400).send("Session metadata missing or payment status invalid");
     }
   } catch (error) {
     console.error("Error processing payment:", error);
     return res.status(500).send("Error processing payment");
   }
 
-  return res.status(200).send("Webhook handled successfully");
 };
