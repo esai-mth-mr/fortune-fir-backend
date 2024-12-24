@@ -7,13 +7,15 @@ export const adminEmail = "jamesdavis34310@gmail.com";
 export const baseClientUrl = "https://howlucky2025.com"; // in live env
 // export const baseClientUrl = "http://localhost:5173"; // in dev env
 
-export const webHookKey = process.env.STRIPE_WEBHOOK_SECRET_TEST ?? (() => { throw new Error("Missing Stripe Webhook Key"); })();
-export const secretKey = process.env.STRIPE_SECRET_KEY_TEST ?? (() => { throw new Error("Missing Stripe Secret Key"); })();
-export const priceIds = process.env.STRIPE_PRICE_IDS_TEST ?? (() => { throw new Error("Missing Stripe Price ID"); })();
+// Stripe env
+export const webHookKey = process.env.STRIPE_WEBHOOK_SECRET ?? (() => { throw new Error("Missing Stripe Webhook Key"); })();
+export const secretKey = process.env.STRIPE_SECRET_KEY ?? (() => { throw new Error("Missing Stripe Secret Key"); })();
+export const priceIds = process.env.STRIPE_PRICE_IDS ?? (() => { throw new Error("Missing Stripe Price ID"); })();
+//Paypal env
 export const clientId = process.env.PAYPAL_CLIENT_ID ?? (() => { throw new Error("Missing Paypal Client ID"); })();
 export const clientSecret = process.env.PAYPAL_CLIENT_SECRET ?? (() => { throw new Error("Missing Paypal Client Secret"); })();
 // export const PAYPAL_MODE = "live";
-export const PAYPAL_MODE = "sandbox";
+export const PAYPAL_MODE = "live";
 
 export const GLOBAL_ERRORS = {
   serverError: "An unexpected error occurred",
