@@ -67,8 +67,6 @@ export const sessionInitiate = async (
   try {
     const amount = isAvailableDate ? 0.99 : 1.99;
 
-    console.log("----------amount------- ", amount)
-    console.log("----------price id------- ", price)
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       metadata: {
@@ -90,7 +88,6 @@ export const sessionInitiate = async (
       cancel_url: `${baseClientUrl}/payment/cancel`,
     });
 
-    console.log(session.id)
     return res.status(200).json({ sessionId: session.id });
   } catch (error) {
     console.error("Stripe session creation error:", error);
