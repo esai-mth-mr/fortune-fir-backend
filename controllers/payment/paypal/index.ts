@@ -165,21 +165,26 @@ export const success = async (req: Request, res: Response) => {
                 }
 
                 if (userId !== user_state.user_id) {
+                    console.log("---------user id", user_state.user_id)
 
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
                 if (user.current_status.current_round !== user_state?.round) {
+                    console.log("---------round ")
 
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
                 if (user_state?.provider !== "paypal" || user_state?.PAY_AMOUNT !== 0.99 || user_state?.PAY_AMOUNT !== 1.99) {
+                    console.log("---------use not found")
 
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
                 const payment = new Payment({ ...user_state, created_at: new Date() });
+                console.log(payment);
+                console.log("payment successfully created");
                 await payment.save();
             }
             return res.status(200).json({ error: false, message: "Thank you! Payment successfully released.", url: "/payment/paypal/success" });
