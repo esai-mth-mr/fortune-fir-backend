@@ -12,6 +12,8 @@ export const secretKey = process.env.STRIPE_SECRET_KEY_TEST ?? (() => { throw ne
 export const priceIds = process.env.STRIPE_PRICE_IDS_TEST ?? (() => { throw new Error("Missing Stripe Price ID"); })();
 export const clientId = process.env.PAYPAL_CLIENT_ID ?? (() => { throw new Error("Missing Paypal Client ID"); })();
 export const clientSecret = process.env.PAYPAL_CLIENT_SECRET ?? (() => { throw new Error("Missing Paypal Client Secret"); })();
+// export const PAYPAL_MODE = "live";
+export const PAYPAL_MODE = "sandbox";
 
 export const GLOBAL_ERRORS = {
   serverError: "An unexpected error occurred",
