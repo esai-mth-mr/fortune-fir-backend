@@ -164,19 +164,19 @@ export const success = async (req: Request, res: Response) => {
                     return res.status(403).json({ error: true, action: "verify", message: AUTH_ERRORS.activateAccountRequired });
                 }
 
-                if (userId !== state.userId) {
+                if (userId !== user_state.userId) {
                     console.log("---------user id")
 
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
-                if (user.current_status.current_round !== state?.round) {
+                if (user.current_status.current_round !== user_state?.round) {
                     console.log("---------round ")
 
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
-                if (state?.provider !== "paypal" || state?.PAY_AMOUNT !== 0.99 || state?.PAY_AMOUNT !== 1.99) {
+                if (user_state?.provider !== "paypal" || user_state?.PAY_AMOUNT !== 0.99 || user_state?.PAY_AMOUNT !== 1.99) {
                     console.log("---------use not found")
 
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
