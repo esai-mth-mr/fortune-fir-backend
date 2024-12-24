@@ -2,8 +2,10 @@ import { Request, Response } from 'express';
 import Asset from '../../../models/Asset';
 import User from "../../../models/User";
 import Story from '../../../models/Story';
-import { AUTH_ERRORS, STORY_MSGG } from '../../../constants';
+import Payment from '../../../models/Payment';
+import { AUTH_ERRORS, STORY_MSGG, PAYMENT_MSGS } from '../../../constants';
 import { generateUniqueRandomIntArray, getAssetRange } from '../../../functions/story';
+
 
 export const init = async (req: Request, res: Response): Promise<Response> => {
     const { userId } = req.body;
@@ -19,7 +21,15 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             return res.status(403).json({ message: AUTH_ERRORS.activateAccountRequired });
         }
 
+
         const current_round = user.current_status.current_round;
+
+        const payment = await Payment.findOne({ user_id: userId, round: current_round, action: PAYMENT_MSGS.action.preview });
+        if (!payment) {
+            return res.status(402).json({ message: PAYMENT_MSGS.notFound });
+        }
+
+
         const story = await Story.findOne({ round: current_round, user_id: userId });
         let month = story ? story.stories[story.stories.length - 1].month + 1 : 1;
         if (month === 13 && story?.total_story) {
