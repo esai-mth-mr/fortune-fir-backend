@@ -20,7 +20,7 @@ export const sendEmail = async (
         {
           From: {
             Email: supportEmail,
-            Name: "Fortune Support",
+            Name: "HowLucky2025 Support",
           },
           To: [
             {
@@ -50,7 +50,7 @@ export const contactEmail = async (
         {
           From: {
             Email: supportEmail,
-            Name: "Fortune Support"
+            Name: "HowLucky2025 Support"
           },
           To: [
             {

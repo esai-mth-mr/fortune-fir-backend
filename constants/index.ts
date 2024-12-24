@@ -1,5 +1,3 @@
-import { regeneration } from "../controllers/story/regeneration";
-
 export const ORIGIN = "*";
 export const PORT = process.env.PORT || 8000;
 export const supportEmail = "c.m.brilliant34310@gmail.com";
