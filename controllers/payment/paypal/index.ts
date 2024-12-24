@@ -183,7 +183,7 @@ export const success = async (req: Request, res: Response) => {
                 }
 
                 try {
-                    const payment = new Payment({ ...user_state, amount: user_state?.PAY_AMOUNT, created_at: new Date() });
+                    const payment = new Payment({ ...user_state, amount: user_state?.PAY_AMOUNT, unit: "USD", created_at: new Date() });
                     await payment.save();
                     return res.status(200).json({ error: false, message: "Thank you! Payment successfully released.", url: "/payment/paypal/success" });
                 } catch (error: any) {
