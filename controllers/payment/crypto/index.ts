@@ -9,7 +9,6 @@ import {
 import axios from "axios";
 import { npSignatureCheck } from "../../../functions/payment/crypto";
 const NOWPAYMENTS_API_KEY = process.env.NOWPAYMENTS_API_KEY;
-console.log(NOWPAYMENTS_API_KEY);
 export const payment = async (
   req: Request,
   res: Response,
@@ -39,16 +38,15 @@ export const packPayment = async (userId: string, payCurrency: string) => {
     // const PAY_AMOUNT = isAvailableDate ? 0.99 : 1.99;
     //create a unique deposit address
     const data = {
-      price_amount: PAY_AMOUNT,
-      price_currency: "USD",
-      pay_currency: payCurrency,
+      price_amount: 100,
+      price_currency: "usd",
+      pay_currency: "btc",
       order_id: userId,
       ipn_callback_url: PAYMENT_CALLBACK_URL,
     };
 
     const response = await axios.post(
-      // `${SUBSCRIPTION_BASE_URL}/payment`,
-      "https://api.sandbox.nowpayments.io/v1/payment",
+      `${SUBSCRIPTION_BASE_URL}/payment`,
       data,
       {
         headers: {
@@ -57,10 +55,8 @@ export const packPayment = async (userId: string, payCurrency: string) => {
         },
       }
     );
-    console.log("ererer" + response.data);
     return response.data;
   } catch (error: any) {
-    console.log("-------error", error);
     throw new Error(error.response.data.message);
   }
 };
@@ -72,7 +68,6 @@ export const updatePack = async (
 ) => {
   try {
     const body = req.body;
-    console.log("BODY: ", body);
     const sortedMsg = JSON.stringify(
       Object.keys(body)
         .sort()
@@ -88,7 +83,6 @@ export const updatePack = async (
     }
     const status = body.payment_status;
     if (status === "finished") {
-      console.log("============FINISHED");
       const id = body.order_id;
       // const result = await User.updateOne(
       // { userId: id},
