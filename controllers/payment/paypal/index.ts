@@ -2,7 +2,8 @@ import { Request, Response } from "express";
 import paypal from "paypal-rest-sdk";
 import Payment from "../../../models/Payment";
 import User from '../../../models/User';
-import { AUTH_ERRORS, baseClientUrl, PAY_AMOUNT } from "../../../constants";
+import { AUTH_ERRORS, baseClientUrl } from "../../../constants";
+import { isChrismas } from "../../../functions/story";
 
 const clientId = process.env.PAYPAL_CLIENT_ID;
 const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
@@ -37,6 +38,9 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res: Respons
         }
         if (action !== "regeneration" && action !== "preview") return res.status(404).json({ message: "invalid action" });
         const round = user.current_status.current_round;
+        const isAvailableDate = await isChrismas();
+        const PAY_AMOUNT = isAvailableDate ? 0.99 : 1.99;
+
         const payment = { user_id: userId, provider: "paypal", action, PAY_AMOUNT, round }; //potential error will happen
         const paymentData = encodeURIComponent(JSON.stringify(payment));
         //create payPal payment JSON
