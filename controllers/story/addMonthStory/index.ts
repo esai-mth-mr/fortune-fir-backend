@@ -97,7 +97,7 @@ export const addMonthStory = async (req: Request<IAddMonthReq>, res: Response) =
         if (month !== expectedMonth) {
             return res.status(400).json({
                 error: true,
-                message: `You must try ${MONTH_LABEL[preStory.stories.length]}`,
+                message: `You must try ${MONTH_LABEL[preStory.stories.length - 1]}`,
             });
         }
     }
