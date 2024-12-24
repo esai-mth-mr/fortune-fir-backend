@@ -154,22 +154,31 @@ export const success = async (req: Request, res: Response) => {
                 const user = await User.findById(userId);
 
                 if (!user) {
+                    console.log("---------use not found")
                     return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
                 }
 
                 if (!user.accountStatus) {
+                    console.log("---------account status")
+
                     return res.status(403).json({ error: true, action: "verify", message: AUTH_ERRORS.activateAccountRequired });
                 }
 
                 if (userId !== state.userId) {
+                    console.log("---------user id")
+
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
                 if (user.current_status.current_round !== state?.round) {
+                    console.log("---------round ")
+
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
-                if (state?.provider !== "paypal" || state?.PAY_AMOUNT !== 0.99) {
+                if (state?.provider !== "paypal" || state?.PAY_AMOUNT !== 0.99 || state?.PAY_AMOUNT !== 1.99) {
+                    console.log("---------use not found")
+
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
