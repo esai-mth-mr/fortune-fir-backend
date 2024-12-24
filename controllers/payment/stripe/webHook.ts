@@ -1,17 +1,15 @@
 import Stripe from "stripe";
 import Payment from "../../../models/Payment";
-import express, { Request, Response } from "express";
-
-const webHookKey = process.env.STRIPE_WEBHOOK_SECRET;
-const secretKey = process.env.STRIPE_SECRET_KEY;
+import { Request, Response } from "express";
+import { secretKey, webHookKey } from "../../../constants";
 
 if (!webHookKey) throw new Error("Missing Stripe Webhook Key");
 if (!secretKey) throw new Error("Missing Stripe Secret Key");
 
 export const stripewebHook = async (req: Request, res: Response) => {
-  const stripe = new Stripe(secretKey); // Adjust API version if necessary
-  const signature = req.headers["stripe-signature"] as string;
+  const stripe = new Stripe(secretKey);
 
+  const signature = req.headers["stripe-signature"] as string;
   if (!signature) {
     return res.status(400).send("Missing Stripe signature");
   }

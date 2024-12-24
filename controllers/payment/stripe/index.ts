@@ -2,12 +2,8 @@ import { Request, Response } from "express";
 import Stripe from "stripe";
 import Payment from "../../../models/Payment";
 import User from "../../../models/User";
-import { baseClientUrl } from "../../../constants";
+import { baseClientUrl, priceIds, secretKey, webHookKey } from "../../../constants";
 import { isChrismas } from "../../../functions/story";
-
-const webHookKey = process.env.STRIPE_WEBHOOK_SECRET_TEST;
-const secretKey = process.env.STRIPE_SECRET_KEY_TEST;
-const priceIds = process.env.STRIPE_PRICE_IDS_TEST;
 
 if (!webHookKey || !secretKey || !priceIds) {
   throw new Error("Missing required Stripe environment variables");
@@ -94,6 +90,7 @@ export const sessionInitiate = async (
       cancel_url: `${baseClientUrl}/payment/cancel`,
     });
 
+    console.log(session.id)
     return res.status(200).json({ sessionId: session.id });
   } catch (error) {
     console.error("Stripe session creation error:", error);

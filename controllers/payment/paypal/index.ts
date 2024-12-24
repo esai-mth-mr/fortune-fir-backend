@@ -2,11 +2,8 @@ import { Request, Response } from "express";
 import paypal from "paypal-rest-sdk";
 import Payment from "../../../models/Payment";
 import User from '../../../models/User';
-import { AUTH_ERRORS, baseClientUrl } from "../../../constants";
+import { AUTH_ERRORS, baseClientUrl, clientId, clientSecret } from "../../../constants";
 import { isChrismas } from "../../../functions/story";
-
-const clientId = process.env.PAYPAL_CLIENT_ID;
-const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
 
 if (!clientId || !clientSecret) {
     throw new Error("Missing PayPal credentials in environment variables.");
