@@ -5,6 +5,7 @@
     "start:prod": "node dist/index.js"
   },
   "dependencies": {
+    "@nowpaymentsio/nowpayments-api-js": "^1.0.5",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
@@ -18,8 +19,8 @@
     "mongoose": "^8.4.0",
     "node-mailjet": "^6.0.6",
     "nodemon": "^3.1.1",
-    "paypal-rest-sdk": "^1.8.1",
     "openai": "^4.77.0",
+    "paypal-rest-sdk": "^1.8.1",
     "stripe": "^15.12.0",
     "ts-node": "^10.9.2"
   },

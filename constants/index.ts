@@ -4,8 +4,8 @@ export const ORIGIN = "*";
 export const PORT = process.env.PORT || 8000;
 export const supportEmail = "c.m.brilliant34310@gmail.com";
 export const adminEmail = "jamesdavis34310@gmail.com";
-export const baseClientUrl = "https://howlucky2025.com"; // in live env
-// export const baseClientUrl = "http://localhost:5173"; // in dev env
+//export const baseClientUrl = "https://howlucky2025.com"; // in live env
+export const baseClientUrl = "http://localhost:5173"; // in dev env
 
 export const GLOBAL_ERRORS = {
   serverError: "An unexpected error occurred",
@@ -45,3 +45,7 @@ export const STORY_MSGG = {
 export const PAYMENT_MSGS = {
   action: { regeneration: "regeneration", preview: "preview" },
 };
+export const SUBSCRIPTION_BASE_URL = "https://api.nowpayments.io/v1";
+export const PAYMENT_CALLBACK_URL =
+  "http://localhost:5173/api/payment/crypto/nowpayments/ipn";
+// "https://howlucky2025.com/api/payment/crypto/nowpayments/ipn";
