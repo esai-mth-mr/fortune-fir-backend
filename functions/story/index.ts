@@ -24,7 +24,7 @@ export const isChrismas = async (): Promise<boolean> => {
     });
 };
 
-const isPaymentVerified = async (userId: string, current_round: number, action: string): Promise<boolean> => {
+export const isPaymentVerified = async (userId: string, current_round: number, action: string): Promise<boolean> => {
     const payment = await Payment.findOne({ user_id: userId, round: current_round, action: action });
     if (!payment) {
         return false; // If no payment is found, return false
@@ -35,7 +35,7 @@ const isPaymentVerified = async (userId: string, current_round: number, action: 
 
 // Make the `available` function asynchronous
 export const available = async (userId: string, current_round: number, action: string): Promise<boolean> => {
-    if (await isChrismas() || await isPaymentVerified(userId, current_round, action)) return true;
+    if (await isPaymentVerified(userId, current_round, action)) return true;
 
     return false;
 };

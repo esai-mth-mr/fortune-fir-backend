@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from 'mongoose';  
+import mongoose, { Document, Schema } from 'mongoose';
 export interface ILog {
     userId: string;
     time: Date;
@@ -62,4 +62,18 @@ export interface IPayment {
     round: number;
     created_at: Date;
     updated_at: Date;
+}
+
+export interface IAddMonthReq {
+    point: number;
+    total_point: number;
+    assets: number[];
+    month: number;
+    userId: string;
+}
+
+
+export interface IAddYearReq {
+    userId: string;
+    total_point: number;
 }

@@ -3,7 +3,6 @@ import User from "../../../models/User";
 import Story from "../../../models/Story";
 import { AUTH_ERRORS, STORY_MSGG, PAYMENT_MSGS } from "../../../constants";
 import { available } from "../../../functions/story";
-import Log from "../../../models/Log";
 
 export const showStory = async (req: Request, res: Response) => {
     const { month, userId } = req.body;
@@ -66,15 +65,6 @@ export const showStory = async (req: Request, res: Response) => {
                 ...(isPaymentAvailable && { story: specificStory.story }),
             };
         }
-
-        // Log activity
-        const log = new Log({
-            userId: user._id,
-            activity: "showStory",
-            success: isPaymentAvailable,
-            ...(isPaymentAvailable ? {} : { reason: "payment is not verified" }),
-        });
-        await log.save();
 
         // Send response
         return res.status(200).json({
