@@ -183,11 +183,11 @@ export const success = async (req: Request, res: Response) => {
                 }
 
                 try {
-                    const payment = new Payment({ ...user_state, created_at: new Date(), });
+                    const payment = new Payment({ ...user_state, amount: user_state?.PAY_AMOUNT, created_at: new Date() });
                     await payment.save();
                     return res.status(200).json({ error: false, message: "Thank you! Payment successfully released.", url: "/payment/paypal/success" });
-                } catch (error) {
-                    console.log("-----error", error)
+                } catch (error: any) {
+                    console.log(error._message ?? "Unknown Error")
                     return res.status(500).json({ error: true, message: "Unexpected Error!, Please try again." });
                 }
 
