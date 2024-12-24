@@ -187,7 +187,8 @@ export const success = async (req: Request, res: Response) => {
                     await payment.save();
                     return res.status(200).json({ error: false, message: "Thank you! Payment successfully released.", url: "/payment/paypal/success" });
                 } catch (error: any) {
-                    console.log(error._message ?? "Unknown Error")
+                    console.log(error)
+                    // console.log(error._message ?? "Unknown Error")
                     return res.status(500).json({ error: true, message: "Unexpected Error!, Please try again." });
                 }
 
