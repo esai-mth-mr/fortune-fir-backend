@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import User from '../../../models/User';
-import { AUTH_ERRORS } from '../../../constants';
+import { AUTH_ERRORS, PAYMENT_MSGS } from '../../../constants';
+import Payment from '../../../models/Payment';
 
 export const upgradeRound = async (req: Request, res: Response) => {
     const { userId } = req.body;
@@ -12,6 +13,13 @@ export const upgradeRound = async (req: Request, res: Response) => {
 
     if (!user.accountStatus) {
         return res.status(403).json({ error: true, action: "verify", message: AUTH_ERRORS.activateAccountRequired });
+    }
+
+
+    const currentRound = user.current_status.current_round;
+    const payment = await Payment.findOne({ user_id: userId, round: currentRound, action: PAYMENT_MSGS.action.preview });
+    if (!payment) {
+        return res.status(402).json({ message: PAYMENT_MSGS.notFound });
     }
 
 

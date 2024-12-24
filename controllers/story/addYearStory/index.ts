@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
 import User from "../../../models/User";
 import Story from "../../../models/Story";
-import { AUTH_ERRORS } from "../../../constants";
+import { AUTH_ERRORS, PAYMENT_MSGS } from "../../../constants";
 import { IAddYearReq, ISection } from "../../../interfaces";
 import { yearStory } from "../../../functions/openai/year_story";
 import Joi from "joi";
+import Payment from "../../../models/Payment";
+
 
 interface DataType {
     month: number;
@@ -47,6 +49,13 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
             action: "verify",
             message: AUTH_ERRORS.activateAccountRequired,
         });
+    }
+
+    const current_round = user.current_status.current_round;
+
+    const payment = await Payment.findOne({ user_id: userId, round: current_round, action: PAYMENT_MSGS.action.preview });
+    if (!payment) {
+        return res.status(402).json({ message: PAYMENT_MSGS.notFound });
     }
 
 
@@ -105,7 +114,7 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
 
 
             // Commit the transaction
-            res.status(200).json({ error: false, message: "Successfully generated total story" });
+            res.status(200).json({ error: false, message: story_txt });
         }
     } catch (error: any) {
         // Rollback the transaction and handle errors

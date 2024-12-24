@@ -52,6 +52,7 @@ export const STORY_MSGG = {
 
 export const PAYMENT_MSGS = {
   action: { regeneration: "regeneration", preview: "preview" },
+  notFound: "Not paid"
 };
 
 export const MONTH_LABEL = [
