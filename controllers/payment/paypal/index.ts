@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import paypal from "paypal-rest-sdk";
 import Payment from "../../../models/Payment";
 import User from '../../../models/User';
-import { AUTH_ERRORS, baseClientUrl, clientId, clientSecret } from "../../../constants";
+import { AUTH_ERRORS, baseClientUrl, clientId, clientSecret, PAYPAL_MODE } from "../../../constants";
 import { isChrismas } from "../../../functions/story";
 
 if (!clientId || !clientSecret) {
@@ -10,7 +10,7 @@ if (!clientId || !clientSecret) {
 }
 
 paypal.configure({
-    mode: 'sandbox', //Use 'live' for production
+    mode: PAYPAL_MODE, //Use 'live' for production
     client_id: clientId,
     client_secret: clientSecret
 });
