@@ -1,7 +1,7 @@
 import { regeneration } from "../controllers/story/regeneration";
 
 export const ORIGIN = "*";
-export const PORT = process.env.PORT || 8000;
+export const PORT = process.env.PORT || 8080;
 export const supportEmail = "c.m.brilliant34310@gmail.com";
 export const adminEmail = "jamesdavis34310@gmail.com";
 //export const baseClientUrl = "https://howlucky2025.com"; // in live env
