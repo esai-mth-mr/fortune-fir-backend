@@ -177,7 +177,7 @@ export const success = async (req: Request, res: Response) => {
                 }
 
                 if (user_state?.provider !== "paypal" || user_state?.PAY_AMOUNT !== 0.99 || user_state?.PAY_AMOUNT !== 1.99) {
-                    console.log("---------use not found")
+                    console.log("---------pay amount", user_state?.PAY_AMOUNT)
 
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
