@@ -2,8 +2,9 @@ import { Request, Response } from "express";
 import paypal from "paypal-rest-sdk";
 import Payment from "../../../models/Payment";
 import User from '../../../models/User';
-import { AUTH_ERRORS, baseClientUrl, clientId, clientSecret, PAYPAL_MODE } from "../../../constants";
+import { AUTH_ERRORS, baseClientUrl, clientId, clientSecret, EMAIL_MSGS, PAYPAL_MODE } from "../../../constants";
 import { isChrismas } from "../../../functions/story";
+import { contactEmail } from "../../../functions/email";
 
 if (!clientId || !clientSecret) {
     throw new Error("Missing PayPal credentials in environment variables.");
@@ -183,6 +184,18 @@ export const success = async (req: Request, res: Response) => {
                 try {
                     const payment = new Payment({ ...user_state, amount: user_state?.PAY_AMOUNT, unit: "USD", created_at: new Date() });
                     await payment.save();
+                    const content = `
+                            <p>From: ${userId}</p>
+                            <p>=======================================================================</p>
+                            <p>Message: Customer paid $${user_state?.PAY_AMOUNT}</p>
+                            `;
+
+                    await contactEmail(
+                        "",
+                        EMAIL_MSGS.paymentSubject,
+                        content
+                    );
+
                     return res.status(200).json({ error: false, message: "Thank you! Payment successfully released.", url: "/payment/paypal/success" });
                 } catch (error: any) {
                     console.log(error._message ?? "Unknown Error")

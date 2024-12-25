@@ -1,7 +1,8 @@
 import Stripe from "stripe";
 import Payment from "../../../models/Payment";
 import { Request, Response } from "express";
-import { secretKey, webHookKey } from "../../../constants";
+import { EMAIL_MSGS, secretKey, webHookKey } from "../../../constants";
+import { contactEmail } from "../../../functions/email";
 
 if (!webHookKey) throw new Error("Missing Stripe Webhook Key");
 if (!secretKey) throw new Error("Missing Stripe Secret Key");
@@ -58,7 +59,18 @@ export const stripewebHook = async (req: Request, res: Response) => {
       });
 
       await payment.save();
-      console.log("Payment successfully saved for user:", user_id);
+      const content = `
+                            <p>From: ${user_id}</p>
+                            <p>=======================================================================</p>
+                            <p>Message: Customer paid $${amount}</p>
+                            `;
+
+      await contactEmail(
+        "",
+        EMAIL_MSGS.paymentSubject,
+        content
+      );
+
       return res.status(200).send("Webhook handled successfully");
 
     } else {

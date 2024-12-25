@@ -40,6 +40,7 @@ export const SUCCESS_MSGS = {
 export const EMAIL_MSGS = {
   registerSubject: `Action Required: Verify Email`,
   contactSubject: "Customer Support Required",
+  paymentSubject: "Customer Paid for Our Service",
 };
 
 export const STORY_MSGG = {
