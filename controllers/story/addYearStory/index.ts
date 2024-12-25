@@ -63,18 +63,21 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
     try {
         // Set user's current status to "complete"
         if (user.current_status.round_status !== "complete") {
-
+            console.log("----------current status -------")
             // Update round status and save the user in a single step
             await User.updateOne(
                 { _id: user._id },
                 { $set: { "current_status.round_status": "complete" } }
             );
+            console.log("----------current status update -------")
 
             // Fetch stories for the user and current round
             const storyData = await Story.findOne({
                 round: current_round,
                 user_id: user._id,
             });
+
+            console.log("----------find story -------")
 
             if (!storyData) {
                 return res.status(404).json({ error: true, message: "Stories not found" });
@@ -86,6 +89,7 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
                 month: section.month,
                 story: section.story,
             }));
+            console.log("----------input ready -------")
 
             console.log(input)
             // Construct user prompt
@@ -94,6 +98,7 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
             const job = user.job;
 
             const userPrompt = `I am ${age} years old. I am a ${gender} and work as a ${job}.`;
+            console.log("----------user prompt -------")
 
             console.log(userPrompt)
             // Generate the year story using OpenAI
