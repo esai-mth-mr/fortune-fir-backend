@@ -81,7 +81,7 @@ export const addMonthStory = async (req: Request<IAddMonthReq>, res: Response) =
 
     const payment = await Payment.findOne({ user_id: userId, round: current_round, action: PAYMENT_MSGS.action.preview });
     if (!payment) {
-        return res.status(402).json({ message: PAYMENT_MSGS.notFound });
+        return res.status(402).json({ message: PAYMENT_MSGS.notPaid });
     }
 
     const preStory = await Story.findOne({
