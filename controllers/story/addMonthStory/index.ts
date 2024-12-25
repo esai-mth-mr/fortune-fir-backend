@@ -99,7 +99,7 @@ export const addMonthStory = async (req: Request<IAddMonthReq>, res: Response) =
         }
     } else {
         // Validate if the user's story progression matches the current month
-        const expectedMonth = preStory.stories.length + 1;
+        const expectedMonth = preStory.stories.length;
         if (month !== expectedMonth) {
             return res.status(400).json({
                 error: true,
