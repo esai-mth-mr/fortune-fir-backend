@@ -3,6 +3,7 @@ import User from "../../../models/User";
 import Story from "../../../models/Story";
 import { AUTH_ERRORS, STORY_MSGG, PAYMENT_MSGS } from "../../../constants";
 import { available } from "../../../functions/story";
+import Payment from "../../../models/Payment";
 
 export const showStory = async (req: Request, res: Response) => {
     const { month, userId } = req.body;
@@ -24,6 +25,11 @@ export const showStory = async (req: Request, res: Response) => {
         }
 
         const currentRound = user.current_status.current_round;
+
+        const payment = await Payment.findOne({ user_id: userId, round: currentRound, action: PAYMENT_MSGS.action.preview });
+        if (!payment) {
+            return res.status(402).json({ message: PAYMENT_MSGS.notFound });
+        }
 
         // Fetch story for the current round
         const story = await Story.findOne({ round: currentRound, user_id: userId });

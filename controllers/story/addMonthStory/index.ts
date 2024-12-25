@@ -3,10 +3,11 @@ import Story from "../../../models/Story";
 import User from "../../../models/User";
 import Asset from "../../../models/Asset";
 import { monthStory } from "../../../functions/openai/month_story";
-import { AUTH_ERRORS } from "../../../constants";
+import { AUTH_ERRORS, PAYMENT_MSGS } from "../../../constants";
 import { IAddMonthReq, ITransferStoryInput } from "../../../interfaces";
 import Joi from "joi";
 import { MONTH_LABEL } from "../../../constants";
+import Payment from "../../../models/Payment";
 
 
 // Define a Joi schema for input validation
@@ -77,6 +78,11 @@ export const addMonthStory = async (req: Request<IAddMonthReq>, res: Response) =
     }
 
     const current_round = user.current_status.current_round;
+
+    const payment = await Payment.findOne({ user_id: userId, round: current_round, action: PAYMENT_MSGS.action.preview });
+    if (!payment) {
+        return res.status(402).json({ message: PAYMENT_MSGS.notFound });
+    }
 
     const preStory = await Story.findOne({
         round: current_round,
@@ -187,7 +193,7 @@ export const addMonthStory = async (req: Request<IAddMonthReq>, res: Response) =
         // Commit the transaction
         res.status(201).json({
             error: false,
-            message: "Successfully created or updated month story!",
+            message: story_txt
         });
     } catch (error: any) {
         // Rollback the transaction and handle errors

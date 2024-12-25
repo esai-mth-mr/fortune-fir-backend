@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import User from "../../../models/User";
 import Story from "../../../models/Story";
-import { AUTH_ERRORS } from "../../../constants";
+import { AUTH_ERRORS, PAYMENT_MSGS } from "../../../constants";
 import { IAddYearReq, ISection } from "../../../interfaces";
 import { yearStory } from "../../../functions/openai/year_story";
 import Joi from "joi";
+import Payment from "../../../models/Payment";
 
 interface DataType {
     month: number;
@@ -49,6 +50,14 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
         });
     }
 
+    // Get the current round
+    const current_round = user.current_status.current_round;
+
+    const payment = await Payment.findOne({ user_id: userId, round: current_round, action: PAYMENT_MSGS.action.preview });
+    if (!payment) {
+        return res.status(402).json({ message: PAYMENT_MSGS.notFound });
+    }
+
 
     try {
         // Set user's current status to "complete"
@@ -59,9 +68,6 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
                 { _id: user._id },
                 { $set: { "current_status.round_status": "complete" } }
             );
-
-            // Get the current round
-            const current_round = user.current_status.current_round;
 
             // Fetch stories for the user and current round
             const storyData = await Story.findOne({

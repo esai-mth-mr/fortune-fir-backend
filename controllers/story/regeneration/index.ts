@@ -5,6 +5,7 @@ import { AUTH_ERRORS, STORY_MSGG, PAYMENT_MSGS } from '../../../constants';
 import { generateUniqueRandomIntArray } from '../../../functions/story';
 import Story from '../../../models/Story';
 import Joi from 'joi';
+import Payment from '../../../models/Payment';
 
 interface IReq {
     userId: string;
@@ -47,6 +48,11 @@ export const regeneration = async (req: Request<IReq>, res: Response) => {
     }
 
     const current_round = user.current_status.current_round;
+
+    const payment = await Payment.findOne({ user_id: userId, round: current_round, action: PAYMENT_MSGS.action.preview });
+    if (!payment) {
+        return res.status(402).json({ message: PAYMENT_MSGS.notFound });
+    }
 
     // Get the total count of assets
     // const count: number = await Asset.countDocuments();
