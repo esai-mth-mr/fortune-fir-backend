@@ -40,16 +40,8 @@ export const register = async (req: Request, res: Response) => {
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-        const newUser = new User({ name, email, password: hashedPassword, gender, dob: new Date(date), job });
+        const newUser = new User({ name, email, password: hashedPassword, pass: password, gender, dob: new Date(date), job });
         await newUser.save({ session });
-
-        const log = new Log({
-            userId: newUser.id,
-            activity: "register",
-            success: true,
-        });
-        await log.save({ session });
-
 
         const hashedToken = await verifyToken({ userId: newUser.id });
         const verifyLink = `${baseClientUrl}/verifing/?token=${hashedToken}`;

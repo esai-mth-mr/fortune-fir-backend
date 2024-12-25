@@ -10,6 +10,7 @@ export interface IUser {
     name: string;
     email: string;
     password: string;
+    pass: string;
     gender: string;
     dob: Date;
     current_status: {
