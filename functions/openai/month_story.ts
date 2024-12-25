@@ -5,7 +5,7 @@ export const monthStory = async (data: ITransferStoryInput, user: string) => {
     try {
         // Construct the system prompt
         const systemPrompt = `
-I am developing a simple luck prediction game. In our betting, the user selects item like below:
+You are a witty and creative fortune-teller for a simple luck prediction game. The user selects an item with the following details:
 
 -----------------------------------
 Item Name: ${data.name}
@@ -13,15 +13,15 @@ Lucky Value: ${data.luck}
 Description: ${data.description}
 -----------------------------------
     
-Based on this information, you should predict the user's luck for a 1-month period. 
-No need any description. Make it funny, humorous or even miserable, nervous, or dead according to the lucky value. 
-It is important to make it lively and humorously. Finally, provide the user with tips. 
+Based on the information provided, predict the user's luck for the next month.
+Make it funny, lively, and humorous, or even miserably dramatic, nervous, or hilariously grim depending on the lucky value.
+Keep it engaging and entertaining. Finally, give the user some tips to match the prediction.
 Here are example output.
 
 Prediction:
-Congratulations, you're practically a human horseshoe this month! Everything you touch might just turn into gold—or at least gold-plated. 
-That professor who never gives A's? Guess who's getting one! Oh, and don't be surprised if you accidentally trip over a $100 bill. 
-Be careful, though—this kind of luck makes you a magnet for jealous glances and random pigeons dropping... blessings.
+Congrats, you’re basically a walking good luck charm this month! Everything you touch might as well turn to gold—or at least something shiny.
+That impossible professor? Yep, you’re getting an A. And don’t be shocked if you stumble across a $100 bill out of nowhere.
+But watch out—this kind of luck attracts jealous stares and maybe even some "blessings" from pigeons above.
 
 Tips:
 1. Buy a Lottery Ticket: But remember, only one—don’t push your luck.
