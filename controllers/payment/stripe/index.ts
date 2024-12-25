@@ -52,9 +52,9 @@ export const sessionInitiate = async (
   }
   const isAvailableDate = await isChrismas();
   let price = priceIdsParsed[action];
-  if (action === "preview") {
-    price = isAvailableDate ? priceIdsParsed[action] : priceIdsParsed["preview-enhance"]
-  }
+  // if (action === "preview") {
+  //   price = isAvailableDate ? priceIdsParsed[action] : priceIdsParsed["preview-enhance"]
+  // }
   if (!price) {
     return res.status(400).json({
       error: true,
@@ -65,7 +65,8 @@ export const sessionInitiate = async (
   const stripe = new Stripe(secretKey);
 
   try {
-    const amount = isAvailableDate ? 0.99 : 1.99;
+    // const amount = isAvailableDate ? 0.99 : 1.99;
+    const amount = 0.99;
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],

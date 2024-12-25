@@ -25,7 +25,7 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res: Respons
 
     const { userId, action } = req.body;
     const isPayment = await Payment.findOne({ user_id: userId, action });
-    if (isPayment) return res.status(400).json({ message: "Payment already exist" });
+    if (isPayment) return res.status(400).json({ message: "You already paid." });
 
     try {
         //Check out user is vaild or not
@@ -36,7 +36,8 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res: Respons
         if (action !== "regeneration" && action !== "preview") return res.status(404).json({ message: "invalid action" });
         const round = user.current_status.current_round;
         const isAvailableDate = await isChrismas();
-        const PAY_AMOUNT = isAvailableDate ? 0.99 : 1.99;
+        const PAY_AMOUNT = 0.99;
+        // const PAY_AMOUNT = isAvailableDate ? 0.99 : 1.99;
 
         const payment = { user_id: userId, provider: "paypal", action, PAY_AMOUNT, round }; //potential error will happen
         const paymentData = encodeURIComponent(JSON.stringify(payment));
@@ -166,7 +167,7 @@ export const success = async (req: Request, res: Response) => {
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
-                if (user_state?.provider !== "paypal" || (user_state?.PAY_AMOUNT !== 0.99 && user_state?.PAY_AMOUNT !== 1.99)) {
+                if (user_state?.provider !== "paypal" || user_state?.PAY_AMOUNT !== 0.99) {
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
