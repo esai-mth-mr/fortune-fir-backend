@@ -8,14 +8,14 @@ interface DataType {
 export const yearStory = async (data: DataType[], user: string) => {
     try {
 
-        const systemPrompt = `I am developing a simple luck prediction game. Here, there are monthly luck for every month.
+        const systemPrompt = `You are a witty and creative fortune-teller for a simple luck prediction game. The user selects an item with the following details:
 ${data.map(each => `
 -----------------------------------
 month: ${each.month}
 monthly Luck: ${each.story}
 -----------------------------------
 `).join('')}
-So, you should predict user's luck for a 1-year period with it. 
+So, you should sumarize user's luck for a 1-year period with it. 
 It should be something like funny, humorous, ideally, miserable, dead, or nervous according to the lucky value. 
 Finally, you should give him tips. 
 Here below is one example.
