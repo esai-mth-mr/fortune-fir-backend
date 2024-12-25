@@ -38,10 +38,12 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
     console.log(req.body);
     // Validate user existence
     const user = await User.findById(userId);
+    console.log("----------current user -------")
 
     if (!user) {
         return res.status(404).json({ error: true, message: AUTH_ERRORS.accountNotFound });
     }
+    console.log("----------accountStatus -------")
 
     if (!user.accountStatus) {
         return res.status(403).json({
@@ -53,6 +55,8 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
 
     // Get the current round
     const current_round = user.current_status.current_round;
+    console.log("----------current round -------")
+
 
     const payment = await Payment.findOne({ user_id: userId, round: current_round, action: PAYMENT_MSGS.action.preview });
     if (!payment) {
