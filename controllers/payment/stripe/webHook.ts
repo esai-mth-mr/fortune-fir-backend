@@ -42,7 +42,6 @@ export const stripewebHook = async (req: Request, res: Response) => {
       // Check if payment already exists
       const existingPayment = await Payment.findOne({ user_id, round, action });
       if (existingPayment) {
-        console.log("Payment already exists for user:", user_id);
         return res.status(200).send("Payment already processed");
       }
 
