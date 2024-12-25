@@ -99,12 +99,14 @@ export const addMonthStory = async (req: Request<IAddMonthReq>, res: Response) =
         }
     } else {
         // Validate if the user's story progression matches the current month
-        const expectedMonth = preStory.stories.length;
+        const expectedMonth = preStory.stories.length + 1;
         if (month !== expectedMonth) {
-            return res.status(400).json({
-                error: true,
-                message: `You must try ${MONTH_LABEL[preStory.stories.length - 1]}`,
-            });
+            if (!(month === 12 && expectedMonth === 13)) {
+                return res.status(400).json({
+                    error: true,
+                    message: `You must try ${MONTH_LABEL[expectedMonth - 1]}`,
+                });
+            }
         }
     }
 
