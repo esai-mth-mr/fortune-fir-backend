@@ -26,7 +26,7 @@ The first half kicks off with extreme good fortune—expect surprise wins, acade
 Midyear, your luck mellows into steady blessings, perfect for planning your future and making meaningful connections. 
 But as autumn rolls in, chaos takes the wheel, throwing in comically inconvenient moments like missed buses and spilled coffee. 
 Don’t worry—these hiccups are the kind that build character, not catastrophe. Ride the highs, roll with the lows, and keep a sense of humor; this is your year to shine and laugh along the way!
-//////////
+
 Tips :
 1. First Half (Extreme Luck): Take bold risks and start new ventures—you’re on a winning streak!
 2. Midyear (Stable Luck): Focus on building your goals and nurturing relationships; it’s your time for growth.

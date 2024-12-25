@@ -7,7 +7,6 @@ import { yearStory } from "../../../functions/openai/year_story";
 import Joi from "joi";
 import Payment from "../../../models/Payment";
 
-
 interface DataType {
     month: number;
     story: string;
@@ -51,6 +50,7 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
         });
     }
 
+    // Get the current round
     const current_round = user.current_status.current_round;
 
     const payment = await Payment.findOne({ user_id: userId, round: current_round, action: PAYMENT_MSGS.action.preview });
@@ -68,9 +68,6 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
                 { _id: user._id },
                 { $set: { "current_status.round_status": "complete" } }
             );
-
-            // Get the current round
-            const current_round = user.current_status.current_round;
 
             // Fetch stories for the user and current round
             const storyData = await Story.findOne({
@@ -114,7 +111,7 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
 
 
             // Commit the transaction
-            res.status(200).json({ error: false, message: story_txt });
+            res.status(200).json({ error: false, message: "Successfully generated total story" });
         }
     } catch (error: any) {
         // Rollback the transaction and handle errors

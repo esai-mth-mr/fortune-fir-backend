@@ -22,7 +22,7 @@ Prediction:
 Congratulations, you're practically a human horseshoe this month! Everything you touch might just turn into gold—or at least gold-plated. 
 That professor who never gives A's? Guess who's getting one! Oh, and don't be surprised if you accidentally trip over a $100 bill. 
 Be careful, though—this kind of luck makes you a magnet for jealous glances and random pigeons dropping... blessings.
-//////////
+
 Tips:
 1. Buy a Lottery Ticket: But remember, only one—don’t push your luck.
 2. Ace Your Exams: Channel your energy into nailing those tests.
