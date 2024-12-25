@@ -51,7 +51,7 @@ export const regeneration = async (req: Request<IReq>, res: Response) => {
 
     const payment = await Payment.findOne({ user_id: userId, round: current_round, action: PAYMENT_MSGS.action.preview });
     if (!payment) {
-        return res.status(402).json({ message: PAYMENT_MSGS.notFound });
+        return res.status(402).json({ message: PAYMENT_MSGS.notPaid });
     }
 
     // Get the total count of assets

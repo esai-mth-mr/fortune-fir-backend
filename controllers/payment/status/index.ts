@@ -29,7 +29,7 @@ export const checkStatus = async (req: Request, res: Response) => {
 
     const payment = await Payment.findOne({ user_id: userId, round: current_round, action: PAYMENT_MSGS.action.preview });
     if (!payment) {
-        return res.status(402).json({ message: PAYMENT_MSGS.notFound });
+        return res.status(402).json({ message: PAYMENT_MSGS.notPaid });
     }
 
     return res.status(200).json({ message: PAYMENT_MSGS.paid })
