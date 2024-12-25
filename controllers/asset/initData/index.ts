@@ -45,8 +45,8 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
 
         if (current_round === 1) {
             // Round 1: Fetch assets using random indices
-            const goodArray = generateShuffledArray(6, 0, 100);
-            const badArray = generateShuffledArray(6, 101, 200);
+            const goodArray = generateShuffledArray(9, 0, 100);
+            const badArray = generateShuffledArray(3, 101, 200);
 
             indicesArray = [...goodArray, ...badArray];
             assets = await Asset.find({ index: { $in: indicesArray } });
@@ -61,8 +61,8 @@ export const init = async (req: Request, res: Response): Promise<Response> => {
             const { start, end } = getAssetRange(point);
 
             const midPoint = Math.floor((end - start + 1) / 2);
-            const goodArray = generateShuffledArray(6, start, midPoint);
-            const badArray = generateShuffledArray(6, midPoint + 1, end);
+            const goodArray = generateShuffledArray(9, start, midPoint);
+            const badArray = generateShuffledArray(3, midPoint + 1, end);
 
             indicesArray = [...goodArray, ...badArray];
             assets = await Asset.find({ index: { $in: indicesArray } });
