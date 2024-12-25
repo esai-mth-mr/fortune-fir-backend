@@ -59,7 +59,7 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res: Respons
             },
             redirect_urls: {
                 return_url: `${baseClientUrl}/payment/paypal/result?state=${paymentData}`,
-                cancel_url: `${baseClientUrl}/payment/paypal/cancel`
+                cancel_url: `${baseClientUrl}/payment/cancel`
             },
             transactions: [
                 {
