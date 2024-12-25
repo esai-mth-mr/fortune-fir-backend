@@ -37,7 +37,9 @@ export const sessionInitiate = async (
     });
   }
 
-  const { current_round: currentRound } = user.current_status || {};
+  let { current_round: currentRound } = user.current_status || {};
+
+
   const existingPayment = await Payment.findOne({
     user_id: userId,
     action,
@@ -45,10 +47,10 @@ export const sessionInitiate = async (
   });
 
   if (existingPayment) {
-    return res.status(400).json({
-      error: true,
-      message: "You already paid.",
-    });
+    user.current_status.current_round += 1;
+    user.current_status.round_status = "progress";
+    await user.save();
+    currentRound += 1;
   }
   const isAvailableDate = await isChrismas();
   let price = priceIdsParsed[action];

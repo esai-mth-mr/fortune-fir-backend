@@ -24,22 +24,31 @@ interface paymentRequestBody {
 export const pay = async (req: Request<{}, {}, paymentRequestBody>, res: Response) => {
 
     const { userId, action } = req.body;
-    const isPayment = await Payment.findOne({ user_id: userId, action });
-    if (isPayment) return res.status(400).json({ message: "You already paid." });
+    const user = await User.findById(userId);
+    if (!user) {
+        return res.status(404).json({ message: "User not found" });
+    }
+
+    let currentRound = user.current_status.current_round;
+
+    const isPayment = await Payment.findOne({ user_id: userId, action, round: currentRound });
+
+    if (isPayment) {
+        user.current_status.current_round += 1;
+        user.current_status.round_status = "progress";
+        await user.save();
+        currentRound += 1;
+    }
 
     try {
         //Check out user is vaild or not
-        const user = await User.findById(userId);
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
+
         if (action !== "regeneration" && action !== "preview") return res.status(404).json({ message: "invalid action" });
-        const round = user.current_status.current_round;
         const isAvailableDate = await isChrismas();
         const PAY_AMOUNT = 0.99;
         // const PAY_AMOUNT = isAvailableDate ? 0.99 : 1.99;
 
-        const payment = { user_id: userId, provider: "paypal", action, PAY_AMOUNT, round }; //potential error will happen
+        const payment = { user_id: userId, provider: "paypal", action, PAY_AMOUNT, round: currentRound }; //potential error will happen
         const paymentData = encodeURIComponent(JSON.stringify(payment));
         //create payPal payment JSON
 
@@ -69,8 +78,8 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res: Respons
                         currency: 'USD',
                         total: PAY_AMOUNT ? PAY_AMOUNT.toFixed(2) : '0.99' // Ensure `amount` is valid
                     },
-                    description: action && round
-                        ? `payment for ${action} in round ${round}`
+                    description: action && currentRound
+                        ? `payment for ${action} in round ${currentRound}`
                         : 'action or round is not defined.' // Ensure `action` and `round` are defined
                 }
             ]
