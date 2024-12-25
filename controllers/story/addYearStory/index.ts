@@ -35,6 +35,7 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
     // Extract userId and total_point from the request body
     const { userId, total_point } = value;
 
+    console.log(req.body);
     // Validate user existence
     const user = await User.findById(userId);
 
@@ -86,7 +87,7 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
                 story: section.story,
             }));
 
-
+            console.log(input)
             // Construct user prompt
             const age = new Date().getFullYear() - new Date(user.dob).getFullYear();
             const gender = user.gender === "male" ? "man" : "woman";
@@ -94,6 +95,7 @@ export const addYearStory = async (req: Request<IAddYearReq>, res: Response) => 
 
             const userPrompt = `I am ${age} years old. I am a ${gender} and work as a ${job}.`;
 
+            console.log(userPrompt)
             // Generate the year story using OpenAI
             const result_txt = await yearStory(input, userPrompt);
 
