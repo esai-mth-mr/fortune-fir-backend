@@ -28,7 +28,7 @@ export const showStory = async (req: Request, res: Response) => {
 
         const payment = await Payment.findOne({ user_id: userId, round: currentRound, action: PAYMENT_MSGS.action.preview });
         if (!payment) {
-            return res.status(402).json({ message: PAYMENT_MSGS.notFound });
+            return res.status(402).json({ message: PAYMENT_MSGS.notPaid });
         }
 
         // Fetch story for the current round
