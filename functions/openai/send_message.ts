@@ -28,7 +28,7 @@ export const sendMessage = async (systemPrompt: string, userPrompt: string) => {
         if (error.status && error.error?.message) {
             return {
                 error: true,
-                message: `OpenAI API Error: ${error.error.message}`,
+                message: "Something went wrong. Please try again later",
             };
         }
 
