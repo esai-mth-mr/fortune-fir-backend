@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import paypal from "paypal-rest-sdk";
 import Payment from "../../../models/Payment";
 import User from '../../../models/User';
-import { AUTH_ERRORS, baseClientUrl, clientId, clientSecret, PAYPAL_MODE } from "../../../constants";
-import { isChrismas } from "../../../functions/story";
+import { AUTH_ERRORS, baseClientUrl, clientId, clientSecret, EMAIL_MSGS, PAY_AMOUNT, PAYPAL_MODE } from "../../../constants";
+import { contactEmail } from "../../../functions/email";
 
 if (!clientId || !clientSecret) {
     throw new Error("Missing PayPal credentials in environment variables.");
@@ -44,9 +44,7 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res: Respons
         //Check out user is vaild or not
 
         if (action !== "regeneration" && action !== "preview") return res.status(404).json({ message: "invalid action" });
-        const isAvailableDate = await isChrismas();
-        const PAY_AMOUNT = 0.99;
-        // const PAY_AMOUNT = isAvailableDate ? 0.99 : 1.99;
+        // const isAvailableDate = await isChrismas();
 
         const payment = { user_id: userId, provider: "paypal", action, PAY_AMOUNT, round: currentRound }; //potential error will happen
         const paymentData = encodeURIComponent(JSON.stringify(payment));
@@ -68,7 +66,7 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res: Respons
                             {
                                 name: "howlucky2025", // Ensure `action` is defined
                                 sku: 'item', // Uncomment and provide a valid SKU if required
-                                price: PAY_AMOUNT ? PAY_AMOUNT.toFixed(2) : '0.99', // Ensure `amount` is valid
+                                price: PAY_AMOUNT ? PAY_AMOUNT.toFixed(2) : '4.99', // Ensure `amount` is valid
                                 currency: 'USD',
                                 quantity: 1
                             }
@@ -76,7 +74,7 @@ export const pay = async (req: Request<{}, {}, paymentRequestBody>, res: Respons
                     },
                     amount: {
                         currency: 'USD',
-                        total: PAY_AMOUNT ? PAY_AMOUNT.toFixed(2) : '0.99' // Ensure `amount` is valid
+                        total: PAY_AMOUNT ? PAY_AMOUNT.toFixed(2) : '4.99' // Ensure `amount` is valid
                     },
                     description: action && currentRound
                         ? `payment for ${action} in round ${currentRound}`
@@ -176,13 +174,25 @@ export const success = async (req: Request, res: Response) => {
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
-                if (user_state?.provider !== "paypal" || user_state?.PAY_AMOUNT !== 0.99) {
+                if (user_state?.provider !== "paypal" || user_state?.PAY_AMOUNT !== PAY_AMOUNT) {
                     return res.status(400).json({ error: true, message: AUTH_ERRORS.rightMethod });
                 }
 
                 try {
                     const payment = new Payment({ ...user_state, amount: user_state?.PAY_AMOUNT, unit: "USD", created_at: new Date() });
                     await payment.save();
+                    const content = `
+                            <p>From: ${userId}</p>
+                            <p>=======================================================================</p>
+                            <p>Message: Customer paid $${user_state?.PAY_AMOUNT}</p>
+                            `;
+
+                    await contactEmail(
+                        "",
+                        EMAIL_MSGS.paymentSubject,
+                        content
+                    );
+
                     return res.status(200).json({ error: false, message: "Thank you! Payment successfully released.", url: "/payment/paypal/success" });
                 } catch (error: any) {
                     console.log(error._message ?? "Unknown Error")
